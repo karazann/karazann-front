@@ -1,27 +1,46 @@
 {
-  "name": "karazann",
-  "version": "1.0.0",
-  "description": "**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**",
-  "main": "index.js",
-  "scripts": {
-    "dev": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://Szkabaroli@bitbucket.org/Szkabaroli/karazann.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/Szkabaroli/karazann#readme",
-  "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.10.3"
-  },
-  "dependencies": {
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0"
-  }
+	"name": "karazann",
+	"version": "0.0.1",
+	"description": "Decription...",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "cross-env NODE_ENV=development parcel src/index.html ",
+		"build": "cross-env NODE_ENV=production parcel build src/index.html --no-minify /"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://Szkabaroli@bitbucket.org/Szkabaroli/karazann.git"
+	},
+	"keywords": [],
+	"author": "Roland SzK",
+	"license": "ISC",
+	"homepage": "https://bitbucket.org/Szkabaroli/karazann#readme",
+	"devDependencies": {
+		"autoprefixer": "^9.3.1",
+		"babel-core": "^6.26.3",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"cross-env": "^5.2.0",
+		"parcel-bundler": "^1.10.3",
+		"sass": "^1.14.3"
+	},
+	"dependencies": {
+		"react": "^16.6.0",
+		"react-dom": "^16.6.0",
+		"react-router-dom": "^4.3.1"
+	},
+	"postcss": {
+		"modules": false,
+		"plugins": {
+			"autoprefixer": {
+				"browsers": [
+					">1%",
+					"last 4 versions",
+					"Firefox ESR",
+					"not ie < 9"
+				],
+				"flexbox": "no-2009"
+			}
+		}
+	}
 }
