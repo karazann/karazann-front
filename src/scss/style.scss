@@ -1,3 +1,67 @@
-body, html{
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Assistant:200,300,400');
+@import 'reset';
 
+
+$font-stack: 'Poppins', sans-serif;
+$font-stack2: 'Assistant', sans-serif;
+
+$font-color: #FFF;
+$primary-color: #333;
+
+body {
+    font-family: $font-stack;
+    text-rendering: optimizeLegibility;
+    /*-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;*/
+    color: $font-color;
+    background: #FBFBFB;
+}
+
+.navbar {
+	position: absolute;
+	right: 0;
+	left: 0;
+	padding: 24px 0;
+	z-index: 120;
+	
+	&.dark {
+		color: black;
+		a {
+			color: black;
+		}
+	}
+	
+	.container {
+		position: relative;
+	}
+	
+	div {
+		height: 40px;
+		line-height: 40px;
+		white-space: nowrap;
+	}
+	
+	a {
+		float: left;
+		margin: 0 7px;
+		transition: transform 0.3s ease 0s;
+	}
+	
+	a:hover {
+		transform: translateY(-3px);
+	}
+	
+	.brand {
+		float: left;
+		margin: 0 2em 0 0;
+	}
+	
+	.menu {
+		float: right;
+	}
+	
+	.menu-mobile {
+		float: right;
+	}
 }

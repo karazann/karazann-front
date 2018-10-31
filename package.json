@@ -25,9 +25,12 @@
 		"sass": "^1.14.3"
 	},
 	"dependencies": {
+		"classnames": "^2.2.6",
+		"components": "^0.1.0",
 		"react": "^16.6.0",
 		"react-dom": "^16.6.0",
-		"react-router-dom": "^4.3.1"
+		"react-router-dom": "^4.3.1",
+		"scss": "^0.2.4"
 	},
 	"postcss": {
 		"modules": false,

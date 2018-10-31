@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
-import { Route, NavLink, BrowserRouter as Router } from 'react-router-dom';
-
-const Home = () => <h2>Home</h2>;
-const About = () => <h2>About</h2>;
-const Topic = ({ match }) => <h3>Requested Param: {match.params.id}</h3>;
+import React, { Component } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Navigation from './components/Navigation'
 
 class App extends Component {
     render() {
         return (
             <Router>
                 <div>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/about/" component={About} />
-                    <Route path="/topic/" component={Topic} />
+                    <Navigation dark="true"/>
                 </div>
             </Router>
         );
     }
 }
 
-export default App;
+export default App
