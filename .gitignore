@@ -78,3 +78,6 @@ typings/
 # Parcel build folders 
 /dist
 .cache
+
+#images
+src/assets/
