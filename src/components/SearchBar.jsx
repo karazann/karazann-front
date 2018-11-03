@@ -9,12 +9,13 @@ class SearchBar extends PureComponent {
     }
 
     componentDidMount() {
-        VanillaTilt.init(this.tiltRef.current, {speed: 1000, scale: 1.05, axis: 'y', reverse: true})
+        VanillaTilt.init(this.tiltRef.current, {speed: 1000, scale: 1.05})
     }
     
     render() {
         return (
-            <div ref={this.tiltRef} className="search">
+            <div  className="search">
+                <input type="text" name="" id=""/>
                 <a href="#">Search</a>
             </div>
         )

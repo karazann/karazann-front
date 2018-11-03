@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 
 import '../scss/style.scss'
 
-import SearchBar from './SearchBar'
+
 
 class Navigation extends PureComponent {
     render() {
@@ -12,7 +12,6 @@ class Navigation extends PureComponent {
                     <div className="brand float-left">
                         <h1>Karazann.</h1>
                     </div>
-                    <SearchBar />
                 </div>
             </nav>
         )

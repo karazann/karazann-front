@@ -3,19 +3,20 @@
 
 @font-face {
 	font-family: "SansSerifFLF";
+	font-weight: 200;
 	src: url("../assets/fonts/sansserifflf.otf") format("opentype");
 }
 
 @font-face {
 	font-family: "SansSerifFLF";
-	font-weight: bold;
+	font-weight: 700;
 	src: url("../assets/fonts/sansserifbldflf.otf") format("opentype");
 }
 
 @font-face {
 	font-family: "SansSerifFLF";
-	font-weight: 400;
-	src: url("../assets/fonts/sansserifbookflf.otf") format("opentype");
+	font-weight: normal;
+	src: url("../assets/fonts/sansserifflf-demibold.otf") format("opentype");
 }
 
 @import "reset";
@@ -29,9 +30,7 @@ $color-secondary: #22b573;
 
 body {
 	font-family: $font-stack;
-	//text-rendering: optimizeLegibility;
-	//-webkit-font-smoothing: antialiased;
-	//-moz-osx-font-smoothing: grayscale;
+	
 	color: $font-color;
 	background-color: #fbfbfb;
 }
@@ -63,8 +62,6 @@ body {
 		margin: 0 7px;
 		color: black;
 	}
-	
-	
 	
 	.menu {
 		li {
@@ -113,7 +110,6 @@ body {
 	width: 100%;
 	padding-top: 150%;
 	
-	transform-style: preserve-3d;
 }
 
 .card-inner {
@@ -124,45 +120,54 @@ body {
 	bottom: 0;
 	right: 0;
 	text-align: center;
+	transform-style: preserve-3d;
+	//optimization
+	transition: all;
+	will-change: transform;
+    pointer-events: auto;
 	
 	.button {
 		position: absolute;
 		bottom: 0;
 		right: 0;
 		left: 0;
-		background: rgb(245, 245, 245);
 		margin: 15px;
-
 		cursor: pointer;
 
 		color: rgb(161, 161, 161);
-		transition: 0.2s linear;
+		transition: 0.15s linear;
 
-		text-align: center;
 
-		font-weight: bold;
 		padding: 20px;
 		border-radius: 7px;
 		transform: translateZ(20px);
-
-		
 	}
 
 	.button:hover{
+		background: rgb(240, 240, 240);
+
+		
+
 		transform: translateZ(40px);
+		
+	}
+
+	.button:active{
+		transform: translateZ(0px);
 	}
 
 	.image{
 		position: absolute;
-		top: 40px;
+		top: 45px;
 		padding:30px;
 		bottom: 80px;
-		transform: translateZ(40px);
-		
+		transform: translateZ(45px);
+		outline: 1px solid transparent;
 		
 		img{
 			max-width: 100%;
 			height: auto;
+			
 		}
 	}
 
@@ -177,33 +182,106 @@ body {
 	}
 }
 
+
+.hero-card{
+	height: 300px;
+	background: white;
+
+
+	border-radius: 10px;
+	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
+	transform-style: preserve-3d;
+	
+
+	img{
+		transform: translateZ(50px);
+		height: 100%;
+		position: absolute;
+		top: -50px;
+		left: -50px;
+		outline: 1px solid transparent;
+	}
+
+	a{
+		transform: translateZ(20px);
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		color: white;
+		background: #428DFF;
+		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0.247);
+		border-radius: 5px;
+		padding: 10px 20px;
+		margin: 20px;
+		transition: .1s cubic-bezier(0.645, 0.045, 0.355, 1);
+		outline: 1px solid transparent;
+	}
+
+	h3{
+		position: absolute;
+		right: 0;
+		padding: 20px;
+		transform: translateZ(30px);
+	}
+
+	p {
+		position: absolute;
+		transform: translateZ(30px);
+		text-align: justify;
+		margin-left: 240px;
+		margin-top: 60px;
+		padding: 20px;
+		font-weight: 400;
+		color: rgb(75, 75, 75);
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+	}
+
+	a:hover{
+		transform: translateZ(40px);
+	}
+
+	a:active{
+		transform: translateZ(0px);
+	}
+}
+
 .card {
 	background: white;
-	
 	border-radius: 10px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
 }
 
 .search{
-	height: auto;
-	width: 400px;
-	background: white;
-	border-radius: 10px;
-	float: right;
-	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
-	transform-style: preserve-3d;
+	height: 50px;
+	
+	width: 500px;
+	
+	margin: 0 auto;
+	
+
+
+	input{
+		border: none;
+		width: 400px;
+		height: 100%;
+		background: white;
+		border-radius: 7px;
+		box-shadow: 10px 10px 80px 0px rgba(0, 0, 0, 0.05);
+		user-select: none;
+	}
 
 	a{
-		padding: 10px;
-		margin: 10px;
-		border-radius: 5px;
-		float: right;
-		color: #fbfbfb;
+		width: 100px;
 		background: #22b573;
-		
-		transform: translateZ(10px);
+		box-shadow: 10px 10px 80px 0px #22b57325;
 	}
 }
+
+
+
 
 /*
 
