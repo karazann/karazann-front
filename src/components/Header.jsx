@@ -11,13 +11,14 @@ import huawei from '../assets/images/huawei.png'
 import airpods from '../assets/images/airpods.png'
 import live from '../assets/images/xboxlive.png'
 
-
+import { results } from './data.json'
 
 import HeroCard from './HeroCard';
 
 import note from '../assets/images/note.png'
 
 class Header extends PureComponent {
+
     render() {
         return (
             <section className="main">
@@ -25,15 +26,15 @@ class Header extends PureComponent {
 
                     <div className="space-40"></div>
 
-                    <h2>Popular</h2>   
+                    <h2>Highlights</h2>
 
                     <div className="space-90"></div>
 
                     <div className="row">
-                        <HeroCard image={note} />
-                        <HeroCard />
+                        <HeroCard image={xbox} />
+                        <HeroCard image={iphone}/>
                     </div>
-            
+
                 </section>
                 <section className="container">
 
@@ -44,14 +45,9 @@ class Header extends PureComponent {
                     <div className="space-30"></div>
 
                     <div className="row">
-
-                        <ItemCard title="Iphone X" image={iphone} />
-                        <ItemCard title="Xbox One X" image={xbox} />
-                        <ItemCard title="Apple Watch S4" image={watch} />
-                        <ItemCard title="Huawei P20 Lite" image={huawei} />
-                        <ItemCard title="PS4 Pro" image={ps4} />
-                        <ItemCard title="Apple Airpods" image={airpods} />
-                        <ItemCard title="3 Month Xbox Live" image={live} />
+                        {results.map((item =>
+                            <ItemCard title={item.title} image={item.image} progress={item.progress}/>
+                        ))}
                     </div>
                 </section>
             </section>

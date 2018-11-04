@@ -18,11 +18,19 @@ class ItemCard extends PureComponent {
     }
 
     onClick(e) {
-        e.preventDefault();
+        e.preventDefault()
         e.nativeEvent.stopImmediatePropagation()
     }
 
     render() {
+        const progress = this.props.progress;
+        const title = this.props.title;
+        const image = this.props.image;
+
+        const style = {
+          width: progress + '%'
+        };
+
         return (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3">
 
@@ -30,14 +38,16 @@ class ItemCard extends PureComponent {
                     <div ref={this.tiltRef} className="card-inner card">
 
 
-                        <h4>{this.props.title}</h4>
+                        <h4>{title}</h4>
 
                         <div className="image">
-                            <img src={this.props.image} />
+                            <img src={image} />
                         </div>
 
+                        <div className="goal">
+                        <div style={style}></div></div>
 
-                        <a onClick={this.onClick} className="button">Check out ></a>
+                        <a href="#" onClick={this.onClick} className="button">Check out ></a>
                     </div>
                 </div>
 
