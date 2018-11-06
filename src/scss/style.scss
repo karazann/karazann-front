@@ -53,23 +53,13 @@ body {
 }
 
 .navbar {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
+	width: 100%;
 	padding-top: 65px;
 	z-index: 1000;
 	
 	a {
-		float: left;
 		margin: 0 7px;
 		color: black;
-	}
-	
-	.menu {
-		li {
-			display: inline;
-		}
 	}
 	
 	/*.brand {
@@ -236,7 +226,7 @@ body {
 
 	.tag{
 		position: absolute;
-		background: rgba(34, 181, 115, 0.3);
+		background: rgba(34, 181, 115, 0.2);
 		font-size: 12px;
 		color: #22b573;
 		padding: 6px 12px;
