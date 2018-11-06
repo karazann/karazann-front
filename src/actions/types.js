@@ -1,1 +1,1 @@
-export const LOAD_ALL = 'LOAD_ALL'
+export const FETCH_PRODUCT_SUCCESS = 'FETCH_PRODUCT_SUCCESS'

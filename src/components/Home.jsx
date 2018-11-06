@@ -12,12 +12,17 @@ import airpods from '../assets/images/airpods.png'
 import live from '../assets/images/xboxlive.png'
 
 import { connect } from 'react-redux'
+import {fetchProducts} from '../actions/productActions'
 
 import HeroCard from './HeroCard';
 
 import note from '../assets/images/note.png'
 
 class Home extends Component {
+
+    componentWillMount() {
+        this.props.fetchProducts();
+    }
 
     render() {
         return (
@@ -61,10 +66,11 @@ const mapStateToProps = state => {
     }
 }
 
+
 const mapDispatchToProps = dispatch => {
     return {
-        
-    }
-}
+        fetchProducts: () => dispatch(fetchProducts())
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
