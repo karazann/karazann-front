@@ -4,9 +4,6 @@ import {
     FETCH_PRODUCT_FAILED
 } from './types'
 
-import axios from 'axios';
-
-
 export const fetchProductsBegin = () => {
     return {
         type: FETCH_PRODUCT_BEGIN

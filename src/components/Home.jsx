@@ -14,7 +14,6 @@ import xbox from '../assets/images/xboxx.png'
 class Home extends Component {
 
     componentWillMount() {
-        console.log(this.props)
         this.props.dispatch(fetchProducts())
     }
 
