@@ -1,30 +1,27 @@
 import React, { Component } from 'react'
 import '../scss/style.scss'
 
-import ItemCard from './ItemCard'
-
-import iphone from '../assets/images/iphonex.png'
-import xbox from '../assets/images/xboxx.png'
-import watch from '../assets/images/awatch.png'
-import ps4 from '../assets/images/ps4.png'
-import huawei from '../assets/images/huawei.png'
-import airpods from '../assets/images/airpods.png'
-import live from '../assets/images/xboxlive.png'
+import ProductList from './ProductList'
 
 import { connect } from 'react-redux'
-import {fetchProducts} from '../actions/productActions'
+import { fetchProducts } from '../actions/productActions'
 
 import HeroCard from './HeroCard';
 
 import note from '../assets/images/note.png'
+import xbox from '../assets/images/xboxx.png'
 
 class Home extends Component {
 
     componentWillMount() {
-        this.props.fetchProducts();
+        console.log(this.props)
+        this.props.dispatch(fetchProducts())
     }
 
     render() {
+
+        const { items, error, loading } = this.props.products;
+
         return (
             <section className="main">
                 <section className="container">
@@ -49,11 +46,8 @@ class Home extends Component {
 
                     <div className="space-30"></div>
 
-                    <div className="row">
-                        {this.props.products.map((item =>
-                            <ItemCard key={item.title} title={item.title} image={item.image} progress={item.progress} />
-                        ))}
-                    </div>
+                    <ProductList products={items} loading={loading} error={error} />
+                    
                 </section>
             </section>
         )
@@ -66,11 +60,4 @@ const mapStateToProps = state => {
     }
 }
 
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchProducts: () => dispatch(fetchProducts())
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);
