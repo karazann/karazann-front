@@ -66,7 +66,7 @@ export const fetchProducts = () => {
                 { title: 'Apple Airpods', image: './airpods.png', progress: 71 },
                 { title: '3 Month Xbox Live', image: './xboxlive.png', progress: 33 }
             ]))
-        }, 1000)
+        }, 300)
     }
 }
 

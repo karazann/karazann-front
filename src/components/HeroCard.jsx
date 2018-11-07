@@ -1,36 +1,27 @@
-import React, { PureComponent } from 'react'
-import { isMobile } from 'react-device-detect'
+import React from 'react'
 import Tilt from './Tilt'
 
-import '../scss/style.scss'
+const HeroCard = ({image}) => {
 
-class HeroCard extends PureComponent {
+    return (
+        <div className="col-12 col-lg-6">
+            <Tilt className="hero-card" options={{ speed: 1500, scale: 1.03, max: 10 }} >
 
-    onClick(e) {
-        e.preventDefault()
-        e.nativeEvent.stopImmediatePropagation()
-    }
+                <span className="tag">New</span>
 
-    render() {
-        return (
-            <div className="col-12 col-lg-6">
-                <Tilt className="hero-card" options={{ speed: 1500, scale: 1.03, max: 10 }} >
+                <img src={image} alt="" />
 
-                    <span className="tag">New</span>
+                <h3>Galaxy Note 9</h3>
 
-                    <img src={this.props.image} alt="" />
-
-                    <h3>Galaxy Note 9</h3>
-
-                    <p>The Galaxy Note9. Innovative features and design make it the only
+                <p>The Galaxy Note9. Innovative features and design make it the only
                          phone to keep up with the next genreation of achivers.</p>
 
-                    <a href="#" onClick={this.onClick} >Details</a>
+                <a href="#" onClick={(e) => e.preventDefault()} >Details</a>
 
-                </Tilt>
-            </div>
-        )
-    }
+            </Tilt>
+        </div>
+    )
+
 }
 
 export default HeroCard

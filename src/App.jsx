@@ -7,6 +7,7 @@ import Home from './components/Home'
 import './scss/style.scss'
 
 class App extends Component {
+    
     render() {
         return (
             <Switch>

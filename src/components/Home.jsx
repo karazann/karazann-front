@@ -1,48 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import ProductList from './ProductList'
 
 import { connect } from 'react-redux'
-import { fetchProducts } from '../actions/productActions'
 
 import HeroCard from './HeroCard';
+import SearchBar from './SearchBar'
 
 import note from '../assets/images/note.png'
 import xbox from '../assets/images/xboxx.png'
 
 class Home extends Component {
 
-    componentWillMount() {
-        this.props.dispatch(fetchProducts())
-    }
-
     render() {
+        const el = <Fragment><h2 className='header'>Featured</h2><div className="row"><HeroCard image={xbox} /><HeroCard image={note} /></div></Fragment>
+
 
         const { products, error, loading } = this.props;
 
         return (
             <section className="main">
                 <section className="container">
+                    
+                    <SearchBar />
 
-                    <div className="space-40"></div>
-
-                    <h2>Highlights</h2>
-
-                    <div className="space-90"></div>
-
-                    <div className="row">
-                        <HeroCard image={xbox} />
-                        <HeroCard image={note} />
-                    </div>
-
-                </section>
-                <section className="container">
-
-                    <div className="space-60"></div>
-
-                    <h2 >Products</h2>
-
-                    <div className="space-30"></div>
+                    {this.props.hasFilter ? null : el}
 
                     <ProductList products={products} loading={loading} error={error} />
 
