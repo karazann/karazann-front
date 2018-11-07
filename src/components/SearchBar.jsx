@@ -1,25 +1,26 @@
-import React, { PureComponent } from 'react'
-import VanillaTilt from 'vanilla-tilt'
+import React from 'react'
+import { connect } from 'react-redux'
+import { setFilter } from '../actions/productActions'
 
-class SearchBar extends PureComponent {
-    
-    constructor(props) {
-        super(props)
-        this.tiltRef = React.createRef()
+const SearchBar = props => {
+
+    const onInputChange = event => {
+        console.log('dffasd')
+        props.dispatch(setFilter(event.target.value));
     }
 
-    componentDidMount() {
-        VanillaTilt.init(this.tiltRef.current, {speed: 1000, scale: 1.05})
-    }
-    
-    render() {
-        return (
-            <div  className="search">
-                <input type="text" name="" id=""/>
-                <a href="#">Search</a>
-            </div>
-        )
+    return (
+        <div className="float-right">
+            <input onChange={onInputChange} type="text" name="" id="" />
+            <a href="#">Search</a>
+        </div>
+    )
+}
+
+const mapStateToProps = (state) => {
+    return {
+        filters: state.filters
     }
 }
 
-export default SearchBar;
+export default connect(mapStateToProps)(SearchBar);

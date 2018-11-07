@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../scss/style.scss'
 
 import ProductList from './ProductList'
 

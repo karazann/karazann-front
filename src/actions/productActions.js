@@ -1,7 +1,8 @@
 import {
     FETCH_PRODUCT_BEGIN,
     FETCH_PRODUCT_SUCCESS,
-    FETCH_PRODUCT_FAILED
+    FETCH_PRODUCT_FAILED,
+    SET_FILTER
 } from './types'
 
 export const fetchProductsBegin = () => {
@@ -66,5 +67,14 @@ export const fetchProducts = () => {
                 { title: '3 Month Xbox Live', image: './xboxlive.png', progress: 33 }
             ]))
         }, 1000)
+    }
+}
+
+export const setFilter = filter => {
+    return {
+        type: SET_FILTER,
+        payload: {
+            filter
+        }
     }
 }
