@@ -18,7 +18,7 @@ class Home extends Component {
 
     render() {
 
-        const { items, error, loading } = this.props.products;
+        const { products, error, loading } = this.props;
 
         return (
             <section className="main">
@@ -44,17 +44,24 @@ class Home extends Component {
 
                     <div className="space-30"></div>
 
-                    <ProductList products={items} loading={loading} error={error} />
-                    
+                    <ProductList products={products} loading={loading} error={error} />
+
                 </section>
             </section>
         )
     }
 }
 
+const filterProducts = (products, filter) => {
+    return products.filter(product => product.title.toLowerCase().indexOf(filter.toLowerCase()) > -1)
+}
+
 const mapStateToProps = state => {
     return {
-        products: state.products
+        products: filterProducts(state.products.items, state.products.filter),
+        hasFilter: state.products.filter != '',
+        loading: state.products.loading,
+        error: state.products.error
     }
 }
 
