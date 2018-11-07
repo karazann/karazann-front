@@ -9,6 +9,10 @@ const ProductList = ({ products, loading, error }) => {
     if (error)
         return <div>Loading failed!</div>
 
+
+    if(products.length === 0) 
+        return <div><h2 className='header'>Products</h2><p style={{textAlign: 'center'}}>nothing here</p></div>
+
     return (
         <Fragment>
 

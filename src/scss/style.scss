@@ -77,34 +77,7 @@ body {
 		color: black;
 	}
 	
-	/*.brand {
-		
-		height: 60px;
-		float: left;
-		margin: 0 2em 0 0;
-		
-		img {
-			height: 100%;
-			float: left;
-			padding: 0 10px 0 0;
-		}
-		
-		h1 {
-			padding: 30px 0 0 0;
-			line-height: 30px;
-			float: left;
-			@media (min-width: 768px) { 
-				color: black;
-			}
-		}
-	}*/
 	
-	/*.menu {
-		padding: 30px 0 0 0;
-		line-height: 30px;
-		float: right;
-		mix-blend-mode: difference;
-	}*/
 }
 
 .main {
@@ -297,41 +270,32 @@ body {
 .search{
 	height: auto;
 	margin: 0 auto;
-	width: 400px;
 
 	font-family: 'Roboto';
-	font-size: 120%;
-
+	
+	width: 400px;
 	padding: 50px 0;
 	
 	input {
 		border: none;
-		width: 250px;
+		width: 100%;
 		padding: 15px;
+		background: transparent;
+		font-size: 1em;
 		background: white;
 		color: rgb(70, 70, 70);
 		border-radius: 5px;
-		box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
+		box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.05);
 		margin: 0 10px;
-	}
-
-	button{
-		border: none;
-		padding: 15px;
-		border-radius: 5px;
-		background: #428DFF;
-		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0.3);
-		color: white;
-		margin: 0 10px;
+		
+		border: solid 2px #fff;
 		transition: .2s;
-		cursor: pointer;
-	
 	}
 
-	button:active {
-		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0);
+	@media (max-width: 576px) { 
+		margin: none;
+		width: 100%;
 	}
-
 }
 
 

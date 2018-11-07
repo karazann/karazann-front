@@ -4,17 +4,14 @@ import { setFilter } from '../actions/productActions'
 
 const SearchBar = props => {
 
-    let inputRef;
 
-    const onClick = event => {
-        console.log('dffasd')
-        props.dispatch(setFilter(inputRef.value));
+    const onChange = event => {
+        props.dispatch(setFilter(event.target.value));
     }
 
     return (
         <div className="search">
-            <input placeholder="Type something..." onChange={onClick} ref={input => inputRef = input} type="search" name="" id="test" />
-            <button type="submit" onClick={onClick} >Search</button>
+            <input placeholder="Search..." onChange={onChange} type="search" name="" id="test" />
         </div>
     )
 }
