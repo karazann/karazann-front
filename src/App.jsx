@@ -1,23 +1,34 @@
-import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
+import BodyColor from './components/BodyColor'
 import Header from './components/Header'
-import Home from './components/Home'
+import HomePage from './components/HomePage'
+import LoginPage from './components/LoginPage'
 
 import './scss/style.scss'
 
 class App extends Component {
-    
+
     render() {
         return (
             <Switch>
-                <Fragment>
+                <BodyColor isBlue={true}>
+                {this.props.isBlue}
                     <Header />
-                    <Route exact path='/' component={Home}/>
-                </Fragment>
+                    <Route exact path='/' component={HomePage} />
+                    <Route path='/login' component={LoginPage} />
+                </BodyColor>
             </Switch>
         );
     }
 }
 
-export default App
+const mapStateToProps = state => {
+    return {
+        isBlue: state.ui.isBlue
+    }
+}
+
+export default connect(mapStateToProps)(App);

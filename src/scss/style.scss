@@ -22,8 +22,7 @@
 	src: url("../assets/fonts/typogrotesk.otf") format("opentype");
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:500');
-
+@import url("https://fonts.googleapis.com/css?family=Roboto:500");
 
 @import "reset";
 
@@ -33,20 +32,41 @@ $color-primary: rgb(66, 141, 255);
 $color-secondary: rgb(34, 181, 115);
 
 /*fixes the scrollbar jumping issue*/
-html { margin-left: calc(100vw - 100%); }
+html {
+	margin-left: calc(100vw - 100%);
+}
 
 /*fix for font family in inputs*/
-input, select, textarea, button{font-family:inherit;}
+input,
+select,
+textarea,
+button {
+	font-family: inherit;
+}
 
 /*fix for outline*/
-button:focus, textarea:focus, input:focus{
-    outline: none;
+button:focus,
+textarea:focus,
+input:focus {
+	outline: none;
+}
+
+.blue-background {
+	background: #428dff;
+	
+	* {
+		color: white;
+	}
 }
 
 body {
 	font-family: $font-stack;
 	color: $font-color;
-	background-color: #fbfbfb;
+	background: #fbfbfb;
+	
+	* {
+		color: $font-color;
+	}
 }
 
 @for $i from 1 through 10 {
@@ -63,7 +83,7 @@ body {
 	float: right;
 }
 
-.header{
+.header {
 	margin: 50px 0 30px 0;
 }
 
@@ -71,13 +91,6 @@ body {
 	width: 100%;
 	padding-top: 65px;
 	z-index: 1000;
-	
-	a {
-		margin: 0 7px;
-		color: black;
-	}
-	
-	
 }
 
 .main {
@@ -90,7 +103,6 @@ body {
 	position: relative;
 	width: 100%;
 	padding-top: 160%;
-	
 }
 
 .card-inner {
@@ -105,7 +117,7 @@ body {
 	//optimization
 	transition: all;
 	will-change: transform;
-    pointer-events: auto;
+	pointer-events: auto;
 	
 	.button {
 		position: absolute;
@@ -113,40 +125,39 @@ body {
 		right: 0;
 		left: 0;
 		margin: 15px;
-
+		
 		color: rgb(161, 161, 161);
 		transition: 0.15s linear;
-
-
+		
 		padding: 20px;
 		border-radius: 7px;
 		transform: translateZ(20px);
 	}
-
-	.button:hover{
+	
+	.button:hover {
 		background: rgb(240, 240, 240);
 		transform: translateZ(40px);
 	}
-
-	.button:active{
+	
+	.button:active {
 		transform: translateZ(0px);
 	}
-
-	.image{
+	
+	.image {
 		position: absolute;
 		top: 45px;
-		padding:30px;
+		padding: 30px;
 		bottom: 80px;
 		transform: translateZ(45px);
 		outline: 1px solid transparent;
 		
-		img{
+		img {
 			width: 90%;
 			height: auto;
 		}
 	}
-
-	.goal{
+	
+	.goal {
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -158,16 +169,16 @@ body {
 		background: rgba(66, 142, 255, 0.1);
 		
 		transform: translateZ(20px);
-
-		div{
+		
+		div {
 			height: 100%;
 			border-radius: 5px;
 			background: rgb(66, 141, 255);
 			box-shadow: 0px 0px 10px 0px rgba(66, 179, 255, 0.3);
 		}
 	}
-
-	h4{
+	
+	h4 {
 		position: absolute;
 		font-weight: 600;
 		top: 0;
@@ -178,18 +189,17 @@ body {
 	}
 }
 
-
-.hero-card{
+.hero-card {
 	height: 330px;
 	background: white;
 	padding: 20px;
-
+	
 	border-radius: 10px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
 	transform-style: preserve-3d;
 	margin: 20px 0;
-
-	img{
+	
+	img {
 		transform: translateZ(50px);
 		height: 90%;
 		position: absolute;
@@ -197,19 +207,16 @@ body {
 		right: 0;
 		outline: 1px solid transparent;
 	}
-
-	h3{
-		
+	
+	h3 {
 		position: absolute;
 		top: 80px;
 		padding-left: 20px;
 		font-weight: bold;
 		transform: translateZ(20px);
 	}
-
 	
-
-	.tag{
+	.tag {
 		position: absolute;
 		background: rgba(34, 181, 115, 0.2);
 		font-size: 12px;
@@ -219,7 +226,7 @@ body {
 		transform: translateZ(30px);
 		//box-shadow:0px 10px 20px 0 rgba(43, 226, 144, 0.3);
 	}
-
+	
 	p {
 		position: absolute;
 		transform: translateZ(20px);
@@ -229,32 +236,31 @@ body {
 		right: 260px;
 		margin-top: 70px;
 		color: rgb(131, 131, 131);
-
 	}
-
-	a{
+	
+	a {
 		padding: 20px;
-
+		
 		transform: translateZ(20px);
 		position: absolute;
 		left: 0;
 		bottom: 0;
 		color: white;
-		background: #428DFF;
+		background: #428dff;
 		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0.3);
 		border-radius: 50px;
 		padding: 10px 30px;
 		margin: 30px;
-		transition: .1s linear;
+		transition: 0.1s linear;
 		outline: 1px solid transparent;
 	}
-
-	a:hover{
+	
+	a:hover {
 		transform: translateZ(40px);
 		box-shadow: 0px 10px 30px 0px rgba(66, 179, 255, 0.3);
 	}
-
-	a:active{
+	
+	a:active {
 		transform: translateZ(0px);
 		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0);
 	}
@@ -266,12 +272,11 @@ body {
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
 }
 
-
-.search{
+.search {
 	height: auto;
 	margin: 0 auto;
-
-	font-family: 'Roboto';
+	
+	font-family: "Roboto";
 	
 	width: 400px;
 	padding: 50px 0;
@@ -289,17 +294,14 @@ body {
 		margin: 0 10px;
 		
 		border: solid 2px #fff;
-		transition: .2s;
+		transition: 0.2s;
 	}
-
-	@media (max-width: 576px) { 
+	
+	@media (max-width: 576px) {
 		margin: none;
 		width: 100%;
 	}
 }
-
-
-
 
 /*
 

@@ -10,7 +10,7 @@ import SearchBar from './SearchBar'
 import note from '../assets/images/note.png'
 import xbox from '../assets/images/xboxx.png'
 
-class Home extends Component {
+class HomePage extends Component {
 
     render() {
         const el = <Fragment><h2 className='header'>Featured</h2><div className="row"><HeroCard image={xbox} /><HeroCard image={note} /></div></Fragment>
@@ -47,4 +47,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(HomePage);
