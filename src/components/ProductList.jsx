@@ -15,10 +15,6 @@ const ProductList = ({ products, loading, error }) => {
 
     return (
         <Fragment>
-            <form>
-                <input id="email" name="email" type="email" required></input>
-                <input type="submit" value=""/>
-            </form>
             <h2 className='header'>Products</h2>
 
             <div className='row'>

@@ -14,8 +14,7 @@ class App extends Component {
     render() {
         return (
             <Switch>
-                <BodyColor isBlue={true}>
-                {this.props.isBlue}
+                <BodyColor isBlue={this.props.isBlue}>
                     <Header />
                     <Route exact path='/' component={HomePage} />
                     <Route path='/login' component={LoginPage} />

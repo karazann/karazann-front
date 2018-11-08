@@ -4,5 +4,9 @@ import productReducer from './productReducer'
 import uiReducer from './uiReducer';
 
 export default history => {
-    return combineReducers({router: connectRouter(history), products: productReducer, ui: uiReducer})
+    return combineReducers({
+        router: connectRouter(history),
+        products: productReducer,
+        ui: uiReducer
+    })
 }
