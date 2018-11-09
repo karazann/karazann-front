@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import HeroCard from './HeroCard';
 import SearchBar from './SearchBar'
 
+
 import note from '../assets/images/note.png'
 import xbox from '../assets/images/xboxx.png'
 
@@ -19,9 +20,9 @@ class HomePage extends Component {
         const { products, error, loading } = this.props;
 
         return (
-            <section className="main">
+            <section className="page">
                 <section className="container">
-                    
+
                     <SearchBar />
 
                     {this.props.hasFilter ? null : el}

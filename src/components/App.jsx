@@ -2,14 +2,21 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import BodyColor from './components/BodyColor'
-import Header from './components/Header'
-import HomePage from './components/HomePage'
-import LoginPage from './components/LoginPage'
+import BodyColor from './BodyColor'
+import HomePage from './HomePage'
+import AuthPage from './AuthPage'
+import Header from './Header'
 
-import './scss/style.scss'
+import { fetchProducts } from '../actions/productActions'
+
+import '../scss/style.scss'
 
 class App extends Component {
+
+    
+    componentWillMount() {
+        this.props.dispatch(fetchProducts())
+    }
 
     render() {
         return (
@@ -17,7 +24,7 @@ class App extends Component {
                 <BodyColor isBlue={this.props.isBlue}>
                     <Header />
                     <Route exact path='/' component={HomePage} />
-                    <Route path='/login' component={LoginPage} />
+                    <Route path='/auth' component={AuthPage} />
                 </BodyColor>
             </Switch>
         );

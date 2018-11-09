@@ -12,7 +12,7 @@ const Header = props => {
                     </NavLink>
                 </div>
             
-                <NavLink className="btn float-right" to='/login'>Login</NavLink>
+                <NavLink className="btn float-right" to='/auth/login'>Login</NavLink>
 
             </div>
         </nav>
