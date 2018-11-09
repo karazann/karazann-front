@@ -17,19 +17,25 @@
 }
 
 @font-face {
-	font-family: "Grotesk";
-	font-weight: normal;
-	src: url("../assets/fonts/typogrotesk.otf") format("opentype");
+	font-family: "Metropolis";
+	src: url("../assets/fonts/Metropolis-Regular.otf") format("opentype");
 }
 
-@import url("https://fonts.googleapis.com/css?family=Roboto:500");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
 
 @import "reset";
 
 $font-stack: "SansSerifFLF";
 $font-color: rgb(0, 0, 0);
 $color-primary: rgb(66, 141, 255);
-$color-secondary: rgb(34, 181, 115);
+$color-secondary: rgb(21, 205, 114);
+
+$color-red: #fc5c65;
+$color-orange: #fd9644;
+$color-yellow: #fed330;
+$color-blue: rgb(66, 141, 255);
+$color-green: rgb(21, 205, 114);
+$color-purple: #a55eea;
 
 /*fixes the scrollbar jumping issue*/
 html {
@@ -93,9 +99,82 @@ body {
 	z-index: 1000;
 }
 
-.page{
+.page {
 	display: block;
 	padding-top: 70px;
+}
+
+.auth-form {
+	margin: 50px auto 0 auto;
+	width: 470px;
+	border-radius: 7px;
+	background: white;
+	padding: 40px;
+	transform-style: preserve-3d;
+	perspective: 1000;
+
+	outline: 1px solid transparent;
+	*{
+		outline: 1px solid transparent;
+	}
+
+	form {
+		font-family: "Roboto";
+		transform-style: preserve-3d;
+		
+
+		legend{
+			transform: translateZ(20px);
+			color: black;
+			text-align: center;
+			margin: 0 0 45px 0;
+			font-size: 35px;
+			font-weight: 300;
+		}
+
+		input[type=text],
+		input[type=email],
+		input[type=password] {
+			transform: translateZ(20px);
+			margin: 20px 0;
+			display: block;
+			padding: 15px;
+			font-size: 18px;
+			width: 100%;
+			border: 2px solid #e7e7e7;
+			border-radius: 5px;
+			color: black;
+		}
+		
+		input:invalid {
+			box-shadow: none;
+		}
+
+		button {
+			margin: 20px 0;
+			transform: translateZ(20px);
+			padding: 15px;
+			font-size: 18px;
+			display: block;
+			width: 100%;
+			border-radius: 5px;
+			border: none;
+			color: white;
+			box-shadow: 0px 10px 20px 0 rgba(21, 205, 114, 0.3);
+			background: $color-secondary;
+			transition: .2s
+		}
+
+		button:hover{
+			transform: translateZ(40px);
+			box-shadow: 0px 10px 40px 0 rgba(21, 205, 114, 0.3);
+		}
+
+		button:active{
+			transform: translateZ(0px);
+			box-shadow: 0px 10px 20px 0 rgba(21, 205, 114, 0);
+		}
+	}
 }
 
 .card-outer {
@@ -113,10 +192,6 @@ body {
 	right: 0;
 	text-align: center;
 	transform-style: preserve-3d;
-	//optimization
-	transition: all;
-	will-change: transform;
-	pointer-events: auto;
 	
 	.button {
 		position: absolute;
@@ -217,9 +292,9 @@ body {
 	
 	.tag {
 		position: absolute;
-		background: rgba(34, 181, 115, 0.2);
+		background: rgba(21, 205, 114, 0.3);
 		font-size: 12px;
-		color: #22b573;
+		color: $color-secondary;
 		padding: 6px 12px;
 		border-radius: 4px;
 		transform: translateZ(30px);

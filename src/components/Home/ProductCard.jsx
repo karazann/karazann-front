@@ -1,6 +1,6 @@
 import React from 'react'
-import Tilt from './Tilt'
-import '../scss/style.scss'
+import Tilt from '../Tilt'
+import '../../scss/style.scss'
 
 const ProductCard = ({ progress, title, image }) => {
 

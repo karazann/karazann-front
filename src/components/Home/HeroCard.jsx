@@ -1,5 +1,5 @@
 import React from 'react'
-import Tilt from './Tilt'
+import Tilt from '../Tilt'
 
 const HeroCard = ({image}) => {
 

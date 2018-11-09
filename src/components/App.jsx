@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import BodyColor from './BodyColor'
-import HomePage from './HomePage'
-import AuthPage from './AuthPage'
+import HomePage from './Home/HomePage'
+import AuthPage from './Auth/AuthPage'
 import Header from './Header'
 
 import { fetchProducts } from '../actions/productActions'

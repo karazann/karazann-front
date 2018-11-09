@@ -5,11 +5,11 @@ import ProductList from './ProductList'
 import { connect } from 'react-redux'
 
 import HeroCard from './HeroCard';
-import SearchBar from './SearchBar'
+import SearchBar from '../SearchBar'
 
 
-import note from '../assets/images/note.png'
-import xbox from '../assets/images/xboxx.png'
+import note from '../../assets/images/note.png'
+import xbox from '../../assets/images/xboxx.png'
 
 class HomePage extends Component {
 
