@@ -13,28 +13,28 @@ import '../scss/style.scss'
 
 class App extends Component {
 
-    
-    componentWillMount() {
-        this.props.dispatch(fetchProducts())
-    }
 
-    render() {
-        return (
-            <Switch>
-                <BodyColor isBlue={this.props.isBlue}>
-                    <Header />
-                    <Route exact path='/' component={HomePage} />
-                    <Route path='/auth' component={AuthPage} />
-                </BodyColor>
-            </Switch>
-        );
-    }
+	componentWillMount() {
+		this.props.dispatch(fetchProducts())
+	}
+
+	render() {
+		return (
+			<Switch>
+				<BodyColor isBlue={this.props.isBlue}>
+					<Header />
+					<Route exact path='/' component={HomePage} />
+					<Route path='/auth' component={AuthPage} />
+				</BodyColor>
+			</Switch>
+		);
+	}
 }
 
 const mapStateToProps = state => {
-    return {
-        isBlue: state.ui.isBlue
-    }
+	return {
+		isBlue: state.ui.isBlue
+	}
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App)
