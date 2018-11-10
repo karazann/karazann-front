@@ -9,12 +9,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://Szkabaroli@bitbucket.org/Szkabaroli/karazann.git"
+		"url": "git+https://Szkabaroli@bitbucket.org/Szkabaroli/karazann-front.git"
 	},
 	"keywords": [],
 	"author": "Roland SzK",
 	"license": "ISC",
-	"homepage": "https://bitbucket.org/Szkabaroli/karazann#readme",
+	"homepage": "https://bitbucket.org/Szkabaroli/karazann-front#readme",
 	"devDependencies": {
 		"@babel/plugin-proposal-object-rest-spread": "^7.0.0",
 		"autoprefixer": "^9.3.1",
