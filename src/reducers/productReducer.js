@@ -1,4 +1,4 @@
-import { FETCH_PRODUCT_BEGIN, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILED, SET_FILTER } from '../actions/types'
+import { FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_FILTER } from '../actions/types'
 
 const initialState = {
     items: [],
@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
                 ...state,
                 filter: action.payload.filter
             }
-        case FETCH_PRODUCT_BEGIN:
+        case FETCH_PRODUCT_REQUEST:
             return {
                 ...state,
                 loading: true,
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
                 loading: false,
                 items: action.payload.products
             }
-        case FETCH_PRODUCT_FAILED:
+        case FETCH_PRODUCT_FAILURE:
             return {
                 ...state,
                 loading: false,

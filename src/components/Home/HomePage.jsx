@@ -5,7 +5,7 @@ import ProductList from './ProductList'
 import { connect } from 'react-redux'
 
 import HeroCard from './HeroCard';
-import SearchBar from '../SearchBar'
+
 
 
 import note from '../../assets/images/note.png'
@@ -22,8 +22,6 @@ class HomePage extends Component {
         return (
             <section className="page">
                 <section className="container">
-
-                    <SearchBar />
 
                     {this.props.hasFilter ? null : el}
 

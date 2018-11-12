@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchBar from './SearchBar'
 import { NavLink } from 'react-router-dom'
 
 const Header = props => {
@@ -11,8 +12,10 @@ const Header = props => {
                         <h1>Karazann.</h1>
                     </NavLink>
                 </div>
+
+                <SearchBar />
             
-                <NavLink className="btn float-right" to='/auth/login'>Login</NavLink>
+                <NavLink className="menu btn float-right" to='/auth/login'>Login</NavLink>
 
             </div>
         </nav>

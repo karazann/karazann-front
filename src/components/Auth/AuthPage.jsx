@@ -1,29 +1,60 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router'
 import { connect } from 'react-redux'
+import GoogleLogin from 'react-google-login'
+
+import { login, loginGoogle } from '../../actions/userActions'
 
 import AuthForm from './AuthForm'
 
-const LoginForm = props => {
+let LoginForm = ({ dispatch }) => {
+    const clientId = "321131066814-02msnaku7ue8dm40n4ic5v14lhmmp1u1.apps.googleusercontent.com"
+
     return (
-        <AuthForm url="/api/login">
-            <legend>Sign In</legend>
+        <AuthForm onSubmit={({ email, password }) => dispatch(login(email, password))}>
+            <legend>Login</legend>
             <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="Email" required />
             <input id="password" name="password" type="password" placeholder="Password" required />
-            <button type="submit">Sign In</button>
+            <input className="btn green" type="submit" value="Login" />
+            <GoogleLogin
+                onSuccess={({ accessToken }) => dispatch(loginGoogle(accessToken))}
+                clientId={clientId}
+                render={renderProps => (
+                    <button className="btn google" onClick={renderProps.onClick}>
+                        <img src="../../g-logo.png" alt="" />Google Login
+                    </button>
+                )} />
         </AuthForm>
     )
 }
 
-const RegisterForm = () => {
+let RegisterForm = () => {
+
+    const clientId = "321131066814-02msnaku7ue8dm40n4ic5v14lhmmp1u1.apps.googleusercontent.com"
+
+    const response = (response) => {
+        console.log(response)
+    }
+
+    const submit = (json) => {
+        console.log(json)
+    }
 
     return (
-        <AuthForm url="/api/register">
+        <AuthForm onSubmit={submit}>
             <legend>Sign Up</legend>
             <input id="username" name="username" type="text" placeholder="Username" required />
             <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="Email" required />
             <input id="password" name="password" type="password" placeholder="Password" required />
-            <button type="submit">Sign Up</button>
+            <input className="btn green" type="submit" value="Signup" />
+            <GoogleLogin
+                onSuccess={response}
+                clientId={clientId}
+                render={renderProps => (
+                    <button className="btn google" onClick={renderProps.onClick}>
+                        <img src="../../g-logo.png" alt="" />Google signup
+                    </button>
+                )} />
         </AuthForm>
     )
 }
@@ -58,4 +89,5 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AuthPage);
+LoginForm = connect()(LoginForm)
+export default connect(mapStateToProps)(AuthPage)

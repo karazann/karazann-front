@@ -1,24 +1,18 @@
 import React from 'react'
 import Tilt from '../Tilt'
 
-const AuthForm = ({ url, children }) => {
+const AuthForm = ({ onSubmit, children }) => {
     const handleSubmit = event => {
         event.preventDefault()
 
         const data = new FormData(event.target);
 
         let object = {}
-
         data.forEach((value, key) => {
             object[key] = value
         });
 
-        const json = JSON.stringify(object);
-
-        fetch(url, {
-            method: 'POST',
-            body: json,
-        })
+        onSubmit(object)
     }
 
     return (
