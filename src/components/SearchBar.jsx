@@ -11,7 +11,7 @@ const SearchBar = props => {
     }
 
     return (
-        <Tilt className="search"  options={{ speed: 1500, scale: 1.04, max: 30,reverse: true, axis: 'y' }}>
+        <Tilt className="search"  options={{ speed: 1500, scale: 1.04, max: 0,reverse: true, axis: 'y' }}>
             <input placeholder="Search..." onChange={onChange} type="search" name="" id="test" />
         </Tilt>
     )

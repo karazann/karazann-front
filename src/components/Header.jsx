@@ -1,24 +1,30 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import SearchBar from './SearchBar'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Route } from 'react-router-dom'
 
 const Header = props => {
     return (
-        <nav className='navbar'>
-            <div className='container'>
+        <Fragment>
+            {<div className="alert hidden">Whoops</div>}
+            <nav className='navbar'>
+                <div className='container'>
 
-                <div className='brand float-left'>
-                    <NavLink to='/'>
-                        <h1>Karazann.</h1>
-                    </NavLink>
+                    <div className='brand float-left'>
+                        <NavLink to='/'>
+                            <img src="./logo-white.svg" alt="" />
+                            <h1>Karazann.</h1>
+                        </NavLink>
+                    </div>
+
+                    <Route exact path="/" component={SearchBar}></Route>
+
+                    <div className="menu  float-right">
+                        <NavLink className="btn" to='/auth/login'>Login</NavLink>
+                    </div>
+
                 </div>
-
-                <SearchBar />
-            
-                <NavLink className="menu btn float-right" to='/auth/login'>Login</NavLink>
-
-            </div>
-        </nav>
+            </nav>
+        </Fragment>
     )
 
 }
