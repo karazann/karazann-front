@@ -63,9 +63,7 @@ export const loginGoogle = (accessToken) => {
             body: JSON.stringify({ access_token: accessToken })
         }
 
-        console.log(options)
-
-        fetch(baseURL + '/auth/google/login', options)
+        fetch(baseURL + '/auth/google', options)
             .then(user => {
                 localStorage.setItem('user', JSON.stringify(user));
                 dispatch(success(user))
@@ -75,13 +73,6 @@ export const loginGoogle = (accessToken) => {
 }
 
 export const register = (email, name, password) => {
-    return dispatch => {
-
-    }
-}
-
-
-export const registerGoogle = (accessToken) => {
     return dispatch => {
 
     }

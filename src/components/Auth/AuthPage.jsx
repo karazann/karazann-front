@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router'
 import { connect } from 'react-redux'
 import GoogleLogin from 'react-google-login'
 
-import { login, loginGoogle } from '../../actions/userActions'
+import { login, register, loginGoogle } from '../../actions/userActions'
 
 import AuthForm from './AuthForm'
 
@@ -17,24 +17,20 @@ let LoginForm = ({ dispatch }) => {
             <input id="password" name="password" type="password" placeholder="Password" required />
             <input className="btn green" type="submit" value="Login" />
             <GoogleLogin
-                onSuccess={({ accessToken }) => dispatch(loginGoogle(accessToken))}
+                onSuccess={res => dispatch(loginGoogle(res.accessToken))}
                 clientId={clientId}
                 render={renderProps => (
                     <button className="btn google" onClick={renderProps.onClick}>
-                        <img src="../../g-logo.png" alt="" />Google Login
+                        <img src="../../g-logo.png" alt="" />Continue with Google
                     </button>
                 )} />
         </AuthForm>
     )
 }
 
-let RegisterForm = () => {
+let RegisterForm = ({dispatch}) => {
 
     const clientId = "321131066814-02msnaku7ue8dm40n4ic5v14lhmmp1u1.apps.googleusercontent.com"
-
-    const response = (response) => {
-        console.log(response)
-    }
 
     const submit = (json) => {
         console.log(json)
@@ -42,17 +38,17 @@ let RegisterForm = () => {
 
     return (
         <AuthForm onSubmit={submit}>
-            <legend>Sign Up</legend>
+            <legend>Register</legend>
             <input id="username" name="username" type="text" placeholder="Username" required />
             <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="Email" required />
             <input id="password" name="password" type="password" placeholder="Password" required />
-            <input className="btn green" type="submit" value="Signup" />
+            <input className="btn green" type="submit" value="Register" />
             <GoogleLogin
-                onSuccess={response}
+                onSuccess={res => dispatch(loginGoogle(res.accessToken))}
                 clientId={clientId}
                 render={renderProps => (
                     <button className="btn google" onClick={renderProps.onClick}>
-                        <img src="../../g-logo.png" alt="" />Google signup
+                        <img src="../../g-logo.png" alt="" />Continue with Google
                     </button>
                 )} />
         </AuthForm>
@@ -90,4 +86,5 @@ const mapStateToProps = state => {
 }
 
 LoginForm = connect()(LoginForm)
+RegisterForm = connect()(RegisterForm)
 export default connect(mapStateToProps)(AuthPage)
