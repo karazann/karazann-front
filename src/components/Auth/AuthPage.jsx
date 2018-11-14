@@ -37,7 +37,7 @@ let RegisterForm = ({dispatch}) => {
     }
 
     return (
-        <AuthForm onSubmit={submit}>
+        <AuthForm onSubmit={({ username, email, password }) => dispatch(register(username, email, password))}>
             <legend>Register</legend>
             <input id="username" name="username" type="text" placeholder="Username" required />
             <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="Email" required />

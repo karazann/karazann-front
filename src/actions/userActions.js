@@ -10,20 +10,31 @@ import {
     LOGOUT
 } from './types'
 
-var baseURL = "http://localhost:3000/v1";
+const baseUrl = "http://localhost:3000/v1"
 
-const request = () => {
+const registerRequest = () => {
+    return { type: REGISTER_REQUEST }
+}
+
+const registerSuccess = user => {
+    return { type: REGISTER_SUCCESS, payload: { user } }
+}
+
+const registerFailure = error => {
+    return { type: REGISTER_FAILURE, payload: { error } }
+}
+
+const loginRequest = () => {
     return { type: LOGIN_REQUEST }
 }
 
-const success = user => {
+const loginSuccess = user => {
     return { type: LOGIN_SUCCESS, payload: { user } }
 }
 
-const failure = error => {
+const loginFailure = error => {
     return { type: LOGIN_FAILURE, payload: { error } }
 }
-
 
 export const logout = () => {
     localStorage.removeItem('user')
@@ -32,9 +43,27 @@ export const logout = () => {
 
 /**********  Async actions  **********/
 
+export const register = (username, email, password) => {
+    return dispatch => {
+        dispatch(registerRequest())
+
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password })
+        }
+
+        fetch(baseUrl + '/auth/register', options)
+            .then(user => {
+                dispatch(registerSuccess(user))
+            })
+            .catch(error => dispatch(registerFailure(error)))
+    }
+}
+
 export const login = (email, password) => {
     return dispatch => {
-        dispatch(request())
+        dispatch(loginRequest())
 
         const options = {
             method: 'POST',
@@ -44,18 +73,18 @@ export const login = (email, password) => {
 
         console.log(options)
 
-        fetch(baseURL + '/auth/login', options)
+        fetch(baseUrl + '/auth/login', options)
             .then(user => {
                 localStorage.setItem('user', JSON.stringify(user));
-                dispatch(success(user))
+                dispatch(loginSuccess(user))
             })
-            .catch(error => dispatch(failure(error)))
+            .catch(error => dispatch(loginFailure(error)))
     }
 }
 
 export const loginGoogle = (accessToken) => {
     return dispatch => {
-        dispatch(request())
+        dispatch(loginRequest())
 
         const options = {
             method: 'POST',
@@ -63,17 +92,11 @@ export const loginGoogle = (accessToken) => {
             body: JSON.stringify({ access_token: accessToken })
         }
 
-        fetch(baseURL + '/auth/google', options)
+        fetch(baseUrl + '/auth/google', options)
             .then(user => {
                 localStorage.setItem('user', JSON.stringify(user));
-                dispatch(success(user))
+                dispatch(loginSuccess(user))
             })
-            .catch(error => dispatch(failure(error)))
-    }
-}
-
-export const register = (email, name, password) => {
-    return dispatch => {
-
+            .catch(error => dispatch(loginFailure(error)))
     }
 }
