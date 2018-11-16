@@ -1,12 +1,16 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, } from 'react'
 import SearchBar from './SearchBar'
 import { NavLink, Route } from 'react-router-dom'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 const Header = props => {
+    let tagPath = '/product/1234' == window.location.pathname
+
+    let className = tagPath ? 'navbar top' : 'navbar'
     return (
         <Fragment>
-            {<div className="alert hidden">Whoops</div>}
-            <nav className='navbar'>
+            <div className="alert hidden">Whoops</div>
+            <nav className={className}>
                 <div className='container'>
 
                     <div className='brand float-left'>

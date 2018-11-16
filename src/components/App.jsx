@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 import BodyColor from './BodyColor'
 import HomePage from './Home/HomePage'
 import AuthPage from './Auth/AuthPage'
+import ProductPage from './Product/ProductPage'
 import Header from './Header'
 
 import { fetchProducts } from '../actions/productActions'
@@ -25,6 +26,7 @@ class App extends Component {
 					<Header />
 					<Route exact path='/' component={HomePage} />
 					<Route path='/auth' component={AuthPage} />
+					<Route path='/product/:id' component={ProductPage}/>
 				</BodyColor>
 			</Switch>
 		);

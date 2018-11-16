@@ -27,12 +27,11 @@
 
 $font-stack: "SansSerifFLF";
 $font-color: rgb(0, 0, 0);
-$color-primary: rgb(66, 141, 255);
 
 $color-red: #fc5c65;
 $color-orange: #fd9644;
-$color-yellow: #FFD361;
-$color-blue: rgb(66, 141, 255);
+$color-yellow: #ffd361;
+$color-blue: #5ba9ef;
 $color-green: rgb(60, 218, 139);
 $color-purple: #a55eea;
 
@@ -56,7 +55,7 @@ input:focus {
 }
 
 .blue-background {
-	background: #428dff;
+	background: $color-blue;
 
 	* {
 		color: white;
@@ -87,41 +86,74 @@ body {
 	margin: 50px 0 30px 0;
 }
 
-.alert{
+.error {
+	.alert {
+		line-height: 40px;
+	}
+	.navbar {
+		top: 40px;
+	}
+}
+
+.alert {
 	z-index: 20;
 	background: $color-yellow;
 	width: 100%;
-	line-height: 40px;
+	line-height: 0px;
 	color: white;
 	text-align: center;
-	transition: .1s;
+	transition: 0.1s;
 }
 
-.alert.hidden{
-	line-height: 0px;
+.page {
+	padding-top: 100px;
+	transition: 0.1s;
+}
+
+@keyframes fadein {
+	from {
+		transform: translateX(-300px);
+	}
+	to {
+		transform: translateX(0px);
+	}
 }
 
 .navbar {
 	width: 100%;
-	position: sticky;
+	position: absolute;
 	top: 0;
 	background: $color-blue;
 	z-index: 1000;
 	padding: 15px 0;
 	z-index: 10;
-	transform-style: preserve-3d;
-	transform: translateZ(200px);
+	height: 72px;
+	transition: 0.3s;
+
+	&.top {
+		height: 300px;
+	}
 
 	.search {
 		height: auto;
 		margin: 0 auto;
-	
+
 		font-family: "SansSerifFLF";
-	
+
 		transform-style: preserve-3d;
 		width: 500px;
-		
-	
+
+		input::-webkit-search-cancel-button {
+			position: relative;
+			right: 10px;
+
+			-webkit-appearance: none;
+			background: url("./x.svg");
+			height: 15px;
+			width: 15px;
+			border-radius: 10px;
+		}
+
 		input {
 			border: none;
 			-webkit-appearance: none;
@@ -129,11 +161,14 @@ body {
 			padding: 10px;
 			background: transparent;
 			font-size: 18px;
-			background: white;
-			color: rgb(70, 70, 70);
+			background: #4398e3;
+			color: white;
+			&::placeholder {
+				color: white;
+			}
 			border-radius: 5px;
-			box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.05);
-			border: solid 2px #fff;
+			//box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.05);
+
 			transition: 0.2s;
 			text-align: center;
 
@@ -141,13 +176,13 @@ body {
 				border-radius: 0px;
 			}
 		}
-	
+
 		@media (max-width: 992px) {
 			margin: none;
 			position: fixed;
 			width: 100%;
-			
-			top: 70px;
+
+			top: 72px;
 			left: 0;
 			right: 0;
 		}
@@ -160,15 +195,15 @@ body {
 	div {
 		position: relative;
 		height: 43px;
-		.brand{
-			img{
+		.brand {
+			img {
 				height: 43px;
 				float: left;
 				margin: 0 10px;
 			}
 
-			h1{
-				float:right;
+			h1 {
+				float: right;
 			}
 		}
 
@@ -181,10 +216,6 @@ body {
 			right: 15px;
 		}
 	}
-}
-
-.page {
-	padding-top: 50px;
 }
 
 .auth-form {
@@ -251,7 +282,8 @@ body {
 			transition: 0.2s;
 
 			&.green {
-				box-shadow: 0px 10px 20px 0 rgba($color: $color-green, $alpha: 0.3);
+				box-shadow: 0px 10px 20px 0
+					rgba($color: $color-green, $alpha: 0.3);
 				background: $color-green;
 				margin: 60px 0 0 0;
 			}
@@ -297,11 +329,82 @@ body {
 	}
 }
 
+.ticket {
+	width: 100%;
+	height: 600px;
+	top: 60px;
+	position: relative;
+	animation: fadein 0.4s;
+	z-index: 200;
+	transform-style: preserve-3d;
+
+	.ig {
+		position: absolute;
+
+		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
+		width: 100%;
+		height: 600px;
+	}
+
+	div{
+	}
+
+	.fir {
+		position: absolute;
+		margin: 30px 0;
+		padding: 0 30px;
+		width: 70%;
+		height: calc(100% - 60px);
+		z-index: 300;
+		
+		border-right: 2px dashed rgb(228, 228, 228);
+	}
+
+	.sec {
+		position: absolute;
+		padding: 0 30px;
+		margin: 30px 0;
+		width: 30%;
+		left: 70%;
+		height: calc(100% - 60px);
+		z-index: 300;
+
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
+		transform-style: preserve-3d;
+		
+		a {
+			background: $color-green;
+			color: white;
+			margin: 20px 0 0 0;
+			position: relative;
+			bottom: 0;
+			text-align: center;
+			display: block;
+			width: 100%;
+			padding: 15px 20px;
+			border-radius: 10px;
+			transform: translateZ(20px);
+		}
+
+		a:active{
+			transform: translateZ(0px);
+		}
+	}
+}
+
 .card-outer {
 	position: relative;
 	width: 100%;
 	padding-top: 160%;
 	color: black;
+}
+
+.card {
+	background: white;
+	border-radius: 15px;
+	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
 }
 
 .card-inner {
@@ -313,6 +416,7 @@ body {
 	right: 0;
 	text-align: center;
 	transform-style: preserve-3d;
+	position: absolute;
 
 	.button {
 		position: absolute;
@@ -366,7 +470,7 @@ body {
 		div {
 			height: 100%;
 			border-radius: 5px;
-			background: rgb(66, 141, 255);
+			background: $color-blue;
 			box-shadow: 0px 0px 10px 0px rgba(66, 179, 255, 0.3);
 		}
 	}
@@ -386,61 +490,60 @@ body {
 	height: 330px;
 	background: white;
 	padding: 20px;
-
-	border-radius: 10px;
+	border-radius: 15px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
 	transform-style: preserve-3d;
 	margin: 20px 0;
 
 	img {
+		position: absolute;
 		transform: translateZ(50px);
 		height: 90%;
-		position: absolute;
 		top: -50px;
 		right: 0;
 		outline: 1px solid transparent;
 	}
 
 	h3 {
+		transform: translateZ(20px);
 		position: absolute;
 		top: 80px;
 		padding-left: 20px;
 		font-weight: bold;
-		transform: translateZ(20px);
 	}
 
-	.tag {
+	span {
 		position: absolute;
-		background: rgba($color: $color-green, $alpha: 0.3);
-		font-size: 12px;
-		color: $color-green;
-		padding: 6px 12px;
-		border-radius: 4px;
 		transform: translateZ(30px);
-		//box-shadow:0px 10px 20px 0 rgba(43, 226, 144, 0.3);
+		font-size: 12px;
+		padding: 6px 12px;
+		border-radius: 7px;
+		color: $color-green;
+		background: rgba($color: $color-green, $alpha: 0.3);
+		box-shadow: 0px 10px 20px 0 rgba($color: $color-green, $alpha: 0.1);
 	}
 
 	p {
-		position: absolute;
 		transform: translateZ(20px);
+		position: absolute;
 		text-align: left;
 		font-weight: 500;
 		padding: 40px;
 		right: 260px;
-		margin-top: 70px;
+		margin-top: 50px;
 		color: rgb(131, 131, 131);
 	}
 
 	a {
+		transform: translateZ(30px);
+		position: absolute;
 		padding: 20px;
 
-		transform: translateZ(20px);
-		position: absolute;
+		color: white;
+		background: $color-blue;
+		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0.3);
 		left: 0;
 		bottom: 0;
-		color: white;
-		background: #428dff;
-		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0.3);
 		border-radius: 50px;
 		padding: 10px 30px;
 		margin: 30px;
@@ -458,14 +561,6 @@ body {
 		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0);
 	}
 }
-
-.card {
-	background: white;
-	border-radius: 10px;
-	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
-}
-
-
 
 /*
 
