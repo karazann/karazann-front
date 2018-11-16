@@ -6,7 +6,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 const Header = props => {
     let tagPath = '/product/1234' == window.location.pathname
 
-    let className = tagPath ? 'navbar top' : 'navbar'
+    let className = tagPath ? 'navbar' : 'navbar'
     return (
         <Fragment>
             <div className="alert hidden">Whoops</div>
