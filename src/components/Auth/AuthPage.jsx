@@ -15,7 +15,7 @@ let LoginForm = ({ dispatch }) => {
             <legend>Login</legend>
             <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="Email" required />
             <input id="password" name="password" type="password" placeholder="Password" required />
-            <input className="btn green" type="submit" value="Login" />
+            <button type="submit" className="btn green">Login</button>
             <GoogleLogin
                 onSuccess={res => dispatch(loginGoogle(res.accessToken))}
                 clientId={clientId}
@@ -59,10 +59,12 @@ class AuthPage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'SET_BLUE_BACKGROUND' })
+        this.props.dispatch({ type: 'SET_FOOTER_OFF' })
     }
 
     componentWillUnmount() {
         this.props.dispatch({ type: 'SET_DEFAULT_BACKGROUND' })
+        this.props.dispatch({ type: 'SET_FOOTER_ON' })
     }
 
     render() {

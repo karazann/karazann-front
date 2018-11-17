@@ -7,6 +7,7 @@ import HomePage from './Home/HomePage'
 import AuthPage from './Auth/AuthPage'
 import ProductPage from './Product/ProductPage'
 import Header from './Header'
+import Footer from './Footer'
 
 import { fetchProducts } from '../actions/productActions'
 
@@ -27,6 +28,7 @@ class App extends Component {
 					<Route exact path='/' component={HomePage} />
 					<Route path='/auth' component={AuthPage} />
 					<Route path='/product/:id' component={ProductPage}/>
+					<Footer />
 				</BodyColor>
 			</Switch>
 		);
