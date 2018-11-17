@@ -5,7 +5,8 @@
 	"main": "src/index.js",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development parcel src/index.pug --port 8080",
-		"build": "cross-env NODE_ENV=production parcel build src/index.pug --no-source-maps"
+		"build": "cross-env NODE_ENV=production parcel build src/index.pug --no-source-maps",
+		"deploy": "npm run build && s3-deploy './dist/**' --cwd './dist/' --gzip --cache 86400 --bucket 'karazann.com'"
 	},
 	"repository": {
 		"type": "git",
@@ -27,6 +28,7 @@
 		"parcel-bundler": "^1.10.3",
 		"pug": "^2.0.3",
 		"redux-devtools-extension": "^2.13.5",
+		"s3-deploy": "^1.1.4",
 		"sass": "^1.14.3"
 	},
 	"dependencies": {

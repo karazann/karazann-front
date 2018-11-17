@@ -10,14 +10,16 @@ import {
     LOGOUT
 } from './types'
 
-const baseUrl = "http://localhost:3000/v1"
+import service from '../services'
+
+import { push } from 'connected-react-router'
 
 const registerRequest = () => {
     return { type: REGISTER_REQUEST }
 }
 
-const registerSuccess = user => {
-    return { type: REGISTER_SUCCESS, payload: { user } }
+const registerSuccess = () => {
+    return { type: REGISTER_SUCCESS }
 }
 
 const registerFailure = error => {
@@ -28,8 +30,8 @@ const loginRequest = () => {
     return { type: LOGIN_REQUEST }
 }
 
-const loginSuccess = user => {
-    return { type: LOGIN_SUCCESS, payload: { user } }
+const loginSuccess = () => {
+    return { type: LOGIN_SUCCESS }
 }
 
 const loginFailure = error => {
@@ -37,7 +39,7 @@ const loginFailure = error => {
 }
 
 export const logout = () => {
-    localStorage.removeItem('user')
+    service.logout()
     return { type: LOGOUT }
 }
 
@@ -46,16 +48,9 @@ export const logout = () => {
 export const register = (username, email, password) => {
     return dispatch => {
         dispatch(registerRequest())
-
-        const options = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, email, password })
-        }
-
-        fetch(baseUrl + '/auth/register', options)
-            .then(user => {
-                dispatch(registerSuccess(user))
+        service.register(username, email, password)
+            .then(token => {
+                dispatch(registerSuccess())
             })
             .catch(error => dispatch(registerFailure(error)))
     }
@@ -64,39 +59,21 @@ export const register = (username, email, password) => {
 export const login = (email, password) => {
     return dispatch => {
         dispatch(loginRequest())
-
-        const options = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        }
-
-        console.log(options)
-
-        fetch(baseUrl + '/auth/login', options)
-            .then(user => {
-                localStorage.setItem('user', JSON.stringify(user));
-                dispatch(loginSuccess(user))
-            })
-            .catch(error => dispatch(loginFailure(error)))
+        service.login(email, password)
+            .then(token => {
+                dispatch(loginSuccess())
+                dispatch(push('../'))
+            }).catch(err => console.log(err))
     }
 }
 
 export const loginGoogle = (accessToken) => {
     return dispatch => {
         dispatch(loginRequest())
-
-        const options = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ access_token: accessToken })
-        }
-
-        fetch(baseUrl + '/auth/google', options)
-            .then(user => {
-                localStorage.setItem('user', JSON.stringify(user));
-                dispatch(loginSuccess(user))
-            })
-            .catch(error => dispatch(loginFailure(error)))
+        service.loginGoogle(accessToken)
+            .then(token => {
+                dispatch(loginSuccess())
+                dispatch(push('../'))
+            }).catch(error => dispatch(loginFailure(error)))
     }
 }

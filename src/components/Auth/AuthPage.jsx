@@ -81,10 +81,11 @@ class AuthPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: true
+       
     }
 }
 
 LoginForm = connect()(LoginForm)
 RegisterForm = connect()(RegisterForm)
+
 export default connect(mapStateToProps)(AuthPage)

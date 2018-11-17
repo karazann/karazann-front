@@ -19,7 +19,7 @@ const ProductList = ({ products, loading, error }) => {
 
             <div className='row'>
                 {products.map((product =>
-                    <ProductCard key={product.title} title={product.title} image={product.image} progress={product.progress} />
+                    <ProductCard key={product.title} title={product.title} image={product.imageUrl} progress={product.price} />
                 ))}
             </div>
 
@@ -27,5 +27,5 @@ const ProductList = ({ products, loading, error }) => {
     )
 }
 
-export default ProductList;
+export default ProductList
 

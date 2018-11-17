@@ -16,7 +16,7 @@ class App extends Component {
 
 
 	componentWillMount() {
-		this.props.dispatch(fetchProducts())
+		//this.props.dispatch(fetchProducts())
 	}
 
 	render() {

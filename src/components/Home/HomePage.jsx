@@ -6,8 +6,6 @@ import { connect } from 'react-redux'
 
 import HeroCard from './HeroCard';
 
-
-
 import note from '../../assets/images/note.png'
 import xbox from '../../assets/images/xboxx.png'
 
@@ -46,4 +44,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(HomePage)

@@ -1,8 +1,8 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions/types';
 
-let user = JSON.parse(localStorage.getItem('user'))
+let token = localStorage.getItem('token')
 
-const initialState = user ? { loggedIn: true, user } : {}
+const initialState = token ? { loggedIn: true } : {loggedIn: false}
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -12,16 +12,16 @@ export default (state = initialState, action) => {
             }
         case LOGIN_SUCCESS:
             return {
-                loggedIn: true,
-                user: action.payload.user
+                loggedIn: true
             }
         case LOGIN_FAILURE:
             return {
-
+                loggedIn: false,
+                error: action.payload.error
             }
         case LOGOUT:
             return {
-
+                loggedIn: false
             }
         default:
             return state

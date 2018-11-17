@@ -1,16 +1,17 @@
-import React, { Fragment, } from 'react'
+import React, { Fragment, Component, } from 'react'
+import { connect, } from 'react-redux'
 import SearchBar from './SearchBar'
-import { NavLink, Route } from 'react-router-dom'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { NavLink, Route, Switch, withRouter } from 'react-router-dom'
+import { logout } from '../actions/userActions';
 
-const Header = props => {
-    let tagPath = '/product/1234' == window.location.pathname
+const Header = ({dispatch, loggedIn }) => {
 
-    let className = tagPath ? 'navbar' : 'navbar'
+
+
     return (
         <Fragment>
             <div className="alert hidden">Whoops</div>
-            <nav className={className}>
+            <nav className='navbar'>
                 <div className='container'>
 
                     <div className='brand float-left'>
@@ -23,14 +24,22 @@ const Header = props => {
                     <Route exact path="/" component={SearchBar}></Route>
 
                     <div className="menu  float-right">
-                        <NavLink className="btn" to='/auth/login'>Login</NavLink>
+                        {loggedIn ? <a className="btn" onClick={e => dispatch(logout())}>Logout</a> : <NavLink className="btn" to='/auth/login'>Login</NavLink>}
+
                     </div>
 
                 </div>
             </nav>
         </Fragment>
+
     )
 
 }
 
-export default Header
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.auth.loggedIn
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Header))

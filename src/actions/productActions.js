@@ -5,6 +5,10 @@ import {
     SET_FILTER
 } from './types'
 
+import service from '../services'
+
+const baseUrl = "http://localhost:3000/v1"
+
 export const fetchProducts = () => {
 
     const request = () => {
@@ -21,19 +25,13 @@ export const fetchProducts = () => {
 
     return dispatch => {
         dispatch(request())
-        return setTimeout(() => {
-            dispatch(success([
-                { title: 'Apple iPhone X', image: './iphonex.png', progress: 89 },
-                { title: 'Xbox One X', image: './xboxx.png', progress: 23 },
-                { title: 'Apple Watch S4', image: './awatch.png', progress: 19 },
-                { title: 'Huawei P20 Lite', image: './huawei.png', progress: 19 },
-                { title: 'PS4 Pro', image: './ps4.png', progress: 56 },
-                { title: 'Apple Airpods', image: './airpods.png', progress: 71 },
-                { title: '3 Month Xbox Live', image: './xboxlive.png', progress: 33 }
-            ]))
-        }, 300)
-    }
 
+        service.fecthProducts()
+            .then(products => {
+                dispatch(success(products))
+            })
+            .catch(error => dispatch(failure(error)))
+    }
 
 }
 
