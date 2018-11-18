@@ -24,4 +24,4 @@ class Tilt extends PureComponent {
     }
 }
 
-export default Tilt;
+export default Tilt

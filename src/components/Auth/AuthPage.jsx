@@ -80,7 +80,7 @@ class AuthPage extends Component {
         )
     }
 }
-
+//Hello my frind
 const mapStateToProps = state => {
     return {
        

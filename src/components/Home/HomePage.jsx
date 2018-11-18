@@ -4,43 +4,35 @@ import ProductList from './ProductList'
 
 import { connect } from 'react-redux'
 
-import HeroCard from './HeroCard';
-
-import note from '../../assets/images/note.png'
-import xbox from '../../assets/images/xboxx.png'
-
-class HomePage extends Component {
-
-    render() {
-        const el = <Fragment><h2 className='header'>Featured</h2><div className="row"><HeroCard image={xbox} /><HeroCard image={note} /></div></Fragment>
+import Hero from './Hero';
 
 
-        const { products, error, loading } = this.props;
 
-        return (
-            <section className="page">
-                <section className="container">
+const HomePage = ({ products, loading, error, hasFilter }) => {
+    return (
+        <section className="page">
+            <section className="container">
 
-                    {this.props.hasFilter ? null : el}
+                {hasFilter ? null : <Hero/>}
 
-                    <ProductList products={products} loading={loading} error={error} />
-
-                </section>
+                <h2 className='header'>Products</h2>
+                <ProductList products={products} loading={loading} error={error} />
             </section>
-        )
-    }
+        </section>
+    )
 }
 
 const filterProducts = (products, filter) => {
-    return products.filter(product => product.title.toLowerCase().indexOf(filter.toLowerCase()) > -1)
+    const searchText = filter.toLowerCase().replace(/ +(?= )/g,'');
+    return products.filter(product => product.title.toLowerCase().indexOf(searchText) > -1)
 }
 
 const mapStateToProps = state => {
     return {
         products: filterProducts(state.products.items, state.products.filter),
-        hasFilter: state.products.filter != '',
         loading: state.products.loading,
-        error: state.products.error
+        error: state.products.error,
+        hasFilter: state.products.filter != ''
     }
 }
 

@@ -32,22 +32,30 @@ $color-red: #fc5c65;
 $color-orange: #fd9644;
 $color-yellow: #ffd361;
 $color-blue: #5ba9ef;
-$color-green: rgb(60, 218, 139);
+$color-green: #3cda8b;
 $color-purple: #a55eea;
 
-/*fixes the scrollbar jumping issue*/
+$color-list: (
+	red: $color-red,
+	orange: $color-orange,
+	yelow: $color-yellow,
+	green: $color-green,
+	blue: $color-blue,
+	purple: $color-purple
+);
+
+/* fixes the scrollbar jumping issue */
 html {
 	overflow-y: scroll;
 }
-/*fix for font family in inputs*/
+/* fix for font family in inputs */
 input,
 select,
 textarea,
 button {
 	font-family: inherit;
 }
-
-/*fix for outline*/
+/* fix for outline */
 button:focus,
 textarea:focus,
 input:focus {
@@ -56,28 +64,23 @@ input:focus {
 
 .blue-background {
 	background: $color-blue;
-
 	* {
 		color: white;
 	}
 }
-
 body {
 	font-family: $font-stack;
 	color: $font-color;
 	background: #fbfbfb;
 }
-
 @for $i from 1 through 10 {
 	.space-#{$i*10} {
 		height: #{$i * 10}px;
 	}
 }
-
 .header {
 	margin: 50px 0 30px 0;
 }
-
 .error {
 	.alert {
 		line-height: 40px;
@@ -87,7 +90,6 @@ body {
 		top: 40px;
 	}
 }
-
 .alert {
 	z-index: -10;
 	position: relative;
@@ -99,9 +101,6 @@ body {
 	transition: 0.2s;
 	height: 0px;
 }
-
-
-
 @keyframes fadein {
 	from {
 		transform: translateX(-300px);
@@ -118,19 +117,15 @@ body {
 	padding-top: 70px;
 	height: 100%;
 	transition: 0.1s;
-
 	padding-bottom: 400px;
 }
-
 footer {
-	background: #F1F1F1;
-
+	background: #f1f1f1;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	height: 200px;
 }
-
 header {
 	width: 100%;
 	background: $color-blue;
@@ -139,87 +134,71 @@ header {
 	z-index: 10;
 	height: 72px;
 	transition: 0.3s;
-
 	.box {
 		width: 100%;
 		height: 100%;
 		display: flex;
 		justify-content: space-between;
-		flex-direction: row;
 
+		flex-direction: row;
 		.search {
 			display: flex;
 			height: auto;
 			font-family: "SansSerifFLF";
-
 			transform-style: preserve-3d;
 			width: 500px;
-
 			input::-webkit-search-cancel-button {
 				position: relative;
 				right: 10px;
-
 				-webkit-appearance: none;
 				background: url("./x.svg");
 				height: 15px;
 				width: 15px;
 				border-radius: 10px;
 			}
-
 			input {
 				-webkit-appearance: none;
 				border: none;
-
 				width: 100%;
 				padding: 10px;
 				background: transparent;
 				font-size: 18px;
 				background: #4398e3;
 				color: white;
-				border-radius: 5px;
 
+				border-radius: 10px;
 				transition: 0.2s;
 				text-align: center;
-
 				&::placeholder {
 					color: rgba(255, 255, 255, 0.6);
 				}
-
 				@media (max-width: 992px) {
 					border-radius: 0px;
 				}
 			}
-
 			@media (max-width: 992px) {
 				position: absolute;
-
 				width: 100%;
-
-				top: 72px;
+				top: 70px;
 				left: 0;
 				right: 0;
 			}
 		}
-
 		* {
 			color: white;
 		}
-
 		.brand {
 			a {
 				display: flex;
-
 				img {
 					height: 43px;
 					margin: 0 10px;
 				}
 			}
 		}
-
 		a {
 			line-height: 43px;
 		}
-
 		nav {
 			width: 160px;
 			display: flex;
@@ -227,7 +206,6 @@ header {
 		}
 	}
 }
-
 .auth-form {
 	margin: 50px auto 0 auto;
 	width: 470px;
@@ -236,12 +214,10 @@ header {
 	padding: 50px;
 	transform-style: preserve-3d;
 	perspective: 1000;
-
 	outline: 1px solid transparent;
 	* {
 		outline: 1px solid transparent;
 	}
-
 	@media (max-width: 576px) {
 		position: absolute;
 		border-radius: 0;
@@ -249,11 +225,9 @@ header {
 		left: 0;
 		width: 100%;
 	}
-
 	form {
 		font-family: "Roboto";
 		transform-style: preserve-3d;
-
 		legend {
 			transform: translateZ(20px);
 			color: black;
@@ -262,7 +236,6 @@ header {
 			font-size: 35px;
 			font-weight: 300;
 		}
-
 		input[type="text"],
 		input[type="email"],
 		input[type="password"] {
@@ -279,7 +252,6 @@ header {
 			border-radius: 5px;
 			color: black;
 		}
-
 		.btn {
 			margin: 20px 0;
 			transform: translateZ(40px);
@@ -290,14 +262,12 @@ header {
 			border-radius: 7px;
 			border: none;
 			transition: 0.2s;
-
 			&.green {
 				box-shadow: 0px 10px 20px 0
 					rgba($color: $color-green, $alpha: 0.3);
 				background: $color-green;
 				margin: 60px 0 0 0;
 			}
-
 			&.google {
 				color: rgb(100, 100, 100);
 				background: white;
@@ -312,10 +282,8 @@ header {
 				}
 			}
 		}
-
 		.btn:hover {
 			transform: translateZ(30px);
-
 			&.green {
 				box-shadow: 0px 10px 40px 0 rgba(21, 205, 114, 0.3);
 			}
@@ -324,10 +292,8 @@ header {
 				box-shadow: 0px 10px 40px 0 rgba(0, 0, 0, 0.05);
 			}
 		}
-
 		.btn:active {
 			transform: translateZ(0px);
-
 			&.green {
 				box-shadow: 0px 10px 20px 0 rgba(21, 205, 114, 0);
 			}
@@ -338,31 +304,27 @@ header {
 		}
 	}
 }
-
 .ticket {
 	width: 100%;
-
 	top: 60px;
+
 	z-index: 200;
 	transform-style: preserve-3d;
+
 	perspective: 1000;
 	height: 800px;
-
 	@media (min-width: 768px) {
 		height: 500px;
 	}
-
 	@media (min-width: 992px) {
 		height: 600px;
 	}
-
 	.line {
 		position: absolute;
 		border-bottom: 2px dashed rgb(228, 228, 228);
 		left: 25px;
 		height: 70%;
 		width: calc(100% - 50px);
-
 		@media (min-width: 768px) {
 			top: 25px;
 			left: 0;
@@ -372,50 +334,42 @@ header {
 			border-right: 2px dashed rgb(228, 228, 228);
 		}
 	}
-
 	.ig {
 		position: absolute;
-
 		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
 		width: 100%;
 		height: 100%;
 	}
-
 	div {
 		transform-style: preserve-3d;
 	}
-
 	.grid {
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		z-index: 300;
-
 		display: grid;
 		grid-template-rows: 70% 30%;
-
 		@media (min-width: 768px) {
 			grid-template-columns: 60% 40%;
 			grid-template-rows: 100px 1fr;
 		}
 	}
-
 	a {
-		//background: $color-green;
+		// background: $color-green;
 		color: white;
 		text-align: center;
-		//display: block;
+		// display: block;
 		display: inline;
 		padding: 15px 20px;
 		border-radius: 10px;
 		transition: 0.2s;
-
-		//margin: 10px auto;
+		// margin: 10px auto;
 	}
 }
-
 .card-outer {
 	position: relative;
+
 	width: 100%;
 	padding-top: 160%;
 	color: black;
@@ -426,7 +380,6 @@ header {
 	border-radius: 15px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
 }
-
 .card-inner {
 	position: absolute;
 	margin: 20px 5px;
@@ -437,7 +390,6 @@ header {
 	text-align: center;
 	transform-style: preserve-3d;
 	position: absolute;
-
 	.button {
 		position: absolute;
 		bottom: 0;
@@ -450,16 +402,13 @@ header {
 		border-radius: 7px;
 		transform: translateZ(20px);
 	}
-
 	.button:hover {
 		background: rgb(245, 245, 245);
 		transform: translateZ(40px);
 	}
-
 	.button:active {
 		transform: translateZ(0px);
 	}
-
 	.image {
 		position: absolute;
 		top: 45px;
@@ -467,13 +416,11 @@ header {
 		bottom: 80px;
 		transform: translateZ(45px);
 		outline: 1px solid transparent;
-
 		img {
 			width: 90%;
 			height: auto;
 		}
 	}
-
 	.goal {
 		position: absolute;
 		left: 0;
@@ -484,9 +431,7 @@ header {
 		border-radius: 10px;
 		font-size: 14px;
 		background: rgba(66, 142, 255, 0.1);
-
 		transform: translateZ(20px);
-
 		div {
 			height: 100%;
 			border-radius: 5px;
@@ -494,7 +439,6 @@ header {
 			box-shadow: 0px 0px 10px 0px rgba(66, 179, 255, 0.3);
 		}
 	}
-
 	h4 {
 		position: absolute;
 		font-weight: 600;
@@ -507,86 +451,121 @@ header {
 }
 
 .hero-card {
-	height: 330px;
-
+	height: auto;
 	background: white;
-	padding: 20px;
 	border-radius: 15px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
+	transform: perspective(1000px);
 	transform-style: preserve-3d;
-	
-	margin: 20px 0;
+	display: grid;
 
-	img {
-		position: absolute;
-		transform: translateZ(50px);
-		height: 90%;
-		top: -50px;
-		right: 0;
-		outline: 1px solid transparent;
+	grid-template-columns: 100%;
+	grid-template-rows: 50px 60vw 150px 100px;
+	grid-template-areas:
+		"tags"
+		"image"
+		"content"
+		"button";
+
+	@media (min-width: 576px) {
+		height: 380px;
+		grid-template-columns: 50% 50%;
+		grid-template-rows: 80px 1fr 100px;
+		grid-template-areas:
+			"tags image"
+			"content image"
+			"button image";
 	}
 
-	h3 {
-		transform: translateZ(20px);
-		position: absolute;
-		top: 80px;
-		padding-left: 20px;
-		font-weight: bold;
+	.tags {
+		grid-area: tags;
+		padding: 20px 22px;
+		span {
+			
+			@each $name, $value in $color-list {
+				&.#{$name} {
+					color: $value;
+					background: rgba($color: $value, $alpha: 0.3);
+					box-shadow: 0px 10px 20px 0 rgba($color: $value, $alpha: 0.1);
+				}
+			}
+
+			text-transform: capitalize;
+			transform: translateZ(40px);
+			margin: 0 10px 0 0;
+			display: inline-block;
+			font-size: 12px;
+			padding: 6px 12px;
+			border-radius: 7px;
+		}
 	}
 
-	span {
-		position: absolute;
-		transform: translateZ(30px);
-		font-size: 12px;
-		padding: 6px 12px;
-		border-radius: 7px;
-		color: $color-green;
-		background: rgba($color: $color-green, $alpha: 0.3);
-		box-shadow: 0px 10px 20px 0 rgba($color: $color-green, $alpha: 0.1);
+	.content {
+		grid-area: content;
+		padding: 0 30px;
+		h3 {
+			transform: translateZ(40px);
+			font-weight: bold;
+		}
+		p {
+			transform: translateZ(40px);
+			margin-top: 40px;
+			font-weight: normal;
+			color: rgb(131, 131, 131);
+		}
 	}
 
-	p {
-		transform: translateZ(20px);
-		position: absolute;
-		text-align: left;
-		font-weight: 500;
-		padding: 40px;
-		right: 260px;
-		margin-top: 50px;
-		color: rgb(131, 131, 131);
+	.button {
+		grid-area: button;
+		padding: 30px;
+		a {
+			transform: translateZ(40px);
+			display: inline-block;
+			padding: 10px 30px;
+			width: 100%;
+			text-align: center;
+			color: white;
+			background: $color-blue;
+			box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0.3);
+			border-radius: 10px;
+			transition: 0.1s linear;
+			outline: 1px solid transparent;
+
+			@media (min-width: 576px) {
+				width: unset;
+			}
+		}
+
+		a:hover {
+			transform: translateZ(50px);
+			box-shadow: 0px 10px 30px 0px rgba(66, 179, 255, 0.3);
+		}
+		a:active {
+			transform: translateZ(0px);
+			box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0);
+		}
 	}
 
-	a {
-		transform: translateZ(30px);
-		position: absolute;
-		padding: 20px;
+	.image {
+		grid-area: image;
+		padding: 20px 20px 20px 0px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img {
+			transform: translateZ(50px);
+			max-width: 70%; // height: auto;
+			outline: 1px solid transparent;
 
-		color: white;
-		background: $color-blue;
-		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0.3);
-		left: 0;
-		bottom: 0;
-		border-radius: 50px;
-		padding: 10px 30px;
-		margin: 30px;
-		transition: 0.1s linear;
-		outline: 1px solid transparent;
-	}
-
-	a:hover {
-		transform: translateZ(40px);
-		box-shadow: 0px 10px 30px 0px rgba(66, 179, 255, 0.3);
-	}
-
-	a:active {
-		transform: translateZ(0px);
-		box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0);
+			@media (min-width: 576px) {
+				max-width: 100%;
+			}
+		}
 	}
 }
 
-/*
 
-// Small devices (landscape phones, 576px and up)
+/* // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { 
 	
 }
@@ -604,4 +583,4 @@ header {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
 	
-}*/
+} */

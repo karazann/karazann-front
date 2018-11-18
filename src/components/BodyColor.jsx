@@ -19,4 +19,4 @@ class BodyColor extends Component {
 	}
 }
 
-export default BodyColor;
+export default BodyColor
