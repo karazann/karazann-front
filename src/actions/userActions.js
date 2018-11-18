@@ -63,7 +63,7 @@ export const login = (email, password) => {
             .then(token => {
                 dispatch(loginSuccess())
                 dispatch(push('../'))
-            }).catch(err => console.log(err))
+            }).catch(error => dispatch(loginFailure(error)))
     }
 }
 

@@ -28,7 +28,7 @@ let LoginForm = ({ dispatch }) => {
     )
 }
 
-let RegisterForm = ({dispatch}) => {
+let RegisterForm = ({ dispatch }) => {
 
     const clientId = "321131066814-02msnaku7ue8dm40n4ic5v14lhmmp1u1.apps.googleusercontent.com"
 
@@ -59,12 +59,12 @@ class AuthPage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'SET_BLUE_BACKGROUND' })
-        this.props.dispatch({ type: 'SET_FOOTER_OFF' })
+        this.props.dispatch({ type: 'SET_HEADER_STATE', payload: false })
     }
 
     componentWillUnmount() {
         this.props.dispatch({ type: 'SET_DEFAULT_BACKGROUND' })
-        this.props.dispatch({ type: 'SET_FOOTER_ON' })
+        this.props.dispatch({ type: 'SET_HEADER_STATE', payload: true })
     }
 
     render() {
@@ -83,7 +83,7 @@ class AuthPage extends Component {
 //Hello my frind
 const mapStateToProps = state => {
     return {
-       
+
     }
 }
 

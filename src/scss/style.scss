@@ -25,6 +25,18 @@
 
 @import "reset";
 
+$hamburger-padding-x: 6px;
+$hamburger-padding-y: 6px;
+$hamburger-types: (elastic);
+
+$hamburger-layer-width: 30px;
+$hamburger-layer-height: 3px;
+$hamburger-hover-opacity: 1;
+$hamburger-layer-color: white !default;
+$hamburger-active-layer-color:#5ba9ef !default;
+
+@import "./hamburgers/hamburgers.scss";
+
 $font-stack: "SansSerifFLF";
 $font-color: rgb(0, 0, 0);
 
@@ -61,7 +73,6 @@ textarea:focus,
 input:focus {
 	outline: none;
 }
-
 .blue-background {
 	background: $color-blue;
 	* {
@@ -79,14 +90,14 @@ body {
 	}
 }
 .header {
-	margin: 50px 0 30px 0;
+	margin: 50px 0 0px 0;
 }
 .error {
 	.alert {
 		line-height: 40px;
 		height: 40px;
 	}
-	.navbar {
+	header {
 		top: 40px;
 	}
 }
@@ -114,7 +125,7 @@ body {
 	min-height: 100vh;
 }
 .page {
-	padding-top: 70px;
+	padding-top: 40px;
 	height: 100%;
 	transition: 0.1s;
 	padding-bottom: 400px;
@@ -126,6 +137,7 @@ footer {
 	width: 100%;
 	height: 200px;
 }
+
 header {
 	width: 100%;
 	background: $color-blue;
@@ -139,7 +151,6 @@ header {
 		height: 100%;
 		display: flex;
 		justify-content: space-between;
-
 		flex-direction: row;
 		.search {
 			display: flex;
@@ -152,6 +163,7 @@ header {
 				right: 10px;
 				-webkit-appearance: none;
 				background: url("./x.svg");
+
 				height: 15px;
 				width: 15px;
 				border-radius: 10px;
@@ -165,7 +177,7 @@ header {
 				font-size: 18px;
 				background: #4398e3;
 				color: white;
-
+				line-height: 23px;
 				border-radius: 10px;
 				transition: 0.2s;
 				text-align: center;
@@ -184,9 +196,6 @@ header {
 				right: 0;
 			}
 		}
-		* {
-			color: white;
-		}
 		.brand {
 			a {
 				display: flex;
@@ -197,21 +206,44 @@ header {
 			}
 		}
 		a {
+			color: white;
 			line-height: 43px;
 		}
-		nav {
+		.hamburger-nav {
+			position: relative;
+			z-index: 300;
 			width: 160px;
+			transform: translateZ(110px);
 			display: flex;
+			justify-content: flex-end;
+		}
+		.navbar-mobile {
+			position: absolute;
+			display: block;
+			transform: translateZ(100px);
+			top: 10px;
+			right: 10px;
+			left: 10px;
+			bottom: 10px;
+			border-radius: 10px;
+			background: white;
+			a {
+				margin: 30px;
+			}
+		}
+		.navbar-desktop {
+			width: 160px;
+			display: none;
 			justify-content: flex-end;
 		}
 	}
 }
 .auth-form {
-	margin: 50px auto 0 auto;
+	margin: 20px auto 0 auto;
 	width: 470px;
 	border-radius: 7px;
 	background: #f6f6f6;
-	padding: 50px;
+	padding: 40px;
 	transform-style: preserve-3d;
 	perspective: 1000;
 	outline: 1px solid transparent;
@@ -228,6 +260,9 @@ header {
 	form {
 		font-family: "Roboto";
 		transform-style: preserve-3d;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
 		legend {
 			transform: translateZ(20px);
 			color: black;
@@ -287,7 +322,6 @@ header {
 			&.green {
 				box-shadow: 0px 10px 40px 0 rgba(21, 205, 114, 0.3);
 			}
-
 			&.google {
 				box-shadow: 0px 10px 40px 0 rgba(0, 0, 0, 0.05);
 			}
@@ -297,7 +331,6 @@ header {
 			&.green {
 				box-shadow: 0px 10px 20px 0 rgba(21, 205, 114, 0);
 			}
-
 			&.google {
 				box-shadow: 0px 10px 20px 0 rgba(0, 0, 0, 0);
 			}
@@ -307,10 +340,8 @@ header {
 .ticket {
 	width: 100%;
 	top: 60px;
-
 	z-index: 200;
 	transform-style: preserve-3d;
-
 	perspective: 1000;
 	height: 800px;
 	@media (min-width: 768px) {
@@ -369,12 +400,10 @@ header {
 }
 .card-outer {
 	position: relative;
-
 	width: 100%;
 	padding-top: 160%;
 	color: black;
 }
-
 .card {
 	background: white;
 	border-radius: 15px;
@@ -449,16 +478,15 @@ header {
 		transform: translateZ(20px);
 	}
 }
-
 .hero-card {
 	height: auto;
+	margin: 20px 0;
 	background: white;
 	border-radius: 15px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
 	transform: perspective(1000px);
 	transform-style: preserve-3d;
 	display: grid;
-
 	grid-template-columns: 100%;
 	grid-template-rows: 50px 60vw 150px 100px;
 	grid-template-areas:
@@ -466,7 +494,6 @@ header {
 		"image"
 		"content"
 		"button";
-
 	@media (min-width: 576px) {
 		height: 380px;
 		grid-template-columns: 50% 50%;
@@ -476,20 +503,21 @@ header {
 			"content image"
 			"button image";
 	}
-
 	.tags {
 		grid-area: tags;
-		padding: 20px 22px;
+		padding: 20px;
 		span {
-			
 			@each $name, $value in $color-list {
-				&.#{$name} {
+				&.#{"" + $name} {
 					color: $value;
 					background: rgba($color: $value, $alpha: 0.3);
-					box-shadow: 0px 10px 20px 0 rgba($color: $value, $alpha: 0.1);
+					box-shadow: 0px
+						10px
+						20px
+						0
+						rgba($color: $value, $alpha: 0.1);
 				}
 			}
-
 			text-transform: capitalize;
 			transform: translateZ(40px);
 			margin: 0 10px 0 0;
@@ -499,7 +527,6 @@ header {
 			border-radius: 7px;
 		}
 	}
-
 	.content {
 		grid-area: content;
 		padding: 0 30px;
@@ -514,7 +541,6 @@ header {
 			color: rgb(131, 131, 131);
 		}
 	}
-
 	.button {
 		grid-area: button;
 		padding: 30px;
@@ -530,12 +556,10 @@ header {
 			border-radius: 10px;
 			transition: 0.1s linear;
 			outline: 1px solid transparent;
-
 			@media (min-width: 576px) {
 				width: unset;
 			}
 		}
-
 		a:hover {
 			transform: translateZ(50px);
 			box-shadow: 0px 10px 30px 0px rgba(66, 179, 255, 0.3);
@@ -545,26 +569,25 @@ header {
 			box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0);
 		}
 	}
-
 	.image {
 		grid-area: image;
-		padding: 20px 20px 20px 0px;
+		padding: 20px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		@media (min-width: 576px) {
+			padding: 20px 20px 20px 0px;
+		}
 		img {
 			transform: translateZ(50px);
 			max-width: 70%; // height: auto;
 			outline: 1px solid transparent;
-
 			@media (min-width: 576px) {
 				max-width: 100%;
 			}
 		}
 	}
 }
-
-
 /* // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { 
 	

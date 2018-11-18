@@ -4,11 +4,11 @@ import Tilt from '../Tilt'
 
 class ProductPage extends Component {
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
 
     render() {
-        const { } = this.props;
-        
-
         return (
             <section className="page">
                 <div className="container">
@@ -28,9 +28,7 @@ class ProductPage extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-
-    }
+    return {}
 }
 
 export default connect(mapStateToProps)(ProductPage);

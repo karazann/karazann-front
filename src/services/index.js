@@ -11,7 +11,7 @@ const register = (username, email, password) => {
 
     return fetch(apiUrl + '/auth/register', options)
         .then(handleResponse)
-        .then(token => localStorage.setItem('token', token))
+        .then(response => localStorage.setItem('token', response.token))
 }
 
 const login = (email, password) => {
@@ -23,7 +23,7 @@ const login = (email, password) => {
 
     return fetch(apiUrl + '/auth/login', options)
         .then(handleResponse)
-        .then(token => localStorage.setItem('token', token))
+        .then(response => localStorage.setItem('token', response.token))
 }
 
 const loginGoogle = (accessToken) => {
@@ -35,7 +35,7 @@ const loginGoogle = (accessToken) => {
 
     return fetch(apiUrl + '/auth/google', options)
         .then(handleResponse)
-        .then(token => localStorage.setItem('token', token))
+        .then(response => localStorage.setItem('token', response.token))
 }
 
 const logout = () => {

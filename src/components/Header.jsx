@@ -1,16 +1,56 @@
 import React, { Fragment, Component, } from 'react'
 import { connect, } from 'react-redux'
 import SearchBar from './SearchBar'
-import { NavLink, Route, Switch, withRouter } from 'react-router-dom'
-import { logout } from '../actions/userActions';
+import { NavLink, withRouter } from 'react-router-dom'
+import { logout } from '../actions/userActions'
 
-const Header = ({ dispatch, loggedIn }) => {
+const MobileNav = ({ active }) => {
+    if (!active)
+        return null
+
+    return <nav className="navbar-mobile d-sm-none"><NavLink to='fdsaf'>Hello</NavLink></nav>
+}
+
+const DesktopNav = ({ active, loggedIn }) => {
+    if (!active)
+        return null
+
+    return (
+        <nav className="navbar-desktop d-sm-flex">
+            {loggedIn ? <a className="btn" onClick={e => dispatch(logout())}>Logout</a> : <NavLink className="btn" to='/auth/login'>Login</NavLink>}
+        </nav>
+    )
+}
+
+const Hamburger = ({ active, onClick }) => {
+    if (!active)
+        return null
+
+    return (
+        <div className='hamburger-nav d-sm-none'>
+            <button onClick={onClick} className="hamburger hamburger--elastic" type="button">
+                <span className="hamburger-box">
+                    <span className="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+    )
+}
+
+const Header = ({ dispatch, loggedIn, isMobileNavActive, isHeaderActive }) => {
+
+    const onClick = e => {
+        dispatch({ type: 'TOGGLE_MOBILE_NAV' })
+        e.currentTarget.classList.toggle('is-active')
+    }
+
     return (
         <Fragment>
             <div className='alert hidden'>Whoops</div>
             <header className='navbar'>
                 <div className='container'>
                     <div className='box'>
+
                         <div className='brand'>
                             <NavLink to='/'>
                                 <img src="./logo-white.svg" alt="" />
@@ -18,11 +58,14 @@ const Header = ({ dispatch, loggedIn }) => {
                             </NavLink>
                         </div>
 
-                        <Route exact path="/" component={SearchBar}></Route>
+                        <SearchBar active={isHeaderActive} />
 
-                        <nav>
-                            {loggedIn ? <a className="btn" onClick={e => dispatch(logout())}>Logout</a> : <NavLink className="btn" to='/auth/login'>Login</NavLink>}
-                        </nav>
+                        <Hamburger active={isHeaderActive} onClick={onClick}  />
+
+                        <MobileNav active={isMobileNavActive && isHeaderActive} />
+
+                        <DesktopNav active={isHeaderActive} loggedIn={loggedIn}/>
+
                     </div>
                 </div>
             </header>
@@ -32,7 +75,9 @@ const Header = ({ dispatch, loggedIn }) => {
 
 const mapStateToProps = state => {
     return {
-        loggedIn: state.auth.loggedIn
+        loggedIn: state.auth.loggedIn,
+        isMobileNavActive: state.ui.isMobileNavActive,
+        isHeaderActive: state.ui.isHeaderActive
     }
 }
 

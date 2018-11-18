@@ -28,7 +28,7 @@ class App extends Component {
 					<Route exact path='/' component={HomePage} />
 					<Route path='/auth' component={AuthPage} />
 					<Route path='/product/:id' component={ProductPage}/>
-					<Footer />
+					
 				</BodyColor>
 			</Switch>
 		);
