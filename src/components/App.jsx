@@ -15,7 +15,6 @@ import '../scss/style.scss'
 
 class App extends Component {
 
-
 	componentWillMount() {
 		//this.props.dispatch(fetchProducts())
 	}
@@ -28,7 +27,6 @@ class App extends Component {
 					<Route exact path='/' component={HomePage} />
 					<Route path='/auth' component={AuthPage} />
 					<Route path='/product/:id' component={ProductPage}/>
-					
 				</BodyColor>
 			</Switch>
 		);

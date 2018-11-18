@@ -157,7 +157,7 @@ header {
 			height: auto;
 			font-family: "SansSerifFLF";
 			transform-style: preserve-3d;
-			width: 500px;
+			width: 400px;
 			input::-webkit-search-cancel-button {
 				position: relative;
 				right: 10px;
@@ -212,7 +212,7 @@ header {
 		.hamburger-nav {
 			position: relative;
 			z-index: 300;
-			width: 160px;
+			width: 220px;
 			transform: translateZ(110px);
 			display: flex;
 			justify-content: flex-end;
@@ -232,7 +232,7 @@ header {
 			}
 		}
 		.navbar-desktop {
-			width: 160px;
+			width: 220px;
 			display: none;
 			justify-content: flex-end;
 		}
@@ -245,7 +245,7 @@ header {
 	background: #f6f6f6;
 	padding: 40px;
 	transform-style: preserve-3d;
-	perspective: 1000;
+	transform: perspective(1000);
 	outline: 1px solid transparent;
 	* {
 		outline: 1px solid transparent;
@@ -342,7 +342,7 @@ header {
 	top: 60px;
 	z-index: 200;
 	transform-style: preserve-3d;
-	perspective: 1000;
+	transform: perspective(1000);
 	height: 800px;
 	@media (min-width: 768px) {
 		height: 500px;

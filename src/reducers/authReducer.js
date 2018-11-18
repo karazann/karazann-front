@@ -2,21 +2,26 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions/
 
 let token = localStorage.getItem('token')
 
-const initialState = token ? { loggedIn: true } : {loggedIn: false}
+const initialState = token ? { loggedIn: true, loading: false } : { loggedIn: false, loading: false }
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
             return {
-                loggingIn: true
+                ...state,
+                loading: true
             }
         case LOGIN_SUCCESS:
             return {
-                loggedIn: true
+                ...state,
+                loggedIn: true,
+                loading: false
             }
         case LOGIN_FAILURE:
             return {
+                ...state,
                 loggedIn: false,
+                loading: false,
                 error: action.payload.error
             }
         case LOGOUT:

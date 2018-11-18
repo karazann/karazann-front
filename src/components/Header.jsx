@@ -11,13 +11,13 @@ const MobileNav = ({ active }) => {
     return <nav className="navbar-mobile d-sm-none"><NavLink to='fdsaf'>Hello</NavLink></nav>
 }
 
-const DesktopNav = ({ active, loggedIn }) => {
+const DesktopNav = ({ active, loggedIn, logout}) => {
     if (!active)
         return null
 
     return (
         <nav className="navbar-desktop d-sm-flex">
-            {loggedIn ? <a className="btn" onClick={e => dispatch(logout())}>Logout</a> : <NavLink className="btn" to='/auth/login'>Login</NavLink>}
+            {loggedIn ? <a className="btn" onClick={logout}>Logout</a> : <NavLink className="btn" to='/auth/login'>Login</NavLink>}
         </nav>
     )
 }
@@ -39,9 +39,13 @@ const Hamburger = ({ active, onClick }) => {
 
 const Header = ({ dispatch, loggedIn, isMobileNavActive, isHeaderActive }) => {
 
-    const onClick = e => {
+    const hamburger = e => {
         dispatch({ type: 'TOGGLE_MOBILE_NAV' })
         e.currentTarget.classList.toggle('is-active')
+    }
+
+    const logoutClick = () => {
+        dispatch(logout())
     }
 
     return (
@@ -60,11 +64,11 @@ const Header = ({ dispatch, loggedIn, isMobileNavActive, isHeaderActive }) => {
 
                         <SearchBar active={isHeaderActive} />
 
-                        <Hamburger active={isHeaderActive} onClick={onClick}  />
+                        <Hamburger active={isHeaderActive} onClick={hamburger}  />
 
                         <MobileNav active={isMobileNavActive && isHeaderActive} />
 
-                        <DesktopNav active={isHeaderActive} loggedIn={loggedIn}/>
+                        <DesktopNav active={isHeaderActive} loggedIn={loggedIn} logout={logoutClick}/>
 
                     </div>
                 </div>

@@ -19,7 +19,7 @@ const ProductCard = ({ progress, title, image }) => {
                             <div style={{ width: progress + '%' }}></div>
                         </div>
 
-                        <NavLink href="/product/blahblah" className="button">$1200</NavLink>
+                        <NavLink to="/product/blahblah" className="button">$1200</NavLink>
 
                     </Tilt>
                 </div>
