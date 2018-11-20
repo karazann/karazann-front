@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setFilter } from '../actions/productActions'
 
-const SearchBar = ({dispatch, active}) => {
+const SearchBar = ({dispatch, active, filter}) => {
 
     const onChange = event => {
         dispatch(setFilter(event.target.value));
@@ -13,14 +13,14 @@ const SearchBar = ({dispatch, active}) => {
 
     return (
         <div className="search"  options={{ speed: 1500, scale: 1.04, max: 0,reverse: true, axis: 'y' }}>
-            <input placeholder="Search..." onChange={onChange} type="search" name="" id="test" />
+            <input placeholder="Search..." onChange={onChange} type="search" name="" id="test" value={filter}/>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        filters: state.filters
+        filter: state.products.filter
     }
 }
 

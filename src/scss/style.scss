@@ -160,13 +160,15 @@ header {
 			width: 400px;
 			input::-webkit-search-cancel-button {
 				position: relative;
-				right: 10px;
 				-webkit-appearance: none;
 				background: url("./x.svg");
 
 				height: 15px;
 				width: 15px;
 				border-radius: 10px;
+			}
+			input:focus{
+				transform: scale(1.03);
 			}
 			input {
 				-webkit-appearance: none;

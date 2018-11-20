@@ -9,6 +9,7 @@ import Hero from './Hero';
 
 
 const HomePage = ({ products, loading, error, hasFilter }) => {
+    console.log(hasFilter)
     return (
         <section className="page">
             <section className="container">
