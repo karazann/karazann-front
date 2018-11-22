@@ -48,7 +48,7 @@ const fecthProducts = () => {
         headers: { 'Content-Type': 'application/json' }
     }
 
-    return fetch(apiUrl + '/products', options)
+    return fetch(apiUrl + '/product', options)
         .then(handleResponse)
         .then(response => response.products)
 }

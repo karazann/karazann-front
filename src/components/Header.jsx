@@ -57,7 +57,7 @@ const Header = ({ dispatch, loggedIn, isMobileNavActive, isHeaderActive }) => {
 
                         <div className='brand'>
                             <NavLink to='/'>
-                                <img src="./logo-white.svg" alt="" />
+                                <img src="/logo-white.svg" alt="" />
                                 <h1>Karazann.</h1>
                             </NavLink>
                         </div>
