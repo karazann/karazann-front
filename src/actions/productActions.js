@@ -7,8 +7,6 @@ import {
 
 import service from '../services'
 
-const baseUrl = "http://localhost:3000/v1"
-
 export const fetchProducts = () => {
 
     const request = () => {
@@ -28,6 +26,7 @@ export const fetchProducts = () => {
 
         service.fecthProducts()
             .then(products => {
+                console.table(products)
                 dispatch(success(products))
             })
             .catch(error => dispatch(failure(error)))

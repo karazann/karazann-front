@@ -1,24 +1,24 @@
 @font-face {
 	font-family: "SansSerifFLF";
 	font-weight: 200;
-	src: url("../assets/fonts/sansserifflf.otf") format("opentype");
+	src: url("../fonts/sansserifflf.otf") format("opentype");
 }
 
 @font-face {
 	font-family: "SansSerifFLF";
 	font-weight: 700;
-	src: url("../assets/fonts/sansserifbldflf.otf") format("opentype");
+	src: url("../fonts/sansserifbldflf.otf") format("opentype");
 }
 
 @font-face {
 	font-family: "SansSerifFLF";
 	font-weight: normal;
-	src: url("../assets/fonts/sansserifflf-demibold.otf") format("opentype");
+	src: url("../fonts/sansserifflf-demibold.otf") format("opentype");
 }
 
 @font-face {
 	font-family: "Metropolis";
-	src: url("../assets/fonts/Metropolis-Regular.otf") format("opentype");
+	src: url("../fonts/Metropolis-Regular.otf") format("opentype");
 }
 
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
@@ -33,7 +33,7 @@ $hamburger-layer-width: 30px;
 $hamburger-layer-height: 3px;
 $hamburger-hover-opacity: 1;
 $hamburger-layer-color: white !default;
-$hamburger-active-layer-color:#5ba9ef !default;
+$hamburger-active-layer-color: #5ba9ef !default;
 
 @import "./hamburgers/hamburgers.scss";
 
@@ -84,13 +84,11 @@ body {
 	color: $font-color;
 	background: #fbfbfb;
 }
-@for $i from 1 through 10 {
-	.space-#{$i*10} {
-		height: #{$i * 10}px;
-	}
+.d-grid {
+	display: grid;
 }
 .header {
-	margin: 50px 0 0px 0;
+	margin: 50px 0 20px 0;
 }
 .error {
 	.alert {
@@ -120,6 +118,48 @@ body {
 		transform: translateX(0px);
 	}
 }
+.spinner {
+	width: 60px;
+	height: 60px;
+	background-color: $color-blue;
+	margin: 100px auto;
+	margin: 40vh auto;
+	border-radius: 15px;
+	transform-style:preserve-3d;
+	will-change: transform;
+	transform: perspective(1000);
+	animation: rotateplane 2s infinite ease-in-out .3s;
+
+	div{
+		top: 10px;
+		bottom: 10px;
+		border-radius: 7px;
+		left: 10px;
+		right: 10px;
+		position: absolute;
+		background: #4398E3;
+		backface-visibility: visible;
+		&:nth-child(1) {
+			transform: translateZ(10px)
+		}
+
+		&:nth-child(2) {
+			transform: translateZ(-10px);
+			
+		}
+	}
+}
+@keyframes rotateplane {
+	0% {
+		transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+	}
+	50% {
+		transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+	}
+	100% {
+		transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+	}
+}
 #app {
 	position: relative;
 	min-height: 100vh;
@@ -137,7 +177,6 @@ footer {
 	width: 100%;
 	height: 200px;
 }
-
 header {
 	width: 100%;
 	background: $color-blue;
@@ -162,12 +201,11 @@ header {
 				position: relative;
 				-webkit-appearance: none;
 				background: url("./x.svg");
-
 				height: 15px;
 				width: 15px;
 				border-radius: 10px;
 			}
-			input:focus{
+			input:focus {
 				transform: scale(1.03);
 			}
 			input {
@@ -340,24 +378,21 @@ header {
 	}
 }
 .hero-card {
-	height: auto;
 	margin: 20px 0;
 	background: white;
 	border-radius: 15px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
-	transform: perspective(1000px);
 	transform-style: preserve-3d;
+	transform: perspective(1500);
 	display: grid;
 	grid-template-columns: 100%;
-	grid-template-rows: 50px 60vw 150px 100px;
+	grid-template-rows: 50px auto 150px 100px;
 	grid-template-areas:
 		"tags"
 		"image"
 		"content"
 		"button";
-
 	@media (min-width: 576px) {
-		height: 380px;
 		grid-template-columns: 50% 50%;
 		grid-template-rows: 80px 1fr 100px;
 		grid-template-areas:
@@ -365,7 +400,6 @@ header {
 			"content image"
 			"button image";
 	}
-
 	.tags {
 		grid-area: tags;
 		padding: 20px;
@@ -438,7 +472,7 @@ header {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		@media (min-width: 576px) {
+		@media (min-width: 992px) {
 			padding: 20px 20px 20px 0px;
 		}
 		img {
@@ -458,7 +492,6 @@ header {
 	transform-style: preserve-3d;
 	transform: perspective(1000);
 	height: 800px;
-
 	@media (min-width: 768px) {
 		height: 500px;
 	}
@@ -495,26 +528,23 @@ header {
 		z-index: 300;
 		display: grid;
 		grid-template-columns: 70% 30%;
-		grid-template-rows: 100px 1fr 200px;
-		/*@media (min-width: 768px) {
+		grid-template-rows: 100px 1fr 200px; /* @media (min-width: 768px) {
 			grid-template-columns: 60% 40%;
 			grid-template-rows: 100px 1fr;
-		}@at-root*/
+		}@at-root */
 		grid-template-areas:
-		"title none"
-		"image content"
-		"image buttons";
+			"title none"
+			"image content"
+			"image buttons";
 		transform-style: preserve-3d;
-
-		.title{
+		.title {
 			grid-area: title;
 			display: flex;
 			justify-content: center;
 			box-align: center;
 			align-items: center;
 		}
-
-		.buttons{
+		.buttons {
 			grid-area: buttons;
 			padding: 20px 30px;
 			display: flex;
@@ -531,104 +561,98 @@ header {
 				border-radius: 10px;
 				transition: 0.2s;
 				margin: 0 0 10px 0;
-
-				img{
+				img {
 					height: 30px;
 					padding: 2px;
 				}
 			}
-
 			a:hover {
 				transform: translateZ(30px);
 			}
-
 			a:active {
 				transform: translateZ(0);
 			}
 		}
 	}
-	
 }
-.card-outer {
-	position: relative;
-	width: 100%;
-	padding-top: 160%;
-	color: black;
-}
-.card {
+.product-card {
 	background: white;
 	border-radius: 15px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
-}
-.card-inner {
-	position: absolute;
-	margin: 20px 5px;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	text-align: center;
 	transform-style: preserve-3d;
-	position: absolute;
-	.button {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		margin: 15px;
-		color: $color-purple;
-		transition: 0.15s linear;
-		padding: 20px;
-		border-radius: 7px;
-		transform: translateZ(20px);
+	@media (min-width: 576px) {
+		transform: perspective(1000);
 	}
-	.button:hover {
-		background: rgb(245, 245, 245);
-		transform: translateZ(40px);
-	}
-	.button:active {
-		transform: translateZ(0px);
-	}
-	.image {
-		position: absolute;
-		top: 45px;
-		padding: 30px;
-		bottom: 80px;
-		transform: translateZ(45px);
-		outline: 1px solid transparent;
-		img {
-			width: 90%;
-			height: auto;
+	margin: 10px 0px;
+	.grid {
+		height: 100%;
+		width: 100%;
+		display: grid;
+		grid-template-rows: 50px 1fr 20px;
+		grid-template-areas:
+			"title"
+			"image"
+			"progress";
+		.title {
+			grid-area: title;
+			display: flex;
+			justify-content: center;
+			padding: 20px;
+			transform: translateZ(20px);
+			h3 {
+				position: absolute;
+				font-weight: 600;
+				color: black;
+			}
 		}
-	}
-	.goal {
-		position: absolute;
-		left: 0;
-		right: 0;
-		height: 5px;
-		margin: 15px;
-		bottom: 70px;
-		border-radius: 10px;
-		font-size: 14px;
-		background: rgba(66, 142, 255, 0.1);
-		transform: translateZ(20px);
-		div {
-			height: 100%;
-			border-radius: 5px;
-			background: $color-blue;
-			box-shadow: 0px 0px 10px 0px rgba(66, 179, 255, 0.3);
+		.image {
+			grid-area: image;
+			padding: 30px;
+			transform: translateZ(40px);
+			outline: 1px solid transparent;
+			img {
+				max-width: 100%;
+			}
 		}
-	}
-	h4 {
-		position: absolute;
-		font-weight: 600;
-		top: 0;
-		left: 0;
-		right: 0;
-		padding: 20px;
-		transform: translateZ(20px);
+		.button {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			margin: 15px;
+			color: black;
+			transition: 0.15s linear;
+			padding: 20px;
+			border-radius: 7px;
+			transform: translateZ(20px);
+		}
+		.button:hover {
+			background: rgb(245, 245, 245);
+			transform: translateZ(40px);
+		}
+		.button:active {
+			transform: translateZ(0px);
+		}
+		.progress-wrapper {
+			grid-area: progress;
+			.progress {
+				margin: 0 15px;
+				height: 5px;
+				border-radius: 10px;
+				font-size: 14px;
+				background: rgba(66, 142, 255, 0.1);
+				transform: translateZ(20px);
+				div {
+					height: 100%;
+					border-radius: 5px;
+					background: $color-blue;
+					box-shadow: 0px 0px 10px 0px rgba(66, 179, 255, 0.3);
+				}
+			}
+		}
 	}
 }
+// ///////////////Cheat sheet ////////////////////////////
 /* // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { 
 	

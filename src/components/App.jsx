@@ -7,16 +7,15 @@ import HomePage from './Home/HomePage'
 import AuthPage from './Auth/AuthPage'
 import ProductPage from './Product/ProductPage'
 import Header from './Header'
-import Footer from './Footer'
 
 import { fetchProducts } from '../actions/productActions'
 
-import '../scss/style.scss'
+import '../assets/scss/style.scss'
 
 class App extends Component {
 
 	componentWillMount() {
-		//this.props.dispatch(fetchProducts())
+		this.props.dispatch(fetchProducts())
 	}
 
 	render() {

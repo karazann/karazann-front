@@ -4,27 +4,33 @@ import ProductList from './ProductList'
 
 import { connect } from 'react-redux'
 
-import Hero from './Hero';
-
-
+import Hero from './Hero'
 
 const HomePage = ({ products, loading, error, hasFilter }) => {
-    console.log(hasFilter)
+
+    if (loading)
+        return (
+            <div className='spinner' >
+                <div></div>
+                <div></div>
+            </div>
+        )
+
     return (
         <section className="page">
             <section className="container">
 
-                {hasFilter ? null : <Hero/>}
+                {hasFilter ? null : <Hero />}
 
-                <h2 className='header'>Products</h2>
-                <ProductList products={products} loading={loading} error={error} />
+                
+                <ProductList products={products} />
             </section>
         </section>
     )
 }
 
 const filterProducts = (products, filter) => {
-    const searchText = filter.toLowerCase().replace(/ +(?= )/g,'');
+    const searchText = filter.toLowerCase().replace(/ +(?= )/g, '');
     return products.filter(product => product.title.toLowerCase().indexOf(searchText) > -1)
 }
 

@@ -1,6 +1,6 @@
-const apiUrl = process.env.API_URL
+import { authHeader } from '../utils/header'
 
-function authHeader() { }
+const apiUrl = process.env.API_URL
 
 const register = (username, email, password) => {
     const options = {
@@ -45,7 +45,7 @@ const logout = () => {
 const fecthProducts = () => {
     const options = {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+        headers: authHeader()
     }
 
     return fetch(apiUrl + '/product', options)
