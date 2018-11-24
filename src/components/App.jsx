@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import BodyColor from './BodyColor'
+import Body from './Body'
 import HomePage from './Home/HomePage'
 import AuthPage from './Auth/AuthPage'
 import ProductPage from './Product/ProductPage'
@@ -21,12 +21,12 @@ class App extends Component {
 	render() {
 		return (
 			<Switch>
-				<BodyColor isBlue={this.props.isBlue}>
+				<Body isBlue={this.props.isBlue} error={this.props.hasError}>
 					<Header />
 					<Route exact path='/' component={HomePage} />
 					<Route path='/auth' component={AuthPage} />
 					<Route path='/product/:id' component={ProductPage}/>
-				</BodyColor>
+				</Body>
 			</Switch>
 		);
 	}
@@ -34,7 +34,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
 	return {
-		isBlue: state.ui.isBlue
+		isBlue: state.ui.isBlue,
+		hasError: state.auth.error
 	}
 }
 

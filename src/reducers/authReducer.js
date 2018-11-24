@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions/types';
+import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions/types';
 
 const initialState = {
     loggedIn: localStorage.getItem('token') ? true : false,
@@ -8,9 +8,29 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN_REQUEST:
+        case REGISTER_REQUEST:
             return {
                 ...state,
+                error: null,
+                loading: true
+            }
+        case REGISTER_SUCCESS:
+            return {
+                ...state,
+                loggedIn: true,
+                loading: false
+            }
+        case REGISTER_FAILURE:
+            return {
+                ...state,
+                loggedIn: false,
+                error: action.payload.error,
+                loading: false
+            }
+            case LOGIN_REQUEST:
+            return {
+                ...state,
+                error: null,
                 loading: true
             }
         case LOGIN_SUCCESS:
@@ -23,13 +43,14 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loggedIn: false,
-                loading: false,
-                error: action.payload.error
+                error: action.payload.error,
+                loading: false
             }
         case LOGOUT:
             return {
                 ...state,
-                loggedIn: false
+                loggedIn: false,
+                error: null
             }
         default:
             return state

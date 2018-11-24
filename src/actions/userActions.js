@@ -72,6 +72,7 @@ export const loginGoogle = (accessToken) => {
         dispatch(loginRequest())
         service.loginGoogle(accessToken)
             .then(token => {
+                console.log(token)
                 dispatch(loginSuccess())
                 dispatch(push('../'))
             }).catch(error => dispatch(loginFailure(error)))

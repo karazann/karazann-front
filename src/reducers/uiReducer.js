@@ -3,7 +3,7 @@ import { SET_DEFAULT_BACKGROUND, SET_BLUE_BACKGROUND } from '../actions/types'
 const initialState = {
     isBlue: false,
     isMobileNavActive: false,
-    isHeaderActive: true
+    isHeaderActive: true,
 }
 
 export default (state = initialState, action) => {

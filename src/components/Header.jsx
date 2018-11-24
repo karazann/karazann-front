@@ -17,7 +17,7 @@ const DesktopNav = ({ active, loggedIn, logout}) => {
 
     return (
         <nav className="navbar-desktop d-sm-flex">
-            {loggedIn ? <a className="btn" onClick={logout}>Logout</a> : <NavLink className="btn" to='/auth/login'>Login</NavLink>}
+            {loggedIn ? <a href='' className="btn" onClick={logout}>Logout</a> : <NavLink className="btn" to='/auth/login'>Login</NavLink>}
         </nav>
     )
 }
@@ -50,7 +50,6 @@ const Header = ({ dispatch, loggedIn, isMobileNavActive, isHeaderActive }) => {
 
     return (
         <Fragment>
-            <div className='alert hidden'>Whoops</div>
             <header className='navbar'>
                 <div className='container'>
                     <div className='box'>

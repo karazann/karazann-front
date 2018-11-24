@@ -11,7 +11,10 @@ const register = (username, email, password) => {
 
     return fetch(apiUrl + '/auth/register', options)
         .then(handleResponse)
-        .then(response => localStorage.setItem('token', response.token))
+        .then(response => {
+            localStorage.setItem('token', response.token)
+            return response
+        })
 }
 
 const login = (email, password) => {
@@ -23,7 +26,10 @@ const login = (email, password) => {
 
     return fetch(apiUrl + '/auth/login', options)
         .then(handleResponse)
-        .then(response => localStorage.setItem('token', response.token))
+        .then(response => {
+            localStorage.setItem('token', response.token)
+            return response
+        })
 }
 
 const loginGoogle = (accessToken) => {
@@ -35,7 +41,10 @@ const loginGoogle = (accessToken) => {
 
     return fetch(apiUrl + '/auth/google', options)
         .then(handleResponse)
-        .then(response => localStorage.setItem('token', response.token))
+        .then(response => {
+            localStorage.setItem('token', response.token)
+            return response
+        })
 }
 
 const logout = () => {
@@ -56,7 +65,7 @@ const fecthProducts = () => {
 const handleResponse = (response) => {
     return response.json().then(data => {
         if (!response.ok) {
-            if (response.status === 401)
+            if (response.status === 401 || 400)
                 logout()
 
             return Promise.reject(data)
