@@ -82,13 +82,13 @@ input:focus {
 body {
 	font-family: $font-stack;
 	color: $font-color;
-	background: #fbfbfb;
+	background: #f5f6fa;
 }
 .d-grid {
 	display: grid;
 }
 .header {
-	margin: 50px 0 20px 0;
+	margin: 30px 0 40px 0;
 }
 .error {
 	.alert {
@@ -122,27 +122,24 @@ body {
 	margin: 100px auto;
 	margin: 40vh auto;
 	border-radius: 15px;
-	transform-style:preserve-3d;
+	transform-style: preserve-3d;
 	will-change: transform;
 	transform: perspective(1000);
-	animation: rotateplane 2s infinite ease-in-out .3s;
-
-	div{
+	animation: rotateplane 2s infinite ease-in-out 0.3s;
+	div {
 		top: 10px;
 		bottom: 10px;
 		border-radius: 7px;
 		left: 10px;
 		right: 10px;
 		position: absolute;
-		background: #4398E3;
+		background: #4398e3;
 		backface-visibility: visible;
 		&:nth-child(1) {
-			transform: translateZ(10px)
+			transform: translateZ(10px);
 		}
-
 		&:nth-child(2) {
 			transform: translateZ(-10px);
-			
 		}
 	}
 }
@@ -165,7 +162,6 @@ body {
 	padding-top: 40px;
 	height: 100%;
 	transition: 0.1s;
-	padding-bottom: 400px;
 }
 footer {
 	background: #f1f1f1;
@@ -231,23 +227,34 @@ header {
 				right: 0;
 			}
 		}
+		.profile {
+			display: flex;
+			img {
+				height: 42px;
+				border-radius: 10px;
+			}
+			a {
+				margin: 0 10px;
+			}
+		}
 		.brand {
 			a {
 				display: flex;
 				img {
 					height: 43px;
-					margin: 0 10px;
+					margin: 0 10px 0 0;
 				}
 			}
 		}
-		a {
+		a,
+		p {
 			color: white;
 			line-height: 43px;
 		}
 		.hamburger-nav {
 			position: relative;
 			z-index: 300;
-			width: 220px;
+			width: 210px;
 			transform: translateZ(110px);
 			display: flex;
 			justify-content: flex-end;
@@ -273,18 +280,73 @@ header {
 		}
 	}
 }
+
+h4{
+	font-size: 16px;
+}
+
+.account-menu {
+	display: flex;
+	flex-direction: column;
+	
+	a {
+		padding: 20px 0;
+		text-align: center;
+		font-weight: 600;
+		width: 100%;
+		
+		transition: 0.1s ease-in-out;
+		margin: 0 0 10px 0;
+		
+		box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
+		color: $color-blue;
+		background: white;
+		
+		@media (min-width: 768px) {
+			box-shadow: none;
+			color: black;
+			background: none;
+		}
+		
+		&.active {
+			border-radius: 10px;
+			transform: scale(1.03);
+			box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
+			color: $color-blue;
+			background: white;
+		}
+
+		&:hover {
+			//transform: scale(1.03);
+			color: $color-blue;
+		}
+
+		&:active {
+			transform: scale(1);
+			box-shadow: none;
+		}
+	}
+}
+.account-page {
+	border-radius: 10px;
+	background: #fff;
+	padding: 30px;
+	font-weight: 600;
+	font-size: 20px;
+	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
+}
 .auth-form {
 	margin: 20px auto 0 auto;
 	width: 470px;
 	border-radius: 7px;
 	background: #f6f6f6;
 	padding: 40px;
-	transform-style: preserve-3d;
-	transform: perspective(1000);
-	outline: 1px solid transparent;
-	* {
+	//transform-style: preserve-3d;
+	//transform: perspective(1000);
+	//outline: 1px solid transparent;
+	/** {
 		outline: 1px solid transparent;
-	}
+	}*/
 	@media (max-width: 576px) {
 		position: absolute;
 		border-radius: 0;
@@ -294,22 +356,22 @@ header {
 	}
 	form {
 		font-family: "Roboto";
-		transform-style: preserve-3d;
+		//transform-style: preserve-3d;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		legend {
-			transform: translateZ(20px);
+			//transform: translateZ(20px);
 			color: black;
 			text-align: center;
 			margin: 0 0 45px 0;
 			font-size: 35px;
-			font-weight: 300;
+			font-weight: normal;
 		}
 		input[type="text"],
 		input[type="email"],
 		input[type="password"] {
-			transform: translateZ(40px);
+			//transform: translateZ(40px);
 			margin: 20px 0;
 			display: block;
 			padding: 15px;
@@ -324,7 +386,7 @@ header {
 		}
 		.btn {
 			margin: 20px 0;
-			transform: translateZ(40px);
+			//transform: translateZ(40px);
 			padding: 15px;
 			font-size: 18px;
 			display: block;
@@ -353,7 +415,7 @@ header {
 			}
 		}
 		.btn:hover {
-			transform: translateZ(30px);
+			//transform: translateZ(30px);
 			&.green {
 				box-shadow: 0px 10px 40px 0 rgba(21, 205, 114, 0.3);
 			}
@@ -362,7 +424,7 @@ header {
 			}
 		}
 		.btn:active {
-			transform: translateZ(0px);
+			//transform: translateZ(0px);
 			&.green {
 				box-shadow: 0px 10px 20px 0 rgba(21, 205, 114, 0);
 			}
@@ -377,11 +439,11 @@ header {
 	background: white;
 	border-radius: 15px;
 	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
-	transform-style: preserve-3d;
-	transform: perspective(1500);
+	//transform-style: preserve-3d;
+	//transform: perspective(1500);
 	display: grid;
 	grid-template-columns: 100%;
-	grid-template-rows: 50px auto 150px 100px;
+	grid-template-rows: 50px auto 150px auto;
 	grid-template-areas:
 		"tags"
 		"image"
@@ -389,7 +451,7 @@ header {
 		"button";
 	@media (min-width: 576px) {
 		grid-template-columns: 50% 50%;
-		grid-template-rows: 80px 1fr 100px;
+		grid-template-rows: 80px 1fr auto;
 		grid-template-areas:
 			"tags image"
 			"content image"
@@ -397,7 +459,8 @@ header {
 	}
 	.tags {
 		grid-area: tags;
-		padding: 20px;
+		padding: 30px;
+		//transform: translateZ(50px);
 		span {
 			@each $name, $value in $color-list {
 				&.#{"" + $name} {
@@ -411,7 +474,6 @@ header {
 				}
 			}
 			text-transform: capitalize;
-			transform: translateZ(50px);
 			margin: 0 10px 0 0;
 			display: inline-block;
 			font-size: 12px;
@@ -422,12 +484,11 @@ header {
 	.content {
 		grid-area: content;
 		padding: 0 30px;
+		//transform: translateZ(50px);
 		h3 {
-			transform: translateZ(50px);
 			font-weight: bold;
 		}
 		p {
-			transform: translateZ(50px);
 			margin-top: 40px;
 			font-weight: normal;
 			color: rgb(131, 131, 131);
@@ -436,8 +497,10 @@ header {
 	.button {
 		grid-area: button;
 		padding: 30px;
+		align-self: flex-end;
+		//transform-style: preserve-3d;
 		a {
-			transform: translateZ(50px);
+			//transform: translateZ(50px);
 			display: inline-block;
 			padding: 10px 30px;
 			width: 100%;
@@ -453,11 +516,12 @@ header {
 			}
 		}
 		a:hover {
-			transform: translateZ(60px);
+			//transform: translateZ(60px);
+			background: rgba($color: $color-blue, $alpha: 0.8);
 			box-shadow: 0px 10px 30px 0px rgba(66, 179, 255, 0.3);
 		}
 		a:active {
-			transform: translateZ(0px);
+			//transform: translateZ(0px);
 			box-shadow: 0px 10px 20px 0px rgba(66, 179, 255, 0);
 		}
 	}
@@ -467,11 +531,11 @@ header {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		transform: translateZ(70px);
 		@media (min-width: 992px) {
 			padding: 20px 20px 20px 0px;
 		}
 		img {
-			transform: translateZ(70px);
 			max-width: 70%; // height: auto;
 			outline: 1px solid transparent;
 			@media (min-width: 576px) {
@@ -578,7 +642,7 @@ header {
 	@media (min-width: 576px) {
 		transform: perspective(1000);
 	}
-	margin: 10px 0px;
+	margin: 20px 0px;
 	.grid {
 		height: 100%;
 		width: 100%;
@@ -645,6 +709,12 @@ header {
 				}
 			}
 		}
+	}
+}
+.res {
+	display: block;
+	@media (min-width: 768px) {
+		display: none;
 	}
 }
 // ///////////////Cheat sheet ////////////////////////////

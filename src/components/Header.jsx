@@ -1,14 +1,25 @@
-import React, { Fragment, Component, } from 'react'
+import React, { Fragment } from 'react'
 import { connect, } from 'react-redux'
 import SearchBar from './SearchBar'
 import { NavLink, withRouter } from 'react-router-dom'
 import { logout } from '../actions/userActions'
+import profile from '../assets/images/profile2.jpg'
 
 const MobileNav = ({ active }) => {
     if (!active)
         return null
 
-    return <nav className="navbar-mobile d-sm-none"><NavLink to='fdsaf'>Hello</NavLink></nav>
+    return <nav className='navbar-mobile d-sm-none'><NavLink to='fdsaf'>Hello</NavLink></nav>
+}
+
+const Profile = ({image, name, logout}) =>  {
+    return (
+        <div className='profile'>
+            <NavLink to='/account'>{name}</NavLink>
+            <img src={image} alt="" />
+            <a onClick={logout}>x</a>
+        </div>
+    )
 }
 
 const DesktopNav = ({ active, loggedIn, logout}) => {
@@ -16,8 +27,8 @@ const DesktopNav = ({ active, loggedIn, logout}) => {
         return null
 
     return (
-        <nav className="navbar-desktop d-sm-flex">
-            {loggedIn ? <a href='' className="btn" onClick={logout}>Logout</a> : <NavLink className="btn" to='/auth/login'>Login</NavLink>}
+        <nav className='navbar-desktop d-sm-flex'>
+            {loggedIn ? <Profile name='Roland' image={profile} logout={logout}/> : <NavLink className='btn' to='/auth/login'>Login</NavLink>}
         </nav>
     )
 }
@@ -28,9 +39,9 @@ const Hamburger = ({ active, onClick }) => {
 
     return (
         <div className='hamburger-nav d-sm-none'>
-            <button onClick={onClick} className="hamburger hamburger--elastic" type="button">
-                <span className="hamburger-box">
-                    <span className="hamburger-inner"></span>
+            <button onClick={onClick} className='hamburger hamburger--elastic' type='button'>
+                <span className='hamburger-box'>
+                    <span className='hamburger-inner'></span>
                 </span>
             </button>
         </div>
@@ -65,9 +76,9 @@ const Header = ({ dispatch, loggedIn, isMobileNavActive, isHeaderActive }) => {
 
                         <Hamburger active={isHeaderActive} onClick={hamburger}  />
 
-                        <MobileNav active={isMobileNavActive && isHeaderActive} />
+                        <MobileNav active={isMobileNavActive} />
 
-                        <DesktopNav active={isHeaderActive} loggedIn={loggedIn} logout={logoutClick}/>
+                        <DesktopNav active={true} loggedIn={loggedIn} logout={logoutClick}/>
 
                     </div>
                 </div>

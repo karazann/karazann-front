@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router'
+import { Switch, Route, Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import GoogleLogin from 'react-google-login'
 
@@ -74,6 +74,7 @@ class AuthPage extends Component {
                     <Switch>
                         <Route path='/auth/login' component={LoginForm} />
                         <Route path='/auth/register' component={RegisterForm} />
+                        <Route render={() => (<Redirect to='/404' />)} />
                     </Switch>
                 </div>
             </section>

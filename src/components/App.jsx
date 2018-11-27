@@ -1,12 +1,16 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
+
+import PrivateRoute from './PrivateRoute'
 
 import Body from './Body'
+import Header from './Header'
+
 import HomePage from './Home/HomePage'
 import AuthPage from './Auth/AuthPage'
 import ProductPage from './Product/ProductPage'
-import Header from './Header'
+import AccountPage from './Account/AccountPage'
 
 import { fetchProducts } from '../actions/productActions'
 
@@ -16,25 +20,36 @@ class App extends Component {
 
 	componentWillMount() {
 		this.props.dispatch(fetchProducts())
+		window.addEventListener('resize', () => {
+			this.props.dispatch({
+				type: 'SCREEN_RESIZE',
+				payload: window.innerWidth
+			})
+		})
 	}
 
 	render() {
 		return (
-			<Switch>
-				<Body isBlue={this.props.isBlue} error={this.props.hasError}>
-					<Header />
+
+			<Body isBlue={this.props.isBlue} error={this.props.hasError}>
+				<Header />
+				<Switch>
 					<Route exact path='/' component={HomePage} />
-					<Route path='/auth' component={AuthPage} />
-					<Route path='/product/:id' component={ProductPage}/>
-				</Body>
-			</Switch>
-		);
+					<Route path='/auth/:action' component={AuthPage} />
+					<Route path='/product/:id' component={ProductPage} />
+					<PrivateRoute path='/account' loggedIn={this.props.loggedIn} component={AccountPage} />
+					<Route path='/404' render={() => (<div>404</div>)} />
+					<Route render={() => (<Redirect to='/404' />)} />
+				</Switch>
+			</Body>
+		)
 	}
 }
 
 const mapStateToProps = state => {
 	return {
 		isBlue: state.ui.isBlue,
+		loggedIn: state.auth.loggedIn,
 		hasError: state.auth.error
 	}
 }

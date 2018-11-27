@@ -10,8 +10,8 @@ class Tilt extends PureComponent {
     }
 
     componentDidMount() {
-        if (window.innerWidth > 576 && !isMobile ) {
-            VanillaTilt.init(this.tiltElement.current, this.props.options)
+        if (window.innerWidth > 576 && !isMobile) {
+            //VanillaTilt.init(this.tiltElement.current, this.props.options)
         }
     }
 
