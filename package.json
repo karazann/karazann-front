@@ -26,6 +26,7 @@
 		"babel-preset-react": "^6.24.1",
 		"cross-env": "^5.2.0",
 		"parcel-bundler": "^1.10.3",
+		"postcss-modules": "^1.4.1",
 		"pug": "^2.0.3",
 		"redux-devtools-extension": "^2.13.5",
 		"s3-deploy": "^1.1.4",

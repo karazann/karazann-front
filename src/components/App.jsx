@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
 
 import Body from './Body'
-import Header from './Header'
+import Header from './Header/Header'
 
 import HomePage from './Home/HomePage'
 import AuthPage from './Auth/AuthPage'
@@ -30,9 +30,8 @@ class App extends Component {
 
 	render() {
 		return (
-
 			<Body isBlue={this.props.isBlue} error={this.props.hasError}>
-				<Header />
+				<Header search={this.props.search} loggedIn={this.props.loggedIn} mobileNavOpen={this.props.mobileNavOpen} />
 				<Switch>
 					<Route exact path='/' component={HomePage} />
 					<Route path='/auth/:action' component={AuthPage} />
@@ -49,7 +48,9 @@ class App extends Component {
 const mapStateToProps = state => {
 	return {
 		isBlue: state.ui.isBlue,
+		search: state.ui.search,
 		loggedIn: state.auth.loggedIn,
+		mobileNavOpen: state.ui.mobileNavOpen,
 		hasError: state.auth.error
 	}
 }

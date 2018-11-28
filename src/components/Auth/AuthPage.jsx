@@ -7,6 +7,8 @@ import { login, register, loginGoogle } from '../../actions/userActions'
 
 import AuthForm from './AuthForm'
 
+import './AuthPage.scss'
+
 let LoginForm = ({ dispatch }) => {
     const clientId = "321131066814-02msnaku7ue8dm40n4ic5v14lhmmp1u1.apps.googleusercontent.com"
 
