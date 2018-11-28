@@ -1,0 +1,63 @@
+@import "variables";
+
+body {
+	font-family: $font-stack;
+	color: $font-color;
+	background: $color-background;
+}
+
+.d-grid {
+	display: grid;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+input,
+select,
+textarea,
+button {
+	font-family: inherit;
+}
+
+button:focus,
+textarea:focus,
+input:focus {
+	outline: none;
+}
+
+@mixin card-base {
+    border-radius: $roundness-md;
+    background: white;
+    box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
+}
+
+@mixin tilt-base {
+	@if $tilt-enabled {
+		transform-style: preserve-3d;
+		transform: perspective(1000);
+	} @else {
+        transform-style: flat;
+    }
+}
+
+.tag {
+    @each $name, $value in $color-list {
+        &.#{"" + $name} {
+            color: $value;
+            background: rgba($color: $value, $alpha: 0.3);
+            box-shadow: 10px
+                10px
+                20px
+                0
+                rgba($color: $value, $alpha: 0.15);
+        }
+    }
+    display: inline;
+    margin: 0 10px 0 0;
+    padding: 6px 12px;
+    border-radius: $roundness-sm;
+    font-size: 12px;
+    text-transform: capitalize;
+}

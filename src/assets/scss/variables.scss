@@ -1,0 +1,40 @@
+$tilt-enabled: false !default;
+
+$font-stack: 'SansSerifFLF';
+$font-color: #000;
+$color-background: #F7F8FC;
+
+$color-red: #fc5c65;
+$color-orange: #fd9644;
+$color-yellow: #FFB64D;
+$color-blue: #5ba9ef;
+$color-green: #3cda8b;
+$color-purple: #a55eea;
+
+$color-dark-red: #e94d55;
+$color-dark-blue: #4398e3;
+
+$roundness-lg: 15px;
+$roundness-md: 10px;
+$roundness-sm: 5px;
+
+$color-list: (
+	red: $color-red,
+	orange: $color-orange,
+	yellow: $color-yellow,
+	green: $color-green,
+	blue: $color-blue,
+	purple: $color-purple
+);
+
+/* For hamburger icons */
+
+$hamburger-padding-x: 6px;
+$hamburger-padding-y: 6px;
+$hamburger-types: (elastic);
+
+$hamburger-layer-width: 30px;
+$hamburger-layer-height: 3px;
+$hamburger-hover-opacity: 1;
+$hamburger-layer-color: white !default;
+$hamburger-active-layer-color: #5ba9ef !default;

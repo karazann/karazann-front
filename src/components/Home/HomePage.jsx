@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from 'react'
-
-import ProductList from './ProductList'
-
 import { connect } from 'react-redux'
 
+import ProductList from './ProductList'
 import Hero from './Hero'
+
+import './HomePage.scss'
 
 const HomePage = ({ products, loading, error, hasFilter }) => {
 
     if (loading)
         return (
             <div className='spinner' >
-                <div></div>
-                <div></div>
+                <img src="/logo-white.svg" alt="karazann-logo" />
+                <img src="/logo-white.svg" alt="karazann-logo" />
             </div>
         )
 
@@ -22,7 +22,6 @@ const HomePage = ({ products, loading, error, hasFilter }) => {
 
                 {hasFilter ? null : <Hero />}
 
-                
                 <ProductList products={products} />
             </section>
         </section>

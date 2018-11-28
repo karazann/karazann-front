@@ -4,8 +4,8 @@ const initialState = {
     isMobile: window.innerWidth <= 768,
     screenWidth: typeof window === 'object' ? window.innerWidth : null,
     isBlue: false,
-    isMobileNavActive: false,
-    isHeaderActive: true,
+    mobileNavOpen: false,
+    search: true,
 }
 
 export default (state = initialState, action) => {
@@ -19,12 +19,12 @@ export default (state = initialState, action) => {
         case 'SET_HEADER_STATE':
             return {
                 ...state,
-                isHeaderActive: action.payload
+                search: action.payload
             }
         case 'TOGGLE_MOBILE_NAV': 
             return {
                 ...state,
-                isMobileNavActive: !state.isMobileNavActive
+                mobileNavOpen: !state.mobileNavOpen
             }
         case SET_DEFAULT_BACKGROUND:
             return {
