@@ -39,6 +39,17 @@ const ProfilePage = props => {
     )
 }
 
+const BalancePage = props => {
+    return (
+        <div className='col-12 col-md-9'>
+            <div className='account-page'>
+                <NavLink className='res' to='/account'>Back</NavLink>
+                balance
+        </div>
+        </div>
+    )
+}
+
 class AccountPage extends Component {
 
     componentDidMount() {
@@ -72,6 +83,7 @@ class AccountPage extends Component {
                         </Condition>
                         <Switch>
                             <Route path='/account/profile' component={ProfilePage} />
+                            <Route path='/account/balance' component={BalancePage} />
                             <Route path='/account/settings' component={SettingsPage} />
                         </Switch>
                     </div>
