@@ -7,13 +7,13 @@
 image: node:8.10
 
 pipelines:
-	branches:
-		development:
-			- step:
-					caches:
-						- node
-					image: atlassian/pipelines-awscli 
-					script: 
-						- npm install
-						- npm test
-						- npm run deploy
+  branches:
+    development:
+      - step:
+          caches:
+            - node
+          image: atlassian/pipelines-awscli 
+          script: 
+            - npm install
+            - npm test
+            - npm run deploy
