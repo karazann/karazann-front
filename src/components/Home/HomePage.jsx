@@ -5,14 +5,15 @@ import ProductList from './ProductList'
 import Hero from './Hero'
 
 import './HomePage.scss'
+import logo from '../../assets/images/logo-white.svg'
 
 const HomePage = ({ products, loading, error, hasFilter }) => {
 
     if (loading)
         return (
             <div className='spinner' >
-                <img src="/logo-white.svg" alt="karazann-logo" />
-                <img src="/logo-white.svg" alt="karazann-logo" />
+                <img src={logo} alt="karazann-logo" />
+                <img src={logo} alt="karazann-logo" />
             </div>
         )
 

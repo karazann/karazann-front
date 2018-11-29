@@ -5,7 +5,8 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { logout } from '../../actions/userActions'
 import profile from '../../assets/images/profile2.jpg'
 
-import style from './Header.scss'
+import './Header.scss'
+import logo from '../../assets/images/logo-white.svg'
 
 const Hamburger = ({ onClick }) => {
     return (
@@ -27,7 +28,7 @@ const MobileNav = ({ open, toggle }) => {
     return (<Fragment>
         <Hamburger onClick={toggle} />
         <nav className={classList}>
-            <NavLink to='fdsaf'>Hello</NavLink>
+            <NavLink to='/test'>Hello</NavLink>
         </nav>
     </Fragment>)
 }
@@ -72,7 +73,7 @@ const Header = ({ dispatch, loggedIn, mobileNavOpen, search }) => {
 
                         <div className='brand'>
                             <NavLink to='/'>
-                                <img src="/logo-white.svg" alt="karazann-logo" />
+                                <img src={logo} alt="karazann-logo" />
                                 <h1>Karazann.</h1>
                             </NavLink>
                         </div>

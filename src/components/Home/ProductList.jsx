@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import ProductCard from './ProductCard'
 import ContentHeader from '../ContentHeader'
 
+import productimg from '../../assets/images/box.svg'
+
 const ProductList = ({ products }) => {
 
     if (products.length === 0)
@@ -9,7 +11,7 @@ const ProductList = ({ products }) => {
 
     return (
         <Fragment>
-            <ContentHeader title='Product' img='/box.svg' />
+            <ContentHeader title='Product' img={productimg} />
             <div className='row'>
                 {products.map((product =>
                     <ProductCard key={product.title} title={product.title} image={product.imageUrl} progress={product.price} />

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Condition from './Condition'
 import ContentHeader from '../ContentHeader'
 
+import account from '../../assets/images/account.svg'
 import './AccountPage.scss'
 
 const Menu = () => {
@@ -66,7 +67,7 @@ class AccountPage extends Component {
         return (
             <section className='page'>
                 <div className='container'>
-                    <ContentHeader title='Account' img='/account.svg' />
+                    <ContentHeader title='Account' img={account} />
                     <div className="row">
                         <Condition is={!this.props.mobile}>
                             <Route exact path='/account' component={Menu} />

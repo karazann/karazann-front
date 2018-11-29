@@ -12,6 +12,7 @@ pipelines:
     - step:
         caches:
         - node
+        - pip
         script: 
         - npm install
         - npm test
