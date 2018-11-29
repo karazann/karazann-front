@@ -4,7 +4,7 @@
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
 
-image: node:6.9.4
+image: node:8
 
 pipelines:
   branches:
@@ -12,8 +12,11 @@ pipelines:
     - step:
         caches:
         - node
-        image: atlassian/pipelines-awscli 
         script: 
         - npm install
         - npm test
+        - apt-get update && apt-get install -y python-dev
+        - curl -O https://bootstrap.pypa.io/get-pip.py
+        - python get-pip.py
+        - pip install awscli
         - npm run deploy
