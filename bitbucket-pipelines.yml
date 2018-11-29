@@ -4,20 +4,16 @@
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
 
-image: node:6.9.4
+image: node:8.10
 
 pipelines:
-	default:
-		- step:
-			caches:
-				- node
-				script: 
-					- npm install
-					- npm test
-		- step:
-			name: Deploy to prod
-			image: aneitayang/aws-cli:1.0
-			deployment: production
-			trigger: manual
-			script:
-				- npm run build
+	branches:
+		development:
+			- step:
+					caches:
+						- node
+					image: atlassian/pipelines-awscli 
+					script: 
+						- npm install
+						- npm test
+						- npm run deploy
