@@ -29,12 +29,6 @@ class ProductPage extends Component {
                                 <a href="#"><img src="/thunder.svg" alt=""/> <p>Instant Buy</p></a>
                                 <a href="#">Contribute</a>
                             </div>
-                            {/*<div className="title"></div>
-                            <div className="image"></div>
-                            <div className="buttons">
-                                <a href="#">Instant Buy</a>
-                                <a href="#">Contribute</a>
-        </div>*/}
                         </div>
                     </Tilt>
                 </div>

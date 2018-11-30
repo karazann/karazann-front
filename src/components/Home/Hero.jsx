@@ -8,7 +8,7 @@ import xbox from '../../assets/images/xboxx.png'
 import star from '../../assets/images/star.svg'
 
 const Hero = () => {
-    const tags = [{color: 'green', name: 'New'}, {color: 'yellow', name: 'Popular'}]
+    const tags = [{color: 'green', name: 'New'}, {color: 'orange', name: 'Popular'}]
     return (
         <Fragment>
             <ContentHeader title='Popular' img={star} />

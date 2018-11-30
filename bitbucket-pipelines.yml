@@ -8,7 +8,7 @@ image: node:8
 
 pipelines:
   branches:
-    develop:
+    master:
     - step:
         caches:
         - node

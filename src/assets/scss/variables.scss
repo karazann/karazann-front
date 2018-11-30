@@ -10,12 +10,13 @@ $color-yellow: #ffd361;
 $color-blue: #5ba9ef;
 $color-green: #3cda8b;
 $color-purple: #a55eea;
+$color-grey: rgb(165, 165, 177);
 
 $color-dark-red: #e94d55;
 $color-dark-blue: #4398e3;
 
 $roundness-lg: 15px;
-$roundness-md: 10px;
+$roundness-md: 7px;
 $roundness-sm: 5px;
 
 $color-list: (
@@ -24,7 +25,8 @@ $color-list: (
 	yellow: $color-yellow,
 	green: $color-green,
 	blue: $color-blue,
-	purple: $color-purple
+	purple: $color-purple,
+	grey: $color-grey
 );
 
 /* For hamburger icons */
