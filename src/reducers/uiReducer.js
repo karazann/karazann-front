@@ -5,7 +5,7 @@ const initialState = {
     screenWidth: typeof window === 'object' ? window.innerWidth : null,
     isBlue: false,
     mobileNavOpen: false,
-    search: true,
+    search: false,
 }
 
 export default (state = initialState, action) => {
@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
                 isMobile: action.payload <= 768,
                 screenWidth: action.payload
             }
-        case 'SET_HEADER_STATE':
+        case 'SET_SEARCH':
             return {
                 ...state,
                 search: action.payload

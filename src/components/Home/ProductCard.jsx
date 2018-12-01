@@ -28,23 +28,13 @@ class ProductCard extends Component {
 
     tick() {
         const deadline = moment().endOf('day').toDate();
-
         this.setState({ time: timeLeft(deadline) })
-        console.log(moment().endOf('day').add(1, 'ms').toString())
-        console.log(moment().endOf('week').toString())
-        console.log(moment().endOf('month').toString())
-    }
-
-    test(date) {
-        var lastday = date.getDate() - (date.getDay() - 1) + 6;
-        return new Date(date.setDate(lastday));
     }
 
     render() {
-
         return (
             <div className="product-card-container">
-                    <NavLink to="/product/blahblah">
+                    <NavLink to={`/product/${this.props.slug}`}>
                 <Tilt className="product-card" options={{ speed: 1500, scale: 1.03, max: 15 }}>
 
                         <div className="title">

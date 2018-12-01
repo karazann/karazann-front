@@ -18,16 +18,6 @@ import '../assets/scss/style.scss'
 
 class App extends Component {
 
-	componentWillMount() {
-		this.props.dispatch(fetchProducts())
-		window.addEventListener('resize', () => {
-			this.props.dispatch({
-				type: 'SCREEN_RESIZE',
-				payload: window.innerWidth
-			})
-		})
-	}
-
 	render() {
 		return (
 			<Body isBlue={this.props.isBlue} error={this.props.hasError}>
@@ -35,7 +25,7 @@ class App extends Component {
 				<Switch>
 					<Route exact path='/' component={HomePage} />
 					<Route path='/auth/:action' component={AuthPage} />
-					<Route path='/product/:id' component={ProductPage} />
+					<Route path='/product/:slug' component={ProductPage} />
 					<PrivateRoute path='/account' loggedIn={this.props.loggedIn} component={AccountPage} />
 					<Route path='/404' render={() => (<div>404</div>)} />
 					<Route render={() => (<Redirect to='/404' />)} />

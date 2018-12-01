@@ -1,7 +1,15 @@
-import { FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_FILTER } from '../actions/types'
+import {
+    FETCH_PRODUCT_REQUEST,
+    FETCH_PRODUCT_SUCCESS,
+    FETCH_PRODUCT_FAILURE,
+    SET_FILTER,
+    SELECT_PRODUCT,
+    UNSELECT_PRODUCT
+} from '../actions/types'
 
 const initialState = {
     items: [],
+    selected: '',
     loading: false,
     error: null,
     filter: ''
@@ -9,6 +17,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case SELECT_PRODUCT:
+            return {
+                ...state,
+                selected: action.payload.slug
+            }
         case SET_FILTER:
             return {
                 ...state,

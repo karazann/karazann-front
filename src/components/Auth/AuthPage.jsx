@@ -61,12 +61,10 @@ class AuthPage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'SET_BLUE_BACKGROUND' })
-        this.props.dispatch({ type: 'SET_HEADER_STATE', payload: false })
     }
 
     componentWillUnmount() {
         this.props.dispatch({ type: 'SET_DEFAULT_BACKGROUND' })
-        this.props.dispatch({ type: 'SET_HEADER_STATE', payload: true })
     }
 
     render() {

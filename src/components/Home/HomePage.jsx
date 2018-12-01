@@ -7,24 +7,32 @@ import Hero from './Hero'
 import './HomePage.scss'
 import logo from '../../assets/images/logo-white.svg'
 
-const HomePage = ({ products, loading, error, hasFilter }) => {
+class HomePage extends Component {
 
-    if (loading)
+    componentWillMount() {
+        this.props.dispatch({ type: 'SET_SEARCH', payload: true })
+    }
+
+    componentWillUnmount() {
+        this.props.dispatch({ type: 'SET_SEARCH', payload: false })
+    }
+
+    render() {
+        if (this.props.loading)
+            return (
+                <div className='spinner' >
+                    <img src={logo} alt="karazann-logo" />
+                    <img src={logo} alt="karazann-logo" />
+                </div>
+            )
+
         return (
-            <div className='spinner' >
-                <img src={logo} alt="karazann-logo" />
-                <img src={logo} alt="karazann-logo" />
-            </div>
+            <section className="page">
+                {this.props.hasFilter ? null : <Hero />}
+                <ProductList products={this.props.products} />
+            </section>
         )
-
-    return (
-        <section className="page">
-
-            {hasFilter ? null : <Hero />}
-
-            <ProductList products={products} />
-        </section>
-    )
+    }
 }
 
 const filterProducts = (products, filter) => {

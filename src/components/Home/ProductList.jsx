@@ -14,7 +14,14 @@ const ProductList = ({ products }) => {
             <ContentHeader title='Product' img={productimg} />
             <div className='row'>
                 {products.map((product =>
-                    <ProductCard key={product.title} title={product.title} image={product.imageUrl} progress={Math.floor(Math.random()*(100-0+1)+0)} price={Math.round(Math.random()*1000)}/>
+                    <ProductCard
+                        key={product._id}
+                        title={product.title}
+                        slug={product.slug}
+                        image={product.imageUrl}
+                        progress={Math.floor(Math.random() * (100 - 0 + 1) + 0)}
+                        price={Math.round(Math.random() * 1000)}
+                    />
                 ))}
             </div>
         </Fragment>

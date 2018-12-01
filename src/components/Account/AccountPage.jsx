@@ -6,7 +6,6 @@ import ContentHeader from '../ContentHeader'
 
 import account from '../../assets/images/account.svg'
 import style from './AccountPage.scss'
-console.log(style)
 
 const Menu = () => {
     return (
@@ -57,11 +56,6 @@ class AccountPage extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0)
-        this.props.dispatch({ type: 'SET_HEADER_STATE', payload: false })
-    }
-
-    componentWillUnmount() {
-        this.props.dispatch({ type: 'SET_HEADER_STATE', payload: true })
     }
 
     render() {
