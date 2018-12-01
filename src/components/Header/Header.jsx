@@ -5,12 +5,12 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { logout } from '../../actions/userActions'
 import profile from '../../assets/images/profile2.jpg'
 
-import './Header.scss'
+import style from './Header.scss'
 import logo from '../../assets/images/logo-white.svg'
 
 const Hamburger = ({ onClick }) => {
     return (
-        <div className='hamburger-nav d-sm-none'>
+        <div className='hamburger-nav'>
             <button onClick={onClick} className='hamburger hamburger--elastic' type='button'>
                 <span className='hamburger-box'>
                     <span className='hamburger-inner'>
@@ -23,7 +23,7 @@ const Hamburger = ({ onClick }) => {
 
 const MobileNav = ({ open, toggle }) => {
 
-    const classList = open ? 'mobile-popup d-sm-none bounce-in' : 'mobile-popup d-sm-none hidden'
+    const classList = open ? 'mobile-popup bounce-in' : 'mobile-popup hidden'
 
     return (<Fragment>
         <Hamburger onClick={toggle} />
@@ -45,7 +45,7 @@ const Profile = ({ image, name, logout }) => {
 
 const DesktopNav = ({ loggedIn, logout }) => {
     return (
-        <nav className='navbar-desktop d-sm-flex'>
+        <nav className='navbar-desktop'>
             {loggedIn ?
                 <Profile name='Roland' image={profile} logout={logout} /> :
                 <NavLink className='btn' to='/auth/login'>Login</NavLink>}
@@ -68,9 +68,7 @@ const Header = ({ dispatch, loggedIn, mobileNavOpen, search }) => {
     return (
         <Fragment>
             <header className='nav'>
-                <div className='container'>
-                    <div className='box'>
-
+                <div className='box'>
                         <div className='brand'>
                             <NavLink to='/'>
                                 <img src={logo} alt="karazann-logo" />
@@ -84,7 +82,6 @@ const Header = ({ dispatch, loggedIn, mobileNavOpen, search }) => {
 
                         <DesktopNav loggedIn={loggedIn} logout={logoutClick} />
 
-                    </div>
                 </div>
             </header>
         </Fragment>

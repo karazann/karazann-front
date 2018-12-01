@@ -1,10 +1,19 @@
-@import '../../assets/scss/base';
+@import "../../assets/scss/base";
+
+.account-menu-container {
+	@include make-col-ready;
+	@include make-col(12);
+	@include media-breakpoint-up(md) {
+		@include make-col(3);
+	}
+}
 
 .account-menu {
-    @include card-base;
-	padding: 30px 0;
+	@include card-base;
+
 	display: flex;
-    flex-direction: column;
+	padding: 30px 0;
+	flex-direction: column;
 
 	a {
 		padding: 15px 0;
@@ -13,33 +22,30 @@
 		width: 100%;
 		border-right: 3px solid transparent;
 		transition: 0.1s ease-in-out;
-        margin: 0 0 10px 0;
-        position: relative;
-        //box-sizing: content-box;
-        color: black;
-
-		@media (min-width: 768px) {
-			box-shadow: none;
-		}
+		margin: 0 0 10px 0;
+		position: relative;
+		color: black;
 
 		&.active {
 			color: $color-blue;
-			//background: rgba($color: $color-blue, $alpha: 0.2);
-            border-right: 3px solid $color-blue;
-            box-shadow: 20px 0px 20px -10px rgba(66, 179, 255, 0.2);
+			border-right: 3px solid $color-blue;
+			box-shadow: 20px 0px 20px -10px rgba(66, 179, 255, 0.2);
 		}
 
 		&:hover {
-			//transform: scale(1.03);
 			color: $color-blue;
-		}
-
-		&:active {
-			transform: scale(1);
-			box-shadow: none;
 		}
 	}
 }
+
+.account-page-container {
+	@include make-col-ready;
+	@include make-col(12);
+	@include media-breakpoint-up(md) {
+		@include make-col(9);
+	}
+}
+
 .account-page {
 	border-radius: $roundness-md;
 	background: #fff;

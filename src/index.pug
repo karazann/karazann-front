@@ -3,9 +3,17 @@ html(lang='en')
 	head
 		title Karazann.
 		meta(charset='utf-8')
-		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		
+		meta(name="theme-color", content="#5BA9EF")
+		
+		meta(name="apple-mobile-web-app-status-bar-style", content="translucent")
+		meta(name="apple-mobile-web-app-capable", content="yes")
+
+		link(href='./manifest.webmanifest', rel='manifest')
+		link(href="./assets/images/logo.png", rel="apple-touch-icon")
 		link(href='./favicon.ico', rel='icon', type='image/x-icon')
-		link(href='./assets/scss/bootstrap-grid.min.css', rel='stylesheet')
 	body
 		div#app
 		script(src='./index.js', type='text/javascript')

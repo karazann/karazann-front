@@ -19,12 +19,10 @@ const HomePage = ({ products, loading, error, hasFilter }) => {
 
     return (
         <section className="page">
-            <section className="container">
 
-                {hasFilter ? null : <Hero />}
+            {hasFilter ? null : <Hero />}
 
-                <ProductList products={products} />
-            </section>
+            <ProductList products={products} />
         </section>
     )
 }

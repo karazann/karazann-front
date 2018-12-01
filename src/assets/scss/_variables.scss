@@ -39,4 +39,6 @@ $hamburger-layer-width: 30px;
 $hamburger-layer-height: 3px;
 $hamburger-hover-opacity: 1;
 $hamburger-layer-color: white !default;
-$hamburger-active-layer-color: #5ba9ef !default;
+$hamburger-active-layer-color: $color-blue !default;
+
+$enable-grid-classes: false;

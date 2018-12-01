@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 
 const HeroCard = ({title, description, imageUrl, tags}) => {
     return (
-        <div className="col-12 col-lg-6 d-grid">
+        <div className="hero-card-container">
             <Tilt className="hero-card" options={{ speed: 1500, scale: 1.00, max: 10, perspective: 1500 }} >
 
                 <div className="tags">

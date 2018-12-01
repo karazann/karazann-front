@@ -5,49 +5,50 @@ import Condition from './Condition'
 import ContentHeader from '../ContentHeader'
 
 import account from '../../assets/images/account.svg'
-import './AccountPage.scss'
+import style from './AccountPage.scss'
+console.log(style)
 
 const Menu = () => {
     return (
-        <div className='col-12 col-md-3'>
-            <div className='account-menu'>
+        <div className="account-menu-container">
+            <nav className={'account-menu'}>
                 <NavLink to='/account/profile'>Profile</NavLink>
                 <NavLink to='/account/balance'>Balance</NavLink>
                 <NavLink to='/account/settings'>Settings</NavLink>
-            </div>
+            </nav>
         </div>
     )
 }
 
 const SettingsPage = props => {
     return (
-        <div className='col-12 col-md-9'>
-            <div className="account-page">
+        <div className="account-page-container">
+            <section className="account-page">
                 <NavLink className='res' to='/account'>Back</NavLink>
                 settings
-            </div>
+            </section>
         </div>
     )
 }
 
 const ProfilePage = props => {
     return (
-        <div className='col-12 col-md-9'>
-            <div className='account-page'>
+        <div className="account-page-container">
+            <section className='account-page'>
                 <NavLink className='res' to='/account'>Back</NavLink>
                 profile
-        </div>
+            </section>
         </div>
     )
 }
 
 const BalancePage = props => {
     return (
-        <div className='col-12 col-md-9'>
-            <div className='account-page'>
+        <div className="account-page-container">
+            <section className='account-page'>
                 <NavLink className='res' to='/account'>Back</NavLink>
                 balance
-        </div>
+            </section>
         </div>
     )
 }
@@ -66,22 +67,20 @@ class AccountPage extends Component {
     render() {
         return (
             <section className='page'>
-                <div className='container'>
-                    <ContentHeader title='Account' img={account} />
-                    <div className="row">
-                        <Condition is={!this.props.mobile}>
-                            <Route exact path='/account' component={Menu} />
-                        </Condition>
-                        <Condition is={this.props.mobile}>
-                            <Route component={Menu} />
-                            <Route exact path='/account' render={() => (<Redirect to='/account/profile' />)} />
-                        </Condition>
-                        <Switch>
-                            <Route path='/account/profile' component={ProfilePage} />
-                            <Route path='/account/balance' component={BalancePage} />
-                            <Route path='/account/settings' component={SettingsPage} />
-                        </Switch>
-                    </div>
+                <ContentHeader title='Account' img={account} />
+                <div className="row">
+                    <Condition is={!this.props.mobile}>
+                        <Route exact path='/account' component={Menu} />
+                    </Condition>
+                    <Condition is={this.props.mobile}>
+                        <Route component={Menu} />
+                        <Route exact path='/account' render={() => (<Redirect to='/account/profile' />)} />
+                    </Condition>
+                    <Switch>
+                        <Route path='/account/profile' component={ProfilePage} />
+                        <Route path='/account/balance' component={BalancePage} />
+                        <Route path='/account/settings' component={SettingsPage} />
+                    </Switch>
                 </div>
             </section>
         )

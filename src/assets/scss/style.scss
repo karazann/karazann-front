@@ -1,9 +1,5 @@
-@import "reset";
 @import "base";
 @import "fonts";
-@import "animations";
-
-@import "./hamburgers/hamburgers.scss";
 
 .blue-background {
 	background: $color-blue;
@@ -90,9 +86,16 @@
 	min-height: 100vh;
 }
 .page {
+	@include make-container;
+	@include make-container-max-widths;
+
 	padding-top: 40px;
 	height: 100%;
 	transition: 0.1s;
+}
+
+.row {
+	@include make-row;
 }
 
 .ticket {

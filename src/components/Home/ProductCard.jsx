@@ -27,8 +27,12 @@ class ProductCard extends Component {
     }
 
     tick() {
-        const deadline = moment().endOf('week').toDate();
+        const deadline = moment().endOf('day').toDate();
+
         this.setState({ time: timeLeft(deadline) })
+        console.log(moment().endOf('day').add(1, 'ms').toString())
+        console.log(moment().endOf('week').toString())
+        console.log(moment().endOf('month').toString())
     }
 
     test(date) {
@@ -39,9 +43,9 @@ class ProductCard extends Component {
     render() {
 
         return (
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-grid">
-                <NavLink to="/product/blahblah">
-                    <Tilt className="product-card" options={{ speed: 1500, scale: 1.03, max: 15 }}>
+            <div className="product-card-container">
+                    <NavLink to="/product/blahblah">
+                <Tilt className="product-card" options={{ speed: 1500, scale: 1.03, max: 15 }}>
 
                         <div className="title">
                             <h3>{this.props.title}</h3>
@@ -60,8 +64,8 @@ class ProductCard extends Component {
                             </div>
                         </div>
 
-                    </Tilt>
-                </NavLink>
+                </Tilt>
+                    </NavLink>
             </div>
         )
     }
