@@ -1,12 +1,12 @@
-@import "../../assets/scss/base";
-@import "../../assets/scss/animations";
+@import "../../assets/scss/mixins";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/custom-bootstrap";
 
 .nav {
 	width: 100%;
 	background: $color-blue;
 	z-index: 1000;
 	padding: 15px 0;
-	z-index: 10;
 	transition: 0.3s;
 	position: relative;
 	.box {

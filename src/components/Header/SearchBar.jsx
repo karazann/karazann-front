@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setFilter } from '../actions/productActions'
+import { setFilter } from '../../actions/productActions'
 
 const SearchBar = ({dispatch, active, filter}) => {
 
     const onChange = event => {
-        dispatch(setFilter(event.target.value));
+        dispatch(setFilter(event.target.value))
     }
 
     if(!active)
@@ -24,4 +24,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(SearchBar);
+export default connect(mapStateToProps)(SearchBar)

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
 
 import ProductList from './ProductList'
 import Hero from './Hero'
@@ -35,17 +36,24 @@ class HomePage extends Component {
     }
 }
 
-const filterProducts = (products, filter) => {
-    const searchText = filter.toLowerCase().replace(/ +(?= )/g, '');
-    return products.filter(product => product.title.toLowerCase().indexOf(searchText) > -1)
-}
+const getSearchedProducts = createSelector(
+    state => state.products.filter,
+    state => state.products.items,
+    (filter, products) => {
+        if (products) {
+            const searchText = filter.toLowerCase().replace(/ +(?= )/g, '')
+            const product = products.filter(product => product.title.toLowerCase().indexOf(searchText) > -1)
+            return product
+        }
+    }
+)
 
 const mapStateToProps = state => {
     return {
-        products: filterProducts(state.products.items, state.products.filter),
         loading: state.products.loading,
+        products: state.products.loading ? null : getSearchedProducts(state),
         error: state.products.error,
-        hasFilter: state.products.filter != ''
+        hasFilter: state.products.filter !== ''
     }
 }
 

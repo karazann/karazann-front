@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect, } from 'react-redux'
-import SearchBar from '../SearchBar'
+import SearchBar from './SearchBar'
 import { NavLink, withRouter } from 'react-router-dom'
 import { logout } from '../../actions/userActions'
 import profile from '../../assets/images/profile2.jpg'

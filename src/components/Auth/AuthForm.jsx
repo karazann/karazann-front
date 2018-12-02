@@ -5,12 +5,12 @@ const AuthForm = ({ onSubmit, children }) => {
     const handleSubmit = event => {
         event.preventDefault()
 
-        const data = new FormData(event.target);
+        const data = new FormData(event.target)
 
         let object = {}
         data.forEach((value, key) => {
             object[key] = value
-        });
+        })
 
         onSubmit(object)
     }

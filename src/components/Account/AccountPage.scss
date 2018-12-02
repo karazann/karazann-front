@@ -1,4 +1,6 @@
-@import "../../assets/scss/base";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/custom-bootstrap";
+@import "../../assets/scss/mixins";
 
 .account-menu-container {
 	@include make-col-ready;

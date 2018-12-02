@@ -46,6 +46,6 @@ export default (state = initialState, action) => {
                 error: action.payload.error
             }
         default:
-            return state;
+            return state
     }
 }

@@ -1,0 +1,14 @@
+@mixin card-base {
+	border-radius: $roundness-md;
+	background: white;
+	box-shadow: 10px 10px 60px 5px rgba(0, 0, 0, 0.05);
+}
+
+@mixin tilt-base {
+	@if $tilt-enabled {
+		transform-style: preserve-3d;
+		transform: perspective(1000);
+	} @else {
+		transform-style: flat;
+	}
+}

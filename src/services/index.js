@@ -48,7 +48,7 @@ const loginGoogle = (accessToken) => {
 }
 
 const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('token')
 }
 
 const fecthProducts = () => {

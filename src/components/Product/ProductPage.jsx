@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import Tilt from '../Tilt'
 import { createSelector } from 'reselect'
 
+import Slider from '../Slider/Slider'
 
-
-import { SELECT_PRODUCT } from '../../actions/types';
+import './ProductPage.scss'
 
 import thunder from '../../assets/images/thunder.svg'
 import ticket from '../../assets/images/ticket.svg'
@@ -32,8 +32,9 @@ class ProductPage extends Component {
                                 <h2>{this.props.product.title}</h2>
                             </div>
                             <div className="buttons">
-                                <a href="#"><img src={thunder} alt="" /> <p>Instant Buy</p></a>
-                                <a href="#">Contribute</a>
+                                {/*<a href="#"><img src={thunder} alt="" /> <p>Instant Buy</p></a>*/}
+                                <Slider />
+                                <button className='contrubute-btn'>Contribute</button>
                             </div>
                         </div>
                     </Tilt>
@@ -63,4 +64,4 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-export default connect(mapStateToProps)(ProductPage);
+export default withRouter(connect(mapStateToProps)(ProductPage))

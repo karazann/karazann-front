@@ -1,0 +1,94 @@
+@import "../../assets/scss/variables";
+
+.ticket {
+	width: 100%;
+	top: 60px;
+	z-index: 200;
+	transform-style: preserve-3d;
+	transform: perspective(1000);
+	height: 800px;
+	@media (min-width: 768px) {
+		height: 500px;
+	}
+	@media (min-width: 992px) {
+		height: 600px;
+	}
+	.line {
+		position: absolute;
+		border-bottom: 2px dashed rgb(228, 228, 228);
+		left: 25px;
+		height: 70%;
+		width: calc(100% - 50px);
+		@media (min-width: 768px) {
+			top: 25px;
+			left: 0;
+			width: 70%;
+			height: calc(100% - 50px);
+			border-bottom: none;
+			border-right: 3px dashed #EBECF0;
+		}
+	}
+	.ig {
+		position: absolute;
+		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
+		width: 100%;
+        height: 100%;
+        
+        background: white;
+        border-radius: 10px;
+	}
+	div {
+		transform-style: preserve-3d;
+	}
+	.grid {
+		width: 100%;
+		height: 100%;
+		z-index: 300;
+		display: grid;
+		grid-template-columns: 70% 30%;
+        grid-template-rows: 100px 1fr 200px;
+		grid-template-areas:
+        "title none"
+        "image content"
+        "image buttons";
+		//transform-style: preserve-3d;
+		.title {
+			grid-area: title;
+			display: flex;
+			justify-content: center;
+			box-align: center;
+			align-items: center;
+		}
+		.buttons {
+			grid-area: buttons;
+			padding: 25px;
+			display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+			button {
+                background: $color-blue;
+                box-shadow: 0px 10px 20px 0px rgba($color: $color-blue, $alpha: 0.3);
+                border: none;
+				border-radius: $roundness-sm;
+				color: white;
+                line-height: 30px;
+                cursor: pointer;
+				text-align: center;
+				display: flex;
+				justify-content: center;
+				padding: 10px;
+				transition: 0.2s;
+				margin: 10px 0 0 0;
+			}
+			button:hover {
+                box-shadow: 0px 10px 40px 0px rgba($color: $color-green, $alpha: 0.3);
+                opacity: 0.9;
+			}
+			button:active {
+                //transform: translateZ(0);
+                transform: scale(0.98);
+                box-shadow: none;
+			}
+		}
+	}
+}

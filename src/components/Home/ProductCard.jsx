@@ -27,7 +27,7 @@ class ProductCard extends Component {
     }
 
     tick() {
-        const deadline = moment().endOf('day').toDate();
+        const deadline = moment().endOf('day').toDate()
         this.setState({ time: timeLeft(deadline) })
     }
 
