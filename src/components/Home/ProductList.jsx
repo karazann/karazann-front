@@ -20,7 +20,7 @@ const ProductList = ({ products }) => {
                         slug={product.slug}
                         image={product.imageUrl}
                         progress={Math.floor(Math.random() * (100 - 0 + 1) + 0)}
-                        price={Math.round(Math.random() * 1000)}
+                        price={product.price}
                     />
                 ))}
             </div>

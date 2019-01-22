@@ -53,7 +53,6 @@ const DesktopNav = ({ loggedIn, logout }) => {
     )
 }
 
-
 const Header = ({ dispatch, loggedIn, mobileNavOpen, search }) => {
 
     const toggleMobileNav = e => {
@@ -72,7 +71,7 @@ const Header = ({ dispatch, loggedIn, mobileNavOpen, search }) => {
                         <div className='brand'>
                             <NavLink to='/'>
                                 <img src={logo} alt="karazann-logo" />
-                                <h1>Karazann.</h1>
+                                <h1>Karazann</h1>
                             </NavLink>
                         </div>
 

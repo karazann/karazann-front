@@ -1,6 +1,4 @@
 import React, { PureComponent } from 'react'
-import VanillaTilt from 'vanilla-tilt'
-import { isMobile } from 'react-device-detect'
 
 class Tilt extends PureComponent {
     
@@ -10,9 +8,7 @@ class Tilt extends PureComponent {
     }
 
     componentDidMount() {
-        if (window.innerWidth > 576 && !isMobile) {
-            //VanillaTilt.init(this.tiltElement.current, this.props.options)
-        }
+        
     }
 
     render() {

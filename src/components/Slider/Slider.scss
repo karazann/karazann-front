@@ -54,3 +54,16 @@
         }
     }
 }
+
+.slider{
+    .numbers{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    p{
+        font-family: 'Roboto';
+        font-weight: 500;
+        color: rgb(185, 188, 196);
+    }
+}

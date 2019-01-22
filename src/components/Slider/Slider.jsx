@@ -25,7 +25,13 @@ class SliderCustom extends Component {
 
     render() {
         return (
-            <Slider onChange={this.onSliderChange} className='slider' />
+            <div className='slider'>
+                <div className='numbers'>
+                    <p>{this.props.min}$</p>
+                    <p>{this.props.max}$</p>
+                </div>
+                <Slider {...this.props} onChange={this.onSliderChange} value={this.state.value} className='slider' />
+            </div>
         )
     }
 }
