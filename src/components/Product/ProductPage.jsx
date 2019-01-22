@@ -5,15 +5,19 @@ import Tilt from '../Tilt'
 import { createSelector } from 'reselect'
 
 import Slider from '../Slider/Slider'
+import Selector from "../Selector"
 
 import './ProductPage.scss'
 
 import thunder from '../../assets/images/thunder.svg'
-import ticket from '../../assets/images/ticket.svg'
+import xbox from '../../assets/images/xboxx.png'
+import ticket from '../../assets/images/template.png'
 
 class ProductPage extends Component {
 
     render() {
+        const show = false
+
         if (this.props.loading)
             return <div>Loading</div>
 
@@ -24,16 +28,28 @@ class ProductPage extends Component {
             <section className="page">
                 <div className="container">
                     <Tilt className='ticket' options={{ speed: 1500, max: 2, perspective: 1000, speed: 300, transition: false }} >
-                        <img className='d-none d-md-block ig' src={ticket} />
-                        {/*<img className='d-block d-md-none ig' src="/ticket-vertical.svg" />*/}
+
                         <div className="line"></div>
                         <div className="grid">
                             <div className="title">
-                                <h2>{this.props.product.title}</h2>
+                                <h1>{this.props.product.title}</h1>
+                            </div>
+                            <div className='image'>
+                                <div className="wrap">
+                                    <img src={xbox} alt="" />
+                                </div>
+                            </div>
+                            <div className='price'>
+                                
+                            </div>
+                            <div className='options'>
+                                <Selector />
+                                {/*<Selector id='test2' name='test' />*/}
                             </div>
                             <div className="buttons">
                                 {/*<a href="#"><img src={thunder} alt="" /> <p>Instant Buy</p></a>*/}
-                                <Slider />
+
+                                {/*<Slider min={5} max={250} />*/}
                                 <button className='contrubute-btn'>Contribute</button>
                             </div>
                         </div>

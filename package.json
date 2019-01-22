@@ -7,7 +7,7 @@
 		"start": "cross-env NODE_ENV=development parcel src/index.pug --port 8080",
 		"test": "echo 'no test'",
 		"build": "cross-env NODE_ENV=production parcel build src/index.pug --no-source-maps",
-		"deploy": "npm run build && aws s3 cp dist s3://karazann.com --recursive --cache-control 86400"
+		"deploy": "npm run build && aws s3 cp dist s3://karazann.com --recursive --exclude \"report.html\" --cache-control 86400"
 	},
 	"repository": {
 		"type": "git",
@@ -27,6 +27,7 @@
 		"babel-preset-react": "^6.24.1",
 		"cross-env": "^5.2.0",
 		"parcel-bundler": "^1.10.3",
+		"parcel-plugin-bundle-visualiser": "^1.2.0",
 		"postcss-modules": "^1.4.1",
 		"postcss-parcel-import": "0.0.2",
 		"pug": "^2.0.3",
@@ -41,16 +42,15 @@
 		"moment": "^2.22.2",
 		"rc-slider": "^8.6.3",
 		"react": "^16.6.0",
-		"react-device-detect": "^1.6.1",
 		"react-dom": "^16.6.0",
 		"react-google-login": "^3.2.1",
 		"react-redux": "^5.1.0",
 		"react-router-dom": "^4.3.1",
+		"react-select": "^2.1.2",
 		"react-transition-group": "^2.5.0",
 		"redux": "^4.0.1",
 		"redux-thunk": "^2.3.0",
-		"reselect": "^4.0.0",
-		"vanilla-tilt": "^1.5.0"
+		"reselect": "^4.0.0"
 	},
 	"postcss": {
 		"modules": false,

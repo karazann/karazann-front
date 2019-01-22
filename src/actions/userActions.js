@@ -50,6 +50,7 @@ export const register = (username, email, password) => {
         dispatch(registerRequest())
         service.register(username, email, password)
             .then(token => {
+                dispatch(push('../'))
                 dispatch(registerSuccess())
             })
             .catch(error => dispatch(registerFailure(error)))
@@ -72,9 +73,8 @@ export const loginGoogle = (accessToken) => {
         dispatch(loginRequest())
         service.loginGoogle(accessToken)
             .then(token => {
-                console.log(token)
-                dispatch(loginSuccess())
                 dispatch(push('../'))
+                dispatch(loginSuccess())
             }).catch(error => dispatch(loginFailure(error)))
     }
 }
