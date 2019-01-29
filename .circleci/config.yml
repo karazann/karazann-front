@@ -6,7 +6,7 @@ jobs:
         - image: node:8.11.1
       steps:
         - checkout
-        - run: mkdir -p workspace
+        - run: mkdir -p workspace/build
         - restore_cache:
             name: Restore NPM package cache
             key: dependency-cache-{{ checksum "package-lock.json" }}
