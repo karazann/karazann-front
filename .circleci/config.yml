@@ -1,9 +1,8 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker: 
       - image: circleci/node:8.10
-      - image: circleci/python:2.7-jessie
     steps: 
       - checkout
       - run:
@@ -24,15 +23,24 @@ jobs:
       - run:
           name: Build with parcel
           command: npm run build
+  deploy:
+    docker:
+      - image: circleci/python:2.7-jessie
+    steps:
       - run:
           name: Install awscli
           command: sudo pip install awscli
+      #- run:
+      #    name: Deploy to S3
+      #    command: aws s3 sync jekyll/_site/docs s3://circle-production-static-site/docs/ --delete
 workflows: 
-  version: 2.1
+  version: 2
   prod: 
     jobs:
-      - build: 
+      - build:
+      - deploy:
+          requires:
+            - build
           filters:
             branches:
-              only:
-                - develop
+              only: develop
