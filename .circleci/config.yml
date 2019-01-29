@@ -24,4 +24,8 @@ workflows:
   version: 2
   prod: 
     jobs:
-      - build
+      - build: 
+          filters:
+            branches:
+              only:
+                - develop
