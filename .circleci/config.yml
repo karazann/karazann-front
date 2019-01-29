@@ -3,23 +3,23 @@ jobs:
   build:
     docker: 
       - image: circleci/node:8.10
-      steps: 
-        - checkout
-        - run:
-            name: update-npm
-            command: 'sudo npm install -g npm@latest'
-        - restore_cache:
-            key: dependency-cache-{{ checksum "package.json" }}
-        - run:
-            name: Install dependecies
-            command: npm install
-        - save_cache: # special step to save the dependency cache
-            key: dependency-cache-{{ checksum "package.json" }}
-            paths:
-              - ./node_modules
-        - run:
-            name: Run deployment script
-            command: node deploy.js
+    steps: 
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependecies
+          command: npm install
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Run deployment script
+          command: node deploy.js
 workflows: 
   version: 2
   prod: 
