@@ -1,12 +1,15 @@
-version: 2
+version: 2.1
+orbs:
+  aws-s3: circleci/aws-s3@1.0.0
 jobs:
   build:
     docker: 
       - image: circleci/node:8.10
+      - image: circleci/python:2.7-jessie
     steps: 
       - checkout
       - run:
-          name: update-npm
+          name: Update NPM
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
@@ -18,10 +21,16 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Run deployment script
-          command: node deploy.js
+          name: Set environment vars based on branch
+          command: bash ./set-env.sh
+      - run:
+          name: Build with parcel
+          command: npm run build
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
 workflows: 
-  version: 2
+  version: 2.1
   prod: 
     jobs:
       - build: 
