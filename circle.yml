@@ -15,7 +15,7 @@ jobs:
             command: npm install
         - run:
             name: Npm dependencies
-            command: cd src/assets && ls
+            command: cd src/assets/images && ls
         - run:
             name: Set environment vars based on branch
             command: bash ./set-env.sh
