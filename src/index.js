@@ -4,14 +4,14 @@ import { Provider } from 'react-redux'
 import { Route } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router'
 
-import {fetchProducts} from './actions/productActions'
+import {fetchProducts} from './actions/product'
 
 
 import { store, history } from './utils/store'
 
 import App from './components/App'
 
-store.dispatch(fetchProducts())
+//store.dispatch(fetchProducts())
 
 render(
     <Provider store={store}>

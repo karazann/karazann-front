@@ -1,134 +1,127 @@
-@import "../../assets/scss/mixins";
 @import "../../assets/scss/variables";
-@import "../../assets/scss/custom-bootstrap";
 
-.nav {
-	width: 100%;
-	background: $color-blue;
-	z-index: 1000;
-	padding: 15px 0;
-	transition: 0.3s;
-	position: relative;
-	.box {
-		@include make-container();
-		@include make-container-max-widths;
+.navbar {
+	padding: 17px;
+}
 
+.brand {
+	padding: 17px;
+
+	a {
 		display: flex;
-		justify-content: space-between;
-		flex-direction: row;
-		.search {
-			display: flex;
-			height: auto;
-			font-family: "SansSerifFLF";
-			transform-style: preserve-3d;
-			width: 400px;
-			input::-webkit-search-cancel-button {
-				position: relative;
-				-webkit-appearance: none;
-				background: url("./x.svg");
-				height: 15px;
-				width: 15px;
-			}
-			input:focus {
-				transform: scale(1.03);
-			}
-			input {
-				-webkit-appearance: none;
-				border: none;
-				width: 100%;
-				padding: 10px;
-				background: transparent;
-				font-size: 18px;
-				background: $color-dark-blue;
-				color: white;
-				line-height: 23px;
-				border-radius: $roundness-sm;
-				transition: 0.2s;
-				text-align: center;
-				&::placeholder {
-					color: rgba(255, 255, 255, 0.6);
-				}
-				@media (max-width: 992px) {
-					border-radius: 0px;
-				}
-			}
-			@media (max-width: 992px) {
-				position: absolute;
-				width: 100%;
-				top: 70px;
-				left: 0;
-				right: 0;
-			}
+		height: 100%;
+
+		img {
+			height: 38px;
+			margin: 0 10px;
 		}
-		.profile {
-			display: flex;
-			img {
-				height: 42px;
-				border-radius: $roundness-sm;
-			}
-			a {
-				margin: 0 10px;
-			}
+
+		h3 {
+			color: var(--primary-text-color);
+			font-family: "Pouttu";
+			line-height: 38px;
+			font-size: 1rem;
+			font-weight: 400;
+			letter-spacing: 1.5px;
 		}
-		.brand {
-			a {
-				display: flex;
-				img {
-					height: 43px;
-					margin: 0 10px 0 0;
-				}
-			}
-		}
-		a,
-		p {
+	}
+}
+
+@keyframes pulse {
+	0% {
+	}
+	50% {
+		box-shadow: 0 0 0 10px rgba(#4285f4, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(#4285f4, 0);
+	}
+}
+
+.nav-right {
+	float: right;
+	display: flex;
+	position: relative;
+
+	.btn-new {
+		border: none;
+		background: #4285f4;
+		font-weight: 500;
+		height: 38px;
+		margin-right: 50px;
+		color: white;
+		border-radius: 5px;
+		cursor: pointer;
+		line-height: 38px;
+		padding: 0 15px;
+		display: block;
+		box-shadow: 0 0 0 0 rgba(#4285f4, 0.7);
+		animation: pulse 2s infinite;
+		transition: 0.3s;
+		i {
 			color: white;
-			line-height: 43px;
+			line-height: 38px;
+			padding: 0 7px 0 0;
 		}
-		.hamburger-nav {
-			@include media-breakpoint-up("sm") {
-				display: none;
-			}
-			z-index: 300;
-			width: 210px;
-			transform: translateZ(110px);
-			display: flex;
-			justify-content: flex-end;
-		}
+	}
 
-		.mobile-popup {
-			@include card-base;
-			@include media-breakpoint-up("sm") {
-				display: none;
-			}
-			position: fixed;
-			transition: 0.3s;
-			opacity: 1;
-			transform: translateZ(100px);
-			top: 10px;
-			right: 10px;
-			left: 10px;
-			height: 50%;
+	.btn-new:hover {
+		background: lighten(#4285f4, 5%);
+	}
+}
 
-			&.hidden {
-				opacity: 0;
-				pointer-events: none;
-			}
-			&.bounce-in {
-				animation-name: bounce;
-				animation-duration: 0.75s;
-			}
-			a {
-				margin: 30px;
-			}
+.search {
+	//Search
+	.bar {
+		position: absolute;
+
+		width: 280px;
+		height: 38px;
+		z-index: 2;
+
+		img {
+			position: absolute;
+			height: 28px;
+			width: 28px;
+			margin: 5px;
+			padding: 7px;
 		}
 
-		.navbar-desktop {
-			@include media-breakpoint-down("xs") {
-				display: none;
-			}
-			width: 220px;
-			display: flex;
-			justify-content: flex-end;
+		input[type="text"] {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: var(--background);
+			color: var(--primary-text-color);
+			border: none;
+			padding: 3px 3px 3px 45px;
+			border-radius: 5px;
+
+			filter: drop-shadow(0 0.5rem 5rem rgba($color: black, $alpha: 0.03));
+		}
+
+		/*input[type=text]:focus {
+            background: var(--background);
+        }*/
+	}
+
+	@keyframes open {
+		0% {
+			margin-top: 29px;
+			margin-left: 150px;
+			height: 0;
+			width: 0;
+		}
+		50% {
+			width: 300px;
+			height: 58px;
+			margin-top: 10px;
+			margin: 0;
+		}
+		100% {
+			width: 300px;
+			height: 58;
+			margin: 0;
 		}
 	}
 }

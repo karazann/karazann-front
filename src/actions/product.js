@@ -3,7 +3,7 @@ import {
     FETCH_PRODUCT_SUCCESS,
     FETCH_PRODUCT_FAILURE,
     SET_FILTER
-} from './types'
+} from '../constants/action-types'
 
 import service from '../services'
 

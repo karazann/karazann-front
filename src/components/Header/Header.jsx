@@ -1,90 +1,60 @@
 import React, { Fragment } from 'react'
-import { connect, } from 'react-redux'
-import SearchBar from './SearchBar'
-import { NavLink, withRouter } from 'react-router-dom'
-import { logout } from '../../actions/userActions'
-import profile from '../../assets/images/profile2.jpg'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import style from './Header.scss'
-import logo from '../../assets/images/logo-white.svg'
+import logo from '../../assets/images/logo2.svg'
+import search from '../../assets/images/search.svg'
+import avatar from '../../assets/images/avatar.jpg'
 
-const Hamburger = ({ onClick }) => {
-    return (
-        <div className='hamburger-nav'>
-            <button onClick={onClick} className='hamburger hamburger--elastic' type='button'>
-                <span className='hamburger-box'>
-                    <span className='hamburger-inner'>
-                    </span>
-                </span>
-            </button>
-        </div>
-    )
-}
+import Avatar from './Avatar/Avatar'
 
-const MobileNav = ({ open, toggle }) => {
+import { TOGGLE_NEW_DIALOG } from '../../constants/action-types';
 
-    const classList = open ? 'mobile-popup bounce-in' : 'mobile-popup hidden'
+import './Header.scss'
 
-    return (<Fragment>
-        <Hamburger onClick={toggle} />
-        <nav className={classList}>
-            <NavLink to='/test'>Hello</NavLink>
-        </nav>
-    </Fragment>)
-}
-
-const Profile = ({ image, name, logout }) => {
-    return (
-        <div className='profile'>
-            <NavLink to='/account'>{name}</NavLink>
-            <img src={image} alt="" />
-            <a onClick={logout}>x</a>
-        </div>
-    )
-}
-
-const DesktopNav = ({ loggedIn, logout }) => {
-    return (
-        <nav className='navbar-desktop'>
-            {loggedIn ?
-                <Profile name='Roland' image={profile} logout={logout} /> :
-                <NavLink className='btn' to='/auth/login'>Login</NavLink>}
-        </nav>
-    )
-}
-
-const Header = ({ dispatch, loggedIn, mobileNavOpen, search }) => {
-
-    const toggleMobileNav = e => {
-        dispatch({ type: 'TOGGLE_MOBILE_NAV' })
-        e.currentTarget.classList.toggle('is-active')
-    }
-
-    const logoutClick = e => {
-        dispatch(logout())
-    }
-
+const Header = ({ toggleNewDialog }) => {
     return (
         <Fragment>
-            <header className='nav'>
-                <div className='box'>
-                        <div className='brand'>
-                            <NavLink to='/'>
-                                <img src={logo} alt="karazann-logo" />
-                                <h1>Karazann</h1>
-                            </NavLink>
-                        </div>
-
-                        <SearchBar active={search} />
-
-                        <MobileNav toggle={toggleMobileNav} open={mobileNavOpen} />
-
-                        <DesktopNav loggedIn={loggedIn} logout={logoutClick} />
-
+            <header></header>
+            <nav>
+                <div className="brand">
+                    <NavLink to="/">
+                        <img src={logo} alt="karazann" />
+                        <h3>Karazann</h3>
+                    </NavLink>
                 </div>
-            </header>
+                <section className="navbar">
+                    <div className="search">
+                        <div className="bar">
+                            <input type="text" placeholder="Search Project" className="input" />
+                            <img src={search} />
+                        </div>
+                        <div className="dropdown">
+
+                        </div>
+                    </div>
+
+                    <div className="nav-right">
+                        <button className="btn-new" onClick={toggleNewDialog}><i className="fas fa-plus"></i> Create</button>
+                        <Avatar image={avatar} name='Jordan' />
+                    </div>
+                </section>
+            </nav>
         </Fragment>
     )
 }
 
-export default connect()(Header)
+const mapStateToProps = state => {
+    return {
+        avatarDropdownOpened: state.ui.avatarDropdownOpened,
+        newDialogOpened: state.ui.newDialogOpened
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleNewDialog: () => { dispatch({ type: TOGGLE_NEW_DIALOG }) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

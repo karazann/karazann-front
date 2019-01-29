@@ -7,8 +7,13 @@
 
 body {
 	font-family: $font-stack;
-	color: $font-color;
-	background: $color-background;
+	color: var(--primary-text-color);
+	background: var(--background);
+}
+
+.stop-scrolling {
+	height: 100%;
+	overflow: hidden;
 }
 
 @at-root {
@@ -17,7 +22,7 @@ body {
 	}
 }
 
-html {
+body {
 	box-sizing: border-box;
 	-ms-overflow-style: scrollbar;
 	overflow-y: scroll;
@@ -46,125 +51,39 @@ input:focus {
 	outline: none;
 }
 
-.tag {
-	@each $name, $value in $color-list {
-		&.#{"" + $name} {
-			color: $value;
-			background: rgba($color: $value, $alpha: 0.25);
-			box-shadow: 10px 10px 20px 0 rgba($color: $value, $alpha: 0.1);
-		}
-	}
-	display: inline;
-	margin: 0 10px 0 0;
-	padding: 6px 12px;
-	border-radius: $roundness-sm;
-	font-size: 13px;
+.hidden {
+	display: none;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
+//light theme
+body {
+	--background: #f1f2f8;
+	--primary-color: #fff;
+	--secondary-color: hsl(231, 15%, 70%);
+
+	--primary-text-color: hsl(232, 15%, 25%);
+	--secondary-text-color: hsl(232, 15%, 50%);
+
+	--inverted-text-color: #fff;
+}
+
+// dark theme
+body[theme="dark"] {
+    --background: #3a3c43;
+	--primary-color: #40434A;
+	--secondary-color: hsl(227, 7%, 20%);
+
+	--primary-text-color: #fff;
+	--secondary-text-color: hsl(220, 2%, 65%);
+
+	--inverted-text-color: #32363a;
 }
 
 
-.blue-background {
-	background: $color-blue;
-	* {
-		color: white;
-	}
-}
 
-.header {
-	margin: 50px 0 20px 0; 
-	display: flex;
-	flex-direction: row;
-	div {
-		height: 50px;
-		width: 50px;
-		color: white;
-		background: $color-blue;
-		box-shadow: 5px 5px 20px 0px rgba(66, 179, 255, 0.3);
-		border-radius: $roundness-sm;
-
-		img{
-			margin: 15px;
-			
-		}
-	}
-
-	h2 {
-		color: #000000;
-		margin: 0 0 0 30px;
-		line-height: 50px;
-		font-weight: 600;
-	}
-}
-
-#account-header{
-	margin-bottom: 50px;
-}
-
-.error {
-	.alert {
-		line-height: 40px;
-		height: 40px;
-	}
-}
-
-.alert {
-	background: $color-yellow;
-	width: 100%;
-	line-height: 0px;
-	height: 0px;
-	color: white;
-	text-align: center;
-	transition: 0.2s;
-}
-
-.spinner {
-	width: 60px;
-	height: 60px;
-	background-color: $color-blue;
-	margin: 100px auto;
-	margin: 40vh auto;
-	border-radius: $roundness-md;
-	transform-style: preserve-3d;
-	will-change: transform;
-	transform: perspective(1000);
-	animation: spinner 2s infinite ease-in-out 0.3s;
-	img {
-		margin: 5px;
-		width: 50px;
-		height: 50px;
-		position: absolute;
-		backface-visibility: visible;
-		&:nth-child(1) {
-			transform: translateZ(10px);
-		}
-		&:nth-child(2) {
-			transform: translateZ(-10px) scaleX(-1);
-		}
-	}
-}
-
-#app {
-	position: relative;
-	min-height: 100vh;
-}
-.page {
-	@include make-container;
-	@include make-container-max-widths;
-
-	padding-top: 40px;
-	height: 100%;
-	transition: 0.1s;
-}
-
-.row {
-	@include make-row;
-}
-
-.res {
-	display: block;
-	@media (min-width: 768px) {
-		display: none;
-	}
-}
 // ///////////////Cheat sheet ////////////////////////////
 /* // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { 
