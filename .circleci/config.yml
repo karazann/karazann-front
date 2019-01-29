@@ -2,6 +2,7 @@ version: 2
 
 jobs:
   build:
+      working_directory: ~/app
       docker:
         - image: node:8.11.1
       steps:
@@ -21,13 +22,14 @@ jobs:
         - persist_to_workspace:
             root: ~/
             paths:
-              - dist
+              - app
         - save_cache:
             name: Save NPM package cache
             key: dependency-cache-{{ checksum "package-lock.json" }}
             paths:
               - node_modules
   deploy:
+    working_directory: ~/app
     docker:
       - image: cibuilds/aws:1.16.43
     steps:
