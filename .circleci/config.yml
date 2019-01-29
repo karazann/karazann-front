@@ -19,7 +19,7 @@ jobs:
             name: Build with parcel
             command: npm run build
         - persist_to_workspace:
-            root: /tmp/workspace
+            root: workspace
             paths:
               - build
         - save_cache:
@@ -32,7 +32,7 @@ jobs:
       - image: cibuilds/aws:1.16.43
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: workspace
       - run:
           name: Deploy to S3 if tests pass and branch is Master
           command: aws s3 cp build/dist s3://karazann.com --recursive --exclude \"report.html\" --cache-control 86400
