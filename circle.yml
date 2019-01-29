@@ -36,10 +36,11 @@ jobs:
       - attach_workspace:
           at: ~/
       - run: 
-          command: ls
+          name: Set AWS region
+          command: export AWS_REGION=eu-west-2
       - run:
           name: Deploy to S3 if tests pass and branch is Master
-          command: aws s3 cp dist s3://karazann.com --recursive --exclude \"report.html\" --cache-control 86400
+          command: aws s3 sync dist s3://karazann.com --delete --exclude \"report.html\" --cache-control 86400
           #command: aws s3 sync generated-site/docs s3://circle-production-static-site/docs/ --delete
 workflows: 
   version: 2
