@@ -4,7 +4,7 @@ jobs:
   build:
       working_directory: ~/app
       docker:
-        - image: node:8.11.1
+        - image: danmaq/node-git-lfs
       steps:
         - checkout
         - restore_cache:
@@ -14,8 +14,8 @@ jobs:
             name: Npm dependencies
             command: npm install
         - run:
-            name: Npm dependencies
-            command: cd src/assets/images && ls -lah
+            name: Fetch Lfs files
+            command: git lfs fetch
         - run:
             name: Set environment vars based on branch
             command: bash ./set-env.sh
