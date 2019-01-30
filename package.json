@@ -6,8 +6,8 @@
 	"scripts": {
 		"start": "parcel src/index.pug --port 8080",
 		"test": "echo 'no test'",
-		"build": "parcel build src/index.pug --no-source-maps && gzipper ./dist",
-		"deploy": "aws s3 cp dist s3://karazann.com --recursive --exclude \"report.html\" --cache-control 86400"
+		"build": "parcel build src/index.pug --no-source-maps",
+		"deploy": "s3-deploy './dist/**' --cwd './dist/' --region eu-west-2 --bucket karazann.com --gzip --cache 86400"
 	},
 	"repository": {
 		"type": "git",
@@ -33,6 +33,7 @@
 		"postcss-parcel-import": "0.0.2",
 		"pug": "^2.0.3",
 		"redux-devtools-extension": "^2.13.7",
+		"s3-deploy": "^1.2.1",
 		"sass": "^1.16.1"
 	},
 	"dependencies": {
