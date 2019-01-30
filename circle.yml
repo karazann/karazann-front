@@ -40,7 +40,7 @@ jobs:
           at: ~/
       - run:
           name: Deploy to S3 if tests pass and branch is Master
-          command: aws s3 sync dist s3://karazann.com --delete --exclude \"report.html\" --cache-control 86400 --region us-west-2 --content-encoding gzip
+          command: aws s3 sync dist s3://karazann.com --delete --exclude \"report.html\" --cache-control 86400 --region us-west-2
           #command: aws s3 sync generated-site/docs s3://circle-production-static-site/docs/ --delete
 workflows: 
   version: 2
