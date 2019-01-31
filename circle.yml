@@ -22,9 +22,6 @@ jobs:
         - run:
             name: Build with parcel
             command: npm run build
-        - run:
-            name: Deploy on AWS
-            command: npm run deploy
         - persist_to_workspace:
             root: ~/
             paths:
@@ -34,22 +31,40 @@ jobs:
             key: dependency-cache-{{ checksum "package-lock.json" }}
             paths:
               - node_modules
-  deploy:
+  deploy-prod:
     working_directory: ~/app
     docker:
-      - image: cibuilds/aws:1.16.43
+      - image: danmaq/node-git-lfs
     steps:
       - attach_workspace:
           at: ~/
       - run:
-          name: Deploy to S3 if tests pass and branch is Master
-          command: aws s3 sync dist s3://karazann.com --delete --exclude \"report.html\" --cache-control 86400 --region us-west-2
-          #command: aws s3 sync generated-site/docs s3://circle-production-static-site/docs/ --delete
+          name: Deploy to production S3 bucket
+          command: npm run deploy-prod
+  deploy-dev:
+    working_directory: ~/app
+    docker:
+      - image: danmaq/node-git-lfs
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Deploy to development S3 bucket
+          command: npm run deploy-dev
 workflows: 
   version: 2
   FrontEnd: 
     jobs:
-      - build:
+      - build
+      - deploy-prod:
+          requires:
+            - build
           filters:
             branches:
-              only: develop
+              only: master
+      - deploy-dev:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master

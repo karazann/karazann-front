@@ -32,6 +32,9 @@ const Header = ({ toggleNewDialog }) => {
                         <div className="dropdown">
 
                         </div>
+                        <div className='overlay'>
+
+                        </div>
                     </div>
 
                     <div className="nav-right">

@@ -13,7 +13,7 @@
 .move-enter-active {
 	opacity: 1;
 	transform: translateY(0px);
-    transition: all .2s linear;
+    transition: all 200ms ease-in;
 }
 
 .move-exit {
@@ -29,7 +29,7 @@
 .move-exit-active {
 	transform: translateY(-10px);
 	opacity: 0;
-    transition: all .2s linear;
+    transition: all 200ms ease-in;
 }
 
 /*Fade*/

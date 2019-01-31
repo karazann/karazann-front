@@ -7,7 +7,8 @@
 		"start": "parcel src/index.pug --port 8080",
 		"test": "echo 'no test'",
 		"build": "parcel build src/index.pug --no-source-maps",
-		"deploy": "s3-deploy './dist/**' --cwd './dist/' --region eu-west-2 --bucket karazann.com --gzip --cache 86400"
+		"deploy-prod": "s3-deploy './dist/**' --cwd './dist/' --region eu-west-2 --bucket karazann-prod --gzip --cache 86400",
+		"deploy-dev":  "s3-deploy './dist/**' --cwd './dist/' --region eu-west-2 --bucket karazann-dev --gzip --cache 86400"
 	},
 	"repository": {
 		"type": "git",
@@ -45,6 +46,7 @@
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0",
 		"react-google-login": "^3.2.1",
+		"react-motion": "^0.5.2",
 		"react-redux": "^5.1.1",
 		"react-router-dom": "^4.3.1",
 		"react-select": "^2.3.0",
