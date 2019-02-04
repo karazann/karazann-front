@@ -4,11 +4,6 @@
 @import "variables";
 @import "hamburgers/hamburgers";
 
-body {
-	font-family: $font-stack;
-	color: var(--primary-text-color);
-	background: var(--background);
-}
 
 .stop-scrolling {
 	height: 100%;
@@ -21,11 +16,6 @@ body {
 	}
 }
 
-body {
-	box-sizing: border-box;
-	-ms-overflow-style: scrollbar;
-	overflow-y: scroll;
-}
 
 *,
 *::before,
@@ -33,9 +23,6 @@ body {
 	box-sizing: inherit;
 }
 
-.d-grid {
-	display: grid;
-}
 
 input,
 select,
@@ -50,37 +37,22 @@ input:focus {
 	outline: none;
 }
 
-.hidden {
-	display: none;
-	width: 0;
-	height: 0;
-	pointer-events: none;
+
+/*div,
+h3,
+p,
+header,
+footer,
+body,
+input,
+img,
+section,
+span
+{
+	transition: background-color .7s, color .7s;
 }
 
-//light theme
-body {
-	--background: #f1f2f8;
-	--primary-color: #fff;
-	--secondary-color: hsl(231, 15%, 70%);
-
-	--primary-text-color: hsl(232, 15%, 25%);
-	--secondary-text-color: hsl(232, 15%, 50%);
-
-	--inverted-text-color: #fff;
-}
-
-// dark theme
-body[theme="dark"] {
-    --background: #3a3c43;
-	--primary-color: #40434A;
-	--secondary-color: hsl(227, 7%, 20%);
-
-	--primary-text-color: #fff;
-	--secondary-text-color: hsl(220, 2%, 65%);
-
-	--inverted-text-color: #32363a;
-}
-
+*/
 
 
 // ///////////////Cheat sheet ////////////////////////////

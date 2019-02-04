@@ -12,3 +12,11 @@ export default history => {
         ui: ui
     })
 }
+
+export const testReducers = () => {
+    return combineReducers({
+        auth: auth,
+        projects: project,
+        ui: ui
+    })
+}
