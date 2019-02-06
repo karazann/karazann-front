@@ -2,13 +2,6 @@
 @import "reset";
 @import "animations";
 @import "variables";
-@import "hamburgers/hamburgers";
-
-
-.stop-scrolling {
-	height: 100%;
-	overflow: hidden;
-}
 
 @at-root {
 	@-ms-viewport {
