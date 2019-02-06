@@ -4,10 +4,10 @@
 	"description": "Decription...",
 	"main": "src/index.js",
 	"scripts": {
-		"start": "parcel src/index.pug --port 8080",
+		"start": "parcel public/index.pug --port 8080 --open",
 		"test": "jest",
 		"test:watch": "jest --watch",
-		"build": "parcel build src/index.pug --no-source-maps",
+		"build": "parcel build public/index.pug --no-source-maps",
 		"deploy-prod": "s3-deploy './dist/**' --cwd './dist/' --region eu-west-2 --bucket karazann-prod --gzip --cache 86400",
 		"deploy-dev": "s3-deploy './dist/**' --cwd './dist/' --region eu-west-2 --bucket karazann-dev --gzip --cache 86400"
 	},
@@ -48,10 +48,7 @@
 		"sass": "^1.16.1"
 	},
 	"dependencies": {
-		"classnames": "^2.2.6",
-		"components": "^0.1.0",
 		"connected-react-router": "^5.0.1",
-		"moment": "^2.24.0",
 		"preact": "^8.4.2",
 		"preact-compat": "^3.18.4",
 		"rc-slider": "^8.6.4",

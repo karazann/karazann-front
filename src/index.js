@@ -4,15 +4,10 @@ import { Provider } from 'react-redux'
 import { Route } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router'
 
-import { fetchProducts } from './actions/product'
-
-
 import { store, history } from './utils/store'
-
 import App from './containers/App'
 
-//store.dispatch(fetchProducts())
-
+//TODO: Eat some 🍕🍕
 function renderApp() {
     render(
         <Provider store={store}>
@@ -25,4 +20,5 @@ function renderApp() {
 
 renderApp()
 
+//🔥🔥 Relaod
 module.hot.accept(renderApp)

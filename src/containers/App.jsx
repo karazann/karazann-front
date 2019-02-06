@@ -13,9 +13,7 @@ import { darkTheme, lightTheme } from '../components/Theme'
 
 import { TOGGLE_NEW_DIALOG, CLOSE_ALL } from '../constants/action-types'
 import '../assets/scss/style.scss'
-import PushNav from '../components/PushNav';
-
-// 🔥 HOT 🔥
+import PushNav from '../components/SideNav';
 
 const GlobalStyle = createGlobalStyle`
     #app, body, html {
@@ -75,8 +73,7 @@ const App = ({ dark, overlayActive, closeAll, pushOpened, newOpened, toggleNew }
                 <Grid>
                     <Header />
                     <Main>
-                        <PushNav opened={pushOpened} />
-                        <SideNav perma={true} />
+                        <PushNav opened={pushOpened} attached={true} />
                         <Switch>
                             <Route exact path='/' component={HomePage} />
                             <Route path='/projects' component={ProjectPage} />

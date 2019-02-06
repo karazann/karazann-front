@@ -1,14 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
+import { Motion, spring, presets } from "react-motion"
 
 import projects from '../assets/images/folder.svg'
 import discover from '../assets/images/discover.svg'
 
-const Navigation = styled.nav`
-    padding: 70px 27px;
-    flex: 0 0 230px;
-    display: ${props => props.perma ? 'block' : 'none'}
+import { connect } from 'react-redux'
+
+const StyledMobileNav = styled.nav.attrs(props => ({ style: { left: props.left } }))`
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 363px;
+    height: 100%;
+    padding: 100px 27px 27px 127px;
+    background: ${props => props.theme.primaryColor};
+`
+
+const StyledDesktopNav = styled.nav`
+    padding: 28px 27px;
+    flex: 0 0 263px;
 `
 
 const List = styled.ul``;
@@ -35,9 +47,32 @@ const Link = styled(NavLink)`
     }
 `
 
-const SideNav = ({ perma }) => {
+const MoblieNav = ({ opened }) => {
     return (
-        <Navigation perma={perma}>
+        <Motion style={{ left: spring(opened ? -100 : -400, presets.gentle) }}>
+            {style => <StyledMobileNav left={style.left} >
+                <List>
+                    <ListItem>
+                        <Link activeStyle={{ color: '#4285F4' }} exact to="/">
+                            <img src={discover} />
+                            <p>Discover</p>
+                        </Link>
+                    </ListItem>
+                    <ListItem>
+                        <Link activeStyle={{ color: '#4285F4' }} exact to="/projects">
+                            <img src={projects} />
+                            <p>Projects</p>
+                        </Link>
+                    </ListItem>
+                </List>
+            </StyledMobileNav>}
+        </Motion>
+    )
+}
+
+const DesktopNav = () => {
+    return (
+        <StyledDesktopNav>
             <List>
                 <ListItem>
                     <Link activeStyle={{ color: '#4285F4' }} exact to="/">
@@ -52,8 +87,15 @@ const SideNav = ({ perma }) => {
                     </Link>
                 </ListItem>
             </List>
-        </Navigation>
+        </StyledDesktopNav>
     )
 }
 
-export default SideNav
+const SideNav = ({ opened, attached, dispatch }) => {
+    console.log(dispatch);
+    return (
+        attached ? <DesktopNav /> : <MoblieNav opened={opened} />
+    )
+}
+
+export default connect()(SideNav)

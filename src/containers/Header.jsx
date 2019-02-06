@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import Hamburger from '../components/Hamburger'
 import Button from '../components/Button'
 import Profile from '../components/Profile'
 import {
@@ -78,7 +79,9 @@ const Header = ({ push, openPush, openNew, openDropdown, toggleTheme, opened, da
         <Fragment>
             <VisualHeader />
             <StyledHeader>
-                <Brand inPushState={push} onClick={openPush} to='/'>
+
+                <Brand to='/'>
+                <Hamburger onClick={openPush} />
                     <img src={logo} alt="" />
                     <h3>Karazann</h3>
                 </Brand>
