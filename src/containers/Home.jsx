@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+import FreelancerCard from '../components/FreelancerCard'
+
 function getCount(ref) {
     const count = ref ? Math.floor(ref.offsetWidth / 300) : 1
     return count == 0 ? 1 : count
@@ -22,17 +24,10 @@ const Wrapper = styled.div`
     align-content: start;
 `
 
-const Col = styled.article`
+const Col = styled.div`
     flex-basis: 299px;
     align-content: start;
     padding: 20px;
-    
-    div {
-        width: 100%;
-        height: 360px;
-        background: ${props => props.theme.primaryColor};
-        border-radius: 7px;
-    }
 `
 /*
 <div className='spinner' >
@@ -60,89 +55,72 @@ class Home extends Component {
         return (
             <StyledHome ref={this.ref}>
                 <Wrapper count={getCount(this.ref.current)}>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
-                    <Col><div></div></Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
+                    <Col>
+                        <FreelancerCard />
+                    </Col>
                 </Wrapper>
             </StyledHome>
         )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
- 
     }
 }
 

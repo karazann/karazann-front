@@ -1,12 +1,13 @@
-import React from 'react'
+import { connect } from 'react-redux'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { Motion, spring, presets } from "react-motion"
+import { withBreakpoints } from 'react-breakpoints'
+import { CLOSE_ALL } from '../constants/action-types'
 
 import projects from '../assets/images/folder.svg'
 import discover from '../assets/images/discover.svg'
-
-import { connect } from 'react-redux'
 
 const StyledMobileNav = styled.nav.attrs(props => ({ style: { left: props.left } }))`
     position: fixed;
@@ -91,11 +92,19 @@ const DesktopNav = () => {
     )
 }
 
-const SideNav = ({ opened, attached, dispatch }) => {
-    console.log(dispatch);
+const SideNav = ({ opened, dispatch, breakpoints, currentBreakpoint }) => {
+    //dispatch({ type: CLOSE_ALL })
     return (
-        attached ? <DesktopNav /> : <MoblieNav opened={opened} />
+        <Fragment>
+            {
+                breakpoints[currentBreakpoint] > breakpoints.desktop
+                    ? <DesktopNav />
+                    : <MoblieNav opened={opened} />
+            }
+        </Fragment>
     )
 }
 
-export default connect()(SideNav)
+export default withBreakpoints(SideNav)
+
+

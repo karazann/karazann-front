@@ -1,12 +1,13 @@
 Karazann-Front
 ===============
-[![CircleCI](https://circleci.com/gh/szkabaroli/karazann-front/tree/develop.svg?style=svg&circle-token=2f3782bb2afb80d068ea19ea2e479f04cf570ace)](https://circleci.com/gh/szkabaroli/karazann-front/tree/develop)
+![](https://img.shields.io/circleci/token/ce5b62af1872fd3a010a79d82ae39499dfe67ea7/project/github/szkabaroli/karazann-front/develop.svg?style=flat-square)
 
 This is the frontend code for karazann.com using React + Redux
 
-Build 🔧
--------------
-```
-npm start
-npm run build
-```
+## Getting started 💪
+
+To get the frontend running locally:
+
+- Clone this repo
+- `npm install` to install all req'd dependencies
+- `npm start` to start the local server (on port 8080)

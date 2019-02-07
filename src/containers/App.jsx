@@ -1,19 +1,24 @@
-import React, { Fragment } from 'react'
+import React, {Suspense, createContext} from 'react'
 import { connect } from 'react-redux'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import ReactBreakpoints from 'react-breakpoints'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 
-import SideNav from '../components/SideNav'
+import SideNav from './SideNav'
 import ProjectPage from '../components/Project/ProjectPage'
 import Dialog from '../components/Dialog/Dialog'
 import Overlay from '../components/Overlay'
-import Header from './Header'
-import HomePage from './Home'
-import { darkTheme, lightTheme } from '../components/Theme'
 
+import Header from './Header'
+import HomePage from './Home';
+
+import { darkTheme, lightTheme } from './Themes'
+import { breakpoints } from './Breakpoints'
 import { TOGGLE_NEW_DIALOG, CLOSE_ALL } from '../constants/action-types'
 import '../assets/scss/style.scss'
-import PushNav from '../components/SideNav';
+
+const c = createContext()
+console.log(c)
 
 const GlobalStyle = createGlobalStyle`
     #app, body, html {
@@ -29,16 +34,7 @@ const GlobalStyle = createGlobalStyle`
         overflow-y: scroll;
         overflow-x: hidden;
     }
-    `
-
-const Grid2 = styled.div`
-    min-height: 100%;
-    min-height: calc(100% + 200px);
-    
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 72px 1fr 200px;
-    `
+`
 
 const Grid = styled.div`
     min-height: 100%;
@@ -66,28 +62,30 @@ const Footer = styled.footer`
 const App = ({ dark, overlayActive, closeAll, pushOpened, newOpened, toggleNew }) => {
     return (
         <ThemeProvider theme={dark ? darkTheme : lightTheme}>
-            <Fragment>
+            <ReactBreakpoints breakpoints={breakpoints}>
                 <GlobalStyle dark={dark} />
                 <Overlay onClick={closeAll} active={overlayActive} />
                 <Dialog opened={newOpened} onCancel={closeAll} />
                 <Grid>
                     <Header />
                     <Main>
-                        <PushNav opened={pushOpened} attached={true} />
-                        <Switch>
-                            <Route exact path='/' component={HomePage} />
-                            <Route path='/projects' component={ProjectPage} />
-                            {/*<Route path='/auth/:action' component={AuthPage} />*/}
-                            {/*<Route path='/product/:slug' component={ProductPage} />*/}
-                            {/*<PrivateRoute path='/account' loggedIn={this.props.loggedIn} component={AccountPage} />*/}
-                            <Route path='/404' render={() => (<div>404</div>)} />
-                            <Route render={() => (<Redirect to='/404' />)} />
-                        </Switch>
+                        <SideNav opened={pushOpened} attached={true} />
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Switch>
+                                <Route exact path='/' component={HomePage} />
+                                <Route path='/projects' component={ProjectPage} />
+                                {/*<Route path='/auth/:action' component={AuthPage} />*/}
+                                {/*<Route path='/product/:slug' component={ProductPage} />*/}
+                                {/*<PrivateRoute path='/account' loggedIn={this.props.loggedIn} component={AccountPage} />*/}
+                                <Route path='/404' render={() => (<div>404</div>)} />
+                                <Route render={() => (<Redirect to='/404' />)} />
+                            </Switch>
+                        </Suspense>
                     </Main>
 
                     <Footer />
                 </Grid>
-            </Fragment>
+            </ReactBreakpoints>
         </ThemeProvider>
     )
 }

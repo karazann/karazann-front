@@ -13,7 +13,8 @@ import {
 
 import logo from '../assets/images/logo2.svg'
 import avatar from '../assets/images/avatar.jpg'
-import { TOGGLE_THEME, OPEN_AVATAR_DROPDOWN, OPEN_NEW_DIALOG, OPEN_PUSH_NAV } from '../constants/action-types';
+
+import { TOGGLE_THEME, OPEN_AVATAR_DROPDOWN, OPEN_NEW_DIALOG, OPEN_PUSH_NAV, CLOSE_ALL } from '../constants/action-types';
 
 const StyledHeader = styled.header`
     grid-column: 2;
@@ -27,7 +28,7 @@ const StyledHeader = styled.header`
 `
 
 const VisualHeader = styled.div`
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 2;
     width: 110%;
     grid-row: 1;
     background: ${props => props.theme.primaryColor};
@@ -74,15 +75,15 @@ const NavLeft = styled.section`
     display: flex;
 `
 
-const Header = ({ push, openPush, openNew, openDropdown, toggleTheme, opened, dark }) => {
+const Header = ({ closeAll, openPush, openNew, openDropdown, toggleTheme, dropdownOpened, sideNavOpened, dark }) => {
     return (
         <Fragment>
             <VisualHeader />
             <StyledHeader>
 
                 <Brand to='/'>
-                <Hamburger onClick={openPush} />
-                    <img src={logo} alt="" />
+                    <Hamburger opened={sideNavOpened} onClick={() => { sideNavOpened ? closeAll() : openPush() }} />
+                    <img src={logo} alt="karazann" />
                     <h3>Karazann</h3>
                 </Brand>
                 <Navigation>
@@ -90,8 +91,8 @@ const Header = ({ push, openPush, openNew, openDropdown, toggleTheme, opened, da
                     </NavLeft>
                     <NavRight>
                         <NewButton pulse color='purple' onClick={openNew} ><i className="fas fa-plus"></i> Create</NewButton>
-                        <Profile user={{ avatar, name: 'Jordan', status: 'online' }} onClick={openDropdown} opened={opened} />
-                        <ProfileDropdown opened={opened} >
+                        <Profile user={{ avatar, name: 'Jordan', status: 'online' }} onClick={openDropdown} opened={dropdownOpened} />
+                        <ProfileDropdown opened={dropdownOpened} >
                             <DropdownItem onClick={toggleTheme} >{dark ? 'Light theme' : 'Dark theme'}</DropdownItem>
                             <DropdownItem onClick={() => { }} >Settings</DropdownItem>
                         </ProfileDropdown>
@@ -105,7 +106,8 @@ const Header = ({ push, openPush, openNew, openDropdown, toggleTheme, opened, da
 const mapStateToProps = state => {
     return {
         push: state.ui.pushNavOpened,
-        opened: state.ui.avatarDropdownOpened,
+        sideNavOpened: state.ui.pushNavOpened,
+        dropdownOpened: state.ui.avatarDropdownOpened,
         dark: state.ui.darkTheme
     }
 }
@@ -113,6 +115,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleTheme: () => { dispatch({ type: TOGGLE_THEME }) },
+        closeAll: () => { dispatch({ type: CLOSE_ALL }) },
         openPush: () => { dispatch({ type: OPEN_PUSH_NAV }) },
         openNew: () => { dispatch({ type: OPEN_NEW_DIALOG }) },
         openDropdown: () => { dispatch({ type: OPEN_AVATAR_DROPDOWN }) }
