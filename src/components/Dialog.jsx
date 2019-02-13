@@ -2,28 +2,40 @@ import React from 'react'
 import { Motion, spring, presets } from 'react-motion'
 import styled from 'styled-components'
 
+const Wrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    display: flex;
+`
+
 const StyledDialog = styled.section.attrs(
     props => ({
         style: {
             opacity: props.opacity,
             transform: `scale(${props.scale})`,
-            top: window.innerHeight / 2 - 200,
-            left: window.innerWidth / 2 - 400
         },
     })
 )`
+    margin: auto auto;
     display: ${props => props.opacity >= 0.1 ? 'flex' : 'none'};
-    position: absolute;
     z-index: 1000;
+    pointer-events: all;
     background: ${props => props.theme.primaryColor};
-    height: 400px;
-    width: 800px;
+    height: 300px;
+    width: 500px;
     border-radius: 5px;
-    flex-direction: column-reverse;
+    flex-direction: column;
+`
+
+const Content = styled.div`
+    flex: 1;
 `
 
 const Footer = styled.footer`
-    height: 60px;
+    flex: 0 0 60px;
 `
 
 const Button = styled.button`
@@ -41,14 +53,16 @@ const Dialog = ({ opened, onCancel, children }) => {
         <Motion style={{ opacity: spring(opened ? 1 : 0, presets.stiff), scale: spring(opened ? 1 : .6, presets.wobbly) }}>
             {
                 style =>
-                    <StyledDialog opacity={style.opacity} scale={style.scale}>
-                        <article>
-                            {children}
-                        </article>
-                        <Footer>
-                            <Button onClick={onCancel}>Cancel</Button>
-                        </Footer>
-                    </StyledDialog>
+                    <Wrapper>
+                        <StyledDialog opacity={style.opacity} scale={style.scale}>
+                            <Content>
+                                {children}
+                            </Content>
+                            <Footer>
+                                <Button onClick={onCancel}>Cancel</Button>
+                            </Footer>
+                        </StyledDialog>
+                    </Wrapper>
             }
         </Motion>
     )

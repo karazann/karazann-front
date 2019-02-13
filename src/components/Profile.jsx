@@ -13,9 +13,10 @@ const Button = styled.button`
 const Arrow = styled.span.attrs(
     props => ({style: { transform: `rotate(${props.rotation}deg)` }})
 )`
+    margin-left: 15px;
     color: ${props => props.theme.secondaryTextColor};
     line-height: 38px;
-    font-size: 15px;
+    font-size: 14px;
 `
 
 const Profile = props => {
@@ -28,7 +29,7 @@ const Profile = props => {
                 {
                     style =>
                         <Arrow rotation={style.rotation} >
-                            <i className='fas fa-angle-down'></i>
+                            <i className="fas fa-caret-down"></i>
                         </Arrow>
                 }
             </Motion>

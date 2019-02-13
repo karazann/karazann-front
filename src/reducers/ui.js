@@ -1,11 +1,13 @@
-import { TOGGLE_THEME, OPEN_PUSH_NAV, OPEN_NEW_DIALOG, OPEN_AVATAR_DROPDOWN, CLOSE_ALL } from '../constants/action-types'
+import { TOGGLE_THEME, OPEN_PUSH_NAV, OPEN_NEW, OPEN_AVATAR, OPEN_NOTIFICATIONS, CLOSE_ALL } from '../constants/action-types'
 
 const initialState = {
     darkTheme: true,
+    notificationsOpened: false,
     pushNavOpened: false,
-    avatarDropdownOpened: false,
-    newDialogOpened: false,
-    overlayActive: false
+    avatarOpened: false,
+    inviteOpened: false,
+    newOpened: false,
+    overlay: false
 }
 
 export default (state = initialState, action) => {
@@ -13,10 +15,18 @@ export default (state = initialState, action) => {
         case CLOSE_ALL:
             return {
                 ...state,
+                notificationsOpened: false,
+                inviteOpened: false,
                 pushNavOpened: false,
-                avatarDropdownOpened: false,
-                newDialogOpened: false,
-                overlayActive: false
+                avatarOpened: false,
+                newOpened: false,
+                overlay: false
+            }
+        case 'OPEN_INVITE': 
+            return {
+                ...state,
+                inviteOpened: true,
+                overlay: true
             }
         case TOGGLE_THEME:
             return {
@@ -27,19 +37,25 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 pushNavOpened: true,
-                overlayActive: true
+                overlay: true
             }
-        case OPEN_AVATAR_DROPDOWN:
+        case OPEN_AVATAR:
             return {
                 ...state,
-                avatarDropdownOpened: true,
-                overlayActive: true
+                avatarOpened: true,
+                overlay: true
             }
-        case OPEN_NEW_DIALOG:
+        case OPEN_NOTIFICATIONS:
             return {
                 ...state,
-                newDialogOpened: true,
-                overlayActive: true
+                notificationsOpened: true,
+                overlay: true
+            }
+        case OPEN_NEW:
+            return {
+                ...state,
+                newOpened: true,
+                overlay: true
             }
         default:
             return state

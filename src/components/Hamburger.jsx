@@ -1,13 +1,12 @@
-import React, { Fragment } from 'react'
-import { withBreakpoints } from 'react-breakpoints'
+import React from 'react'
 import styled, { css } from 'styled-components'
-import { Motion, spring, presets } from 'react-motion'
 
 const HamburgerButton = styled.button`
     height: 38px;
     width: 38px;
     background: transparent;
     border: none;
+    z-index: 1100;
     padding: 0;
     position: relative;
     display: inline-block;
@@ -77,18 +76,10 @@ const Lines = styled.span`
 
 const Hamburger = props => {
     return (
-        <Fragment>
-            {
-                props.breakpoints[props.currentBreakpoint] <= props.breakpoints.desktop
-                    ?
-                    <HamburgerButton {...props} type='button'>
-                        <Lines active={props.opened} />
-                    </HamburgerButton>
-                    :
-                    null
-            }
-        </Fragment>
+        <HamburgerButton {...props} type='button'>
+            <Lines active={props.opened} />
+        </HamburgerButton>
     )
 }
 
-export default withBreakpoints(Hamburger)
+export default Hamburger

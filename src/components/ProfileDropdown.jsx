@@ -2,24 +2,31 @@ import React from 'react'
 import styled from 'styled-components'
 import { Motion, spring, presets } from 'react-motion'
 
+const Wrapper = styled.div`
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+    perspective: 1000px;
+    height: auto;
+    width: 180px;
+`
+
 const Dropdown = styled.section.attrs(
     props => ({
         style: {
             opacity: props.opacity,
-            transform: `translateY(${props.translate}px)`
+            transform: `rotateX(${props.rotate}deg)`
         }
     })
 )`
+    
+    transform-style: preserve-3d;
+    transform-origin: 50% 0;
+    border-radius: 8px;
     display: ${props => props.opacity <= 0.1 ? 'none' : 'block'};
-	background: ${props => props.theme.primaryColor};
-    position: absolute;
-	top: 70px;
-	right:  0px;
-	z-index: 1000;
-	height: auto;
-	border-radius: 5px;
-	width: 200px;
-	padding: 10px;
+	background: ${props => props.theme.background};
+	padding: 8px;
 `
 
 const List = styled.ul`
@@ -31,8 +38,8 @@ const Button = styled.button`
     border: none;
     background: transparent;
     font-size: 14px;
-    line-height: 50px;
-    height: 50px;
+    line-height: 45px;
+    height: 45px;
     padding: 0 20px;
     cursor: pointer;
     font-weight: 500;
@@ -51,15 +58,16 @@ export const DropdownItem = ({ onClick, children }) => {
 
 export const ProfileDropdown = ({ opened, children }) => {
     return (
-        <Motion defaultStyle={{ opacity: 0, translate: 0 }}
-            style={{ opacity: spring(opened ? 1 : 0, presets.wobbly), translate: spring(opened ? 0 : -30, presets.wobbly) }}>
+        <Motion style={{ opacity: spring(opened ? 1 : 0, presets.stiff), rotate: spring(opened ? 0 : -90, { damping: 15, stiffness: 200 }) }}>
             {
                 style =>
-                    <Dropdown opacity={style.opacity} translate={style.translate}>
-                        <List>
-                            {children}
-                        </List>
-                    </Dropdown>
+                    <Wrapper>
+                        <Dropdown opacity={style.opacity} rotate={style.rotate}>
+                            <List>
+                                {children}
+                            </List>
+                        </Dropdown>
+                    </Wrapper>
             }
         </Motion>
     )

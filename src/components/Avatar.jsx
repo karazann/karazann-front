@@ -24,6 +24,23 @@ const Icon = styled.img`
     height: ${props => props.extended ? 60 : 38}px;
     width: ${props => props.extended ? 60 : 38}px;
     margin-right: 15px;
+    background-color: rgba(253, 150, 68, .6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        margin-left: -1px;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+`
+
+const IconPlaceholder = styled.div`
+    border-radius: 50%;
+    height: ${props => props.extended ? 60 : 38}px;
+    width: ${props => props.extended ? 60 : 38}px;
+    margin-right: 15px;
 `
 
 const Status = styled.span`
@@ -62,14 +79,10 @@ const SecondParagraph = styled.p`
     margin-right: 15px;
 `
 
-const SmallParagraph = styled.p`
-
-`
-
 const Avatar = ({ extended, image, name, status, location }) => {
     return (
         <StyledAvatar extended={extended}>
-            <Icon extended={extended} src={image} />
+            {image ? <Icon extended={extended} src={image} /> : <Icon as='div'><p>{name.charAt(0).toUpperCase()}</p></Icon>}
             {status && <Status extended={extended} status={status} ></Status>}
             <Details>
                 {name && <Paragraph extended={extended}>{name}</Paragraph>}

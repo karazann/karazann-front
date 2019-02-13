@@ -12,13 +12,14 @@ const StyledOverlay = styled.div.attrs(
     right: 0px;
     bottom: 0px;
     left: 0px;
+    
     cursor: pointer;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.3);
 `
 
 export const Overlay = props => {
     return (
-        <Motion style={{ opacity: spring(props.active ? 1 : 0, presets.wobbly) }}>
+        <Motion style={{ opacity: spring(props.active ? 1 : 0, presets.stiff) }}>
             {
                 style =>
                     <StyledOverlay opacity={style.opacity} {...props} />

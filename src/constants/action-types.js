@@ -20,8 +20,9 @@ export const LOGOUT = 'LOGOUT'
 
 /*  UI  */
 
+export const OPEN_NEW = 'OPEN_NEW'
+export const CLOSE_ALL = 'CLOSE_ALL'
+export const OPEN_AVATAR = 'OPEN_AVATAR'
 export const TOGGLE_THEME = 'TOGGLE_THEME'
 export const OPEN_PUSH_NAV = 'OPEN_PUSH_NAV'
-export const OPEN_NEW_DIALOG = 'OPEN_NEW_DIALOG'
-export const OPEN_AVATAR_DROPDOWN = 'OPEN_AVATAR_DROPDOWN'
-export const CLOSE_ALL = 'CLOSE_ALL'
+export const OPEN_NOTIFICATIONS = 'OPEN_NOTIFICATIONS'
