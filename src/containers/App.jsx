@@ -1,26 +1,21 @@
-import React, {Suspense, createContext} from 'react'
+import React, { Suspense } from 'react'
 import { connect } from 'react-redux'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import ReactBreakpoints from 'react-breakpoints'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 import SideNav from './SideNav'
-import ProjectPage from '../components/Project/ProjectPage'
-import Dialog from '../components/Dialog/Dialog'
+import Dialog from '../components/Dialog'
 import Overlay from '../components/Overlay'
-
-import Header from './Header'
-import HomePage from './Home';
 
 import { darkTheme, lightTheme } from './Themes'
 import { breakpoints } from './Breakpoints'
-import { TOGGLE_NEW_DIALOG, CLOSE_ALL } from '../constants/action-types'
+import { OPEN_NEW, CLOSE_ALL } from '../constants/action-types'
 import '../assets/scss/style.scss'
 
-const c = createContext()
-console.log(c)
-
 const GlobalStyle = createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css?family=Concert+One');
+
     #app, body, html {
         height: 100%;
         width: 100%;
@@ -41,39 +36,50 @@ const Grid = styled.div`
     min-height: calc(100% + 200px);
 
     display: grid;
-    grid-template-columns: 1fr minmax(200px, 1920px) 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 72px 1fr 200px;
 `
 
 const Main = styled.main`
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 2;
-
     display: flex;
 `
 
 const Footer = styled.footer`
-    grid-column: 1 / span 3;
+    grid-column: 1;
     grid-row: 3;
 
     background: ${props => props.theme.primaryColor};
 `
 
-const App = ({ dark, overlayActive, closeAll, pushOpened, newOpened, toggleNew }) => {
+const Header = React.lazy(() => import(/* webpackChunkName: "Header", webpackPreload: true */'./Header'))
+const Creators = React.lazy(() => import(/*webpackChunkName: "Home", webpackMode : "lazy" */'./CreatorsPage'))
+const Projects = React.lazy(() => import(/*webpackChunkName: "Project", webpackMode : "lazy" */'./ProjectsPage'))
+
+
+const App = ({ dark, overlay, closeAll, pushOpened, newOpened, inviteOpened }) => {
     return (
         <ThemeProvider theme={dark ? darkTheme : lightTheme}>
             <ReactBreakpoints breakpoints={breakpoints}>
                 <GlobalStyle dark={dark} />
-                <Overlay onClick={closeAll} active={overlayActive} />
+                <Overlay onClick={closeAll} active={overlay} />
                 <Dialog opened={newOpened} onCancel={closeAll} />
+                <Dialog opened={inviteOpened} onCancel={closeAll} >
+                    fsdaf
+                </Dialog>
                 <Grid>
-                    <Header />
+                    <Suspense style={{ background: 'red' }} fallback={<div></div>}>
+                        <Header />
+                    </Suspense>
                     <Main>
                         <SideNav opened={pushOpened} attached={true} />
-                        <Suspense fallback={<div>Loading...</div>}>
+                        <Suspense fallback={<div></div>}>
                             <Switch>
-                                <Route exact path='/' component={HomePage} />
-                                <Route path='/projects' component={ProjectPage} />
+                                <Route exact path='/' />
+                                <Route path='/creators' component={Creators} />
+                                <Route path='/projects' component={Projects} />
+                                <Route path='/jobs' />
                                 {/*<Route path='/auth/:action' component={AuthPage} />*/}
                                 {/*<Route path='/product/:slug' component={ProductPage} />*/}
                                 {/*<PrivateRoute path='/account' loggedIn={this.props.loggedIn} component={AccountPage} />*/}
@@ -82,7 +88,6 @@ const App = ({ dark, overlayActive, closeAll, pushOpened, newOpened, toggleNew }
                             </Switch>
                         </Suspense>
                     </Main>
-
                     <Footer />
                 </Grid>
             </ReactBreakpoints>
@@ -93,16 +98,17 @@ const App = ({ dark, overlayActive, closeAll, pushOpened, newOpened, toggleNew }
 const mapStateToProps = state => {
     return {
         dark: state.ui.darkTheme,
+        overlay: state.ui.overlay,
+        newOpened: state.ui.newOpened,
         pushOpened: state.ui.pushNavOpened,
-        newOpened: state.ui.newDialogOpened,
-        avatarOpened: state.ui.avatarDropdownOpened,
-        overlayActive: state.ui.overlayActive
+        avatarOpened: state.ui.avatarOpened,
+        inviteOpened: state.ui.inviteOpened
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleNew: e => { dispatch({ type: TOGGLE_NEW_DIALOG }) },
+        toggleNew: e => { dispatch({ type: OPEN_NEW }) },
         closeAll: e => { dispatch({ type: CLOSE_ALL }) }
     }
 }

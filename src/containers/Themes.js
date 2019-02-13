@@ -1,37 +1,41 @@
 export const darkTheme = {
+    name: 'dark',
     fontFamily: 'Roboto',
 
-    background: '#3a3c43',
-    primaryColor: '#40434A',
-    secondaryColor: 'hsl(227, 7%, 20%)',
+    background:    '#3A3C43',
+    primaryColor:  '#40434A',
+    secondaryColor:'#484b53',
 
-    primaryTextColor: '#fff',
-    secondaryTextColor: 'hsl(220, 2%, 65%)',
+    primaryTextColor:  '#FFFFFF',
+    secondaryTextColor:'hsl(220, 2%, 65%)',
 
-    red: '#fc5c65',
-    orange: '#fd9644',
-    yellow: '#ffd361',
-    blue: '#4285f4',
-    green: '#3cda8b',
-    purple: '#7357FF',
-    grey: 'rgb(165, 165, 177)'
+    red:     '#E24A4A',
+    orange:  '#E2944A',
+    yellow:  '#FFD361',
+    green:   '#49C496',
+    darkBlue:'#4285F4',
+    blue:    '#4270F4',
+    purple:  '#7357FF',
+    grey:    '#AAAAAA'
 }
 
 export const lightTheme = {
+    name: 'light',
     fontFamily: 'Roboto',
 
-    background: '#f1f2f8',
-    primaryColor: '#fff',
-    secondaryColor: 'hsl(231, 15%, 70%)',
+    background:    '#F0F1F4',
+    primaryColor:  '#FFFFFF',
+    secondaryColor:'#DCDEE7',
 
-    primaryTextColor: 'hsl(232, 15%, 25%)',
-    secondaryTextColor: 'hsl(232, 15%, 50%)',
+    primaryTextColor:  '#3f3f4a',
+    secondaryTextColor:'#777789',
 
-    red: '#fc5c65',
-    orange: '#fd9644',
-    yellow: '#ffd361',
-    blue: '#4285f4',
-    green: '#3cda8b',
-    purple: '#7357FF',
-    grey: 'rgb(165, 165, 177)'
+    red:     '#E24A4A',
+    orange:  '#E2944A',
+    yellow:  '#FFD361',
+    green:   '#49C496',
+    darkBlue:'#4270F4',
+    blue:    '#4285F4',
+    purple:  '#7357FF',
+    grey:    '#AAAAAA'
 }

@@ -7,10 +7,8 @@ import { ConnectedRouter } from 'connected-react-router'
 import { store, history } from './utils/store'
 import App from './containers/App'
 
-
-
 //TODO: Eat some 🍕🍕
-function renderApp() {
+const renderApp = () => {
     render(
         <Provider store={store}>
             <ConnectedRouter history={history}>
@@ -23,4 +21,6 @@ function renderApp() {
 renderApp()
 
 //🔥🔥 Relaod
-module.hot.accept(renderApp)
+if (module.hot) {
+    module.hot.accept('./containers/App', renderApp)
+}

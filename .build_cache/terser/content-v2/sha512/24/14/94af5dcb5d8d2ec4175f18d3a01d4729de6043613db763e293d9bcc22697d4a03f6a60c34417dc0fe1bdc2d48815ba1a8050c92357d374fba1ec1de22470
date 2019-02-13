@@ -1,0 +1,1 @@
+{"code":"(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{101:function(e,n,t){\"use strict\";t.r(n);var a=t(0),c=t.n(a);n.default=function(e){return c.a.createElement(\"div\",{className:\"parent\"},c.a.createElement(\"section\",null))}}}]);","extractedComments":[]}
