@@ -4,12 +4,13 @@ import { Provider } from 'react-redux'
 import { Route } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router'
 
-import { store, history } from './utils/store'
-import App from './containers/App'
+import { store, history } from '@store'
+import { App } from '@containers'
 
 //TODO: Eat some 🍕🍕
+let root;
 const renderApp = () => {
-    render(
+    root = render(
         <Provider store={store}>
             <ConnectedRouter history={history}>
                 <Route path="/" component={App} />
@@ -20,7 +21,9 @@ const renderApp = () => {
 
 renderApp()
 
+
 //🔥🔥 Relaod
 if (module.hot) {
-    module.hot.accept('./containers/App', renderApp)
+    require('preact/debug');
+    module.hot.accept('./containers/App', () => requestAnimationFrame(renderApp))
 }

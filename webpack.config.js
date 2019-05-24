@@ -1,10 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
+const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'development',
+    context: __dirname + '/src',
     entry: __dirname + '/src/index.js',
     optimization: {
         minimizer: [new TerserPlugin({
@@ -17,14 +19,27 @@ module.exports = {
             }
         })],
     },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json'],
+        alias: {
+            "react": "preact/compat",
+            "react-dom": "preact/compat",
+            "@libs": path.resolve(__dirname, 'src/libs'),
+            "@components": path.resolve(__dirname, 'src/components'),
+            "@containers": path.resolve(__dirname, 'src/containers'),
+            '@images': path.resolve(__dirname, 'src/assets/images'),
+            '@fonts': path.resolve(__dirname, 'src/assets/fonts'),
+            '@store': path.resolve(__dirname, 'src/store')
+        }
+    },
     output: {
-        path: __dirname + '/dist',
-        chunkFilename: '[name].[hash:10].js',
-        filename: '[name].[hash:10].js',
+        path: path.resolve(__dirname, 'dist'),
+        chunkFilename: './assets/js/[name].[hash:10].js',
+        filename: './assets/js/[name].[hash:10].js',
     },
     devServer: {
-        contentBase: './dist',
-        hotOnly: true,
+        contentBase: path.resolve(__dirname, 'dist/assets/'),
+        publicPath: '/',
         historyApiFallback: true,
         hot: true,
         port: 8080
@@ -33,12 +48,16 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             hash: true,
-            filename: './index.html',
-            template: __dirname + '/public/index.html',
+            template: 'index.html',
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+              'NODE_ENV': JSON.stringify('development')
+            }
         })
     ],
     module: {
@@ -72,10 +91,12 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[contenthash:10].[ext]',
+                            outputPath: './assets/',
+                            publicPath: './assets/'
                         }
                     }
                 ]
-            },
+            }
         ]
     }
 };

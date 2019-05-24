@@ -1,0 +1,20 @@
+/*  Auth  */
+
+export const REGISTER_REQUEST = 'REGISTER_REQUEST'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const REGISTER_FAILURE = 'REGISTER_FAILURE'
+
+export const LOGIN_REQUEST = 'LOGIN_REQUEST'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_FAILURE = 'LOGIN_FAILURE'
+
+export const USER_LOGOUT = 'USER_LOGOUT'
+
+/*  UI  */
+
+export const OPEN_NEW = 'OPEN_NEW'
+export const CLOSE_ALL = 'CLOSE_ALL'
+export const OPEN_AVATAR = 'OPEN_AVATAR'
+export const TOGGLE_THEME = 'TOGGLE_THEME'
+export const OPEN_PUSH_NAV = 'OPEN_PUSH_NAV'
+export const OPEN_NOTIFICATIONS = 'OPEN_NOTIFICATIONS'
