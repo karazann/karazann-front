@@ -36,6 +36,7 @@ export const AuthHeader = styled.h3`
     text-align: center;
     font-weight: 500;
     margin-bottom: 20px;
+    color: ${props => props.theme.typography3};
 `
 
 export const Separator = styled.h5`
@@ -64,11 +65,13 @@ export const AuthFooter = styled.div`
     flex-direction: row;
 
     p {
+        font-weight: 400;
         color: ${props => props.theme.typography3}
     }
-
+    
     a {
         margin-left: 10px;
+        font-weight: 700;
         color: ${props => props.theme.primary1}
     }
 `
@@ -89,16 +92,19 @@ const Input = styled.input`
 export const ButtonInput = styled(Input)`
     transition: all .15s ease;
 
-    ${props => props.primary ? 'box-shadow: 0 8px 16px rgba(255,94,91,0.25);' : 'box-shadow: 0 2px 16px rgba(20,20,20,0.10);'}
+    ${props => props.primary ? 'box-shadow: 0 8px 16px rgba(255,94,91,0.25);' : 'box-shadow: 0 8px 24px rgba(20,20,20,0.10);'}
     ${props => props.primary ? 'background: #fc6b74; background: linear-gradient(65deg, #FF5E5B 0%, #F8778D 100%);' : 'background: white;'}
 
     &:hover{
-        ${props => props.primary ? 'box-shadow: 0 8px 16px rgba(255,94,91,0.4);' : 'box-shadow: 0 4px 16px rgba(20,20,20,0.2);'}
+        ${props => props.primary ? 'box-shadow: 0 8px 16px rgba(255,94,91,0.4);' : 'box-shadow: 0 8px 24px rgba(20,20,20,0.16);'}
         ${props => props.primary ? 'background: #fc7080; background: linear-gradient(65deg, #ff6360 0, #f87c91 100%);' : 'background: white;'}
+
+        transform: translateY(-1px);
     }
 
     &:active {
-        opacity: .5;
+        transform: translateY(1px);
+        ${props => props.primary ? 'box-shadow: 0 8px 16px rgba(255,94,91,0.1);' : 'box-shadow: 0 8px 24px rgba(20,20,20,0.05);'}
     }
 
     color: ${props => props.primary ? '#fff' : 'intherit'};
@@ -110,7 +116,7 @@ export const ButtonInput = styled(Input)`
     line-height: 20px;
     text-decoration: none !important;
     
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     justify-content: center;
     padding: 14px 32px;
@@ -129,13 +135,19 @@ export const ButtonInput = styled(Input)`
 `
 
 export const TextInput = styled(Input)`
-    background-color: #fff;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #DDE7EF;
-    color: #768696;
+    background: #fff;
+    border: 2px solid ${props => props.theme.bg3};
+    color: ${props => props.theme.typography2};
     max-width: 100%;
     width: 100%;
+
+    font-weight: 500;
+
+    transition: all .1s;
+
+    &:focus {
+        border: 2px solid ${props => props.theme.primary3};
+    }
 
     &::placeholder {
         color: ${props => props.theme.typography4};
@@ -147,9 +159,5 @@ export const TextInput = styled(Input)`
 
     &:-ms-input-placeholder {
         color: ${props => props.theme.typography4};
-    }
-
-    &:hover {
-        border-color: darken(${props => props.theme.typography4}, 5%);
     }
 `

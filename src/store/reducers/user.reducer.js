@@ -1,10 +1,12 @@
 import { 
-    REGISTER_REQUEST, 
-    REGISTER_SUCCESS, 
-    REGISTER_FAILURE, 
-    LOGIN_REQUEST, 
-    LOGIN_SUCCESS, 
-    LOGIN_FAILURE, 
+    USER_SIGNUP_REQUEST, 
+    USER_SIGNUP_SUCCESS, 
+    USER_SIGNUP_FAIL, 
+
+    USER_SIGNIN_REQUEST, 
+    USER_SIGNIN_SUCCESS, 
+    USER_SIGNIN_FAIL, 
+
     USER_LOGOUT 
 } from '@store/constants'
 
@@ -16,42 +18,42 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case REGISTER_REQUEST:
+        case USER_SIGNUP_REQUEST:
             return {
                 ...state,
                 error: null,
                 loading: true
             }
-        case REGISTER_SUCCESS:
+        case USER_SIGNUP_SUCCESS:
             return {
                 ...state,
                 loggedIn: true,
                 loading: false
             }
-        case REGISTER_FAILURE:
+        case USER_SIGNUP_FAIL:
             return {
                 ...state,
                 loggedIn: false,
-                error: action.payload.error,
+                error: action.payload,
                 loading: false
             }
-            case LOGIN_REQUEST:
+        case USER_SIGNIN_REQUEST:
             return {
                 ...state,
                 error: null,
                 loading: true
             }
-        case LOGIN_SUCCESS:
+        case USER_SIGNIN_SUCCESS:
             return {
                 ...state,
                 loggedIn: true,
                 loading: false
             }
-        case LOGIN_FAILURE:
+        case USER_SIGNIN_FAIL:
             return {
                 ...state,
                 loggedIn: false,
-                error: action.payload.error,
+                error: action.payload,
                 loading: false
             }
         case USER_LOGOUT:

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import GoogleLogin from 'react-google-login'
 
+import { signup } from '@store/actions'
+
 import { Container, Brand } from '@libs/style'
 import { AuthPanel, AuthForm, Title, TextInput, ButtonInput, AuthHeader, Separator, AuthFooter } from './style'
 
@@ -16,13 +18,13 @@ const Auth = ({ children, height }) => {
                 <defs>
                     <filter x="-500%" y="-500%" width="1000%" height="1000%" filterUnits="objectBoundingBox" id="dropshadow-1">
                         <feOffset dy="16" in="SourceAlpha" result="shadowOffsetOuter"></feOffset>
-                        <feGaussianBlur stdDeviation="24" in="shadowOffsetOuter" result="shadowBlurOuter"></feGaussianBlur>
-                        <feColorMatrix values="0 0 0 0 0.10 0 0 0 0 0.17 0 0 0 0 0.21 0 0 0 0.22 0" in="shadowBlurOuter"></feColorMatrix>
+                        <feGaussianBlur stdDeviation="35" in="shadowOffsetOuter" result="shadowBlurOuter"></feGaussianBlur>
+                        <feColorMatrix values="0 0 0 0 0.10 0 0 0 0 0.17 0 0 0 0 0.21 0 0 0 0.10 0" in="shadowBlurOuter"></feColorMatrix>
                     </filter>
                 </defs>
                 <g fill="none" fill-rule="evenodd">
-                    <rect width="400" height={height} rx="7" fill="#FFF" style="filter:url(#dropshadow-1)"></rect>
-                    <rect width="400" height={height} rx="7" fill="#FFF"></rect>
+                    <rect width="400" height={height} rx="4" fill="#FFF" style="filter:url(#dropshadow-1)"></rect>
+                    <rect width="400" height={height} rx="4" fill="#FFF"></rect>
                 </g>
             </svg>
             <div style={{ position: 'absolute', zIndex: '10' }} >
@@ -49,7 +51,7 @@ const AuthPage = props => {
                         <AuthHeader>{onSignIn ? 'Sign in' : 'Sign up'}</AuthHeader>
                         {onSignIn ? null : <TextInput vertical type="text" name="username" autocomplete="username" placeholder="Choose a username&hellip;" />} 
                         <TextInput vertical type="email" name="email" autocomplete="email" placeholder="Your email&hellip;" />
-                        <TextInput vertical type="password" name="pwd" autocomplete="current-password" placeholder="Your password&hellip;" />
+                        <TextInput vertical type="password" name="password" autocomplete="current-password" placeholder="Your password&hellip;" />
                         <ButtonInput primary type="submit" name="signup" value={onSignIn ? 'Sign in' : 'Sign up'} />
                         <Separator>OR</Separator>
                         <GoogleLogin
@@ -92,13 +94,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signIn: e => {
-            const obj = processForm(e)
-            dispatch({ type: 'LOGIN_SUCCESS' })
-        },
         signUp: e => {
-            const obj = processForm(e)
-            dispatch({ type: 'LOGIN_SUCCESS' })
+            const { username, email, password } = processForm(e)
+            dispatch(signup(username, email, password))
+        },
+        signIn: e => {
+            
         }
     }
 }

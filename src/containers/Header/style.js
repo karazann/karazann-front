@@ -5,6 +5,7 @@ export const Header = styled.header`
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
+
     background: ${props => props.theme.bg1};
 `
 
@@ -53,14 +54,13 @@ export const SearchBar = styled.div`
     width: 300px;
 `
 
-
 export const HeaderLink = withRouter(styled(Link)`
     margin: 0 15px 0 22px;
     font-size: 15px;
     height: 38px;
     line-height: 38px;
     font-weight: 500;
-    color: inherit;
+    color: ${props => props.theme.typography3};
     text-decoration: none;
 
     &:hover {
@@ -71,27 +71,30 @@ export const HeaderLink = withRouter(styled(Link)`
         display: inline-flex;
         letter-spacing: 0px;
         color: ${props.theme.primary1};
-        border-radius: 5px;
+        border-radius: 4px;
         cursor: pointer;
         justify-content: center;
         text-align: center;
         white-space: nowrap;
-        line-height: 34px;
-        border: 2px solid ${props.theme.primary1};
-        transition: .3s;
+        line-height: 38px;
+        transition: all .15s ease;
+
+        background: #9285F5;
+        color: white;
+        box-shadow: 0 8px 16px rgba(146, 133, 245, 0.2);
 
         margin: 0 0 0 7px;
         padding: 0 15px;
 
         &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(146, 133, 245, 0.3);
             color: white;
-            background: ${props.theme.primary1};
         }
-    `}
 
-    ${props => props.to == props.location.pathname && css`
-        border-bottom: 1.5px solid ${props => props.theme.primary1};
-        font-weight: 700;
-        color: ${props => props.theme.primary1};
+        &:active {
+            transform: translateY(1px);
+            box-shadow: 0 8px 16px rgba(146, 133, 245, 0.07);
+        }
     `}
 `)

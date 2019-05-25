@@ -4,30 +4,33 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import AsyncRoute from 'preact-async-route'
 
-import { darkTheme, lightTheme } from '@libs/themes'
-import { Overlay, PrivateRoute } from '@components'
 import { CLOSE_ALL } from '@store/constants'
-import { Header } from '@containers'
 
-import { GlobalStyle, Main, Footer } from './style'
+import Header from '@containers/Header'
+import Footer from '@components/Footer'
+import Overlay from '@components/Overlay'
+import PrivateRoute from '@components/PrivateRoute'
+
+import { darkTheme, lightTheme } from '@libs/themes'
+import { GlobalStyle, Wrapper, Main } from './style'
 
 /*lazy loaded routes*/
 const StartPage = async (url, cb, props) => {
     if(props.loggedIn)
-        var module = await import(/* webpackChunkName: "HomePage" */ '@containers/HomePage');
+        var module = await import(/* webpackPrefetch: true, webpackChunkName: "HomePage" */ '../HomePage');
     else
-        var module = await import(/* webpackChunkName: "LandingPage" */ '@containers/LandingPage');
+        var module = await import(/* webpackChunkName: "LandingPage" */ '../LandingPage'); //no prefetch becouse logged in users dont need this
 
     return module.default;
 };
 
 const ProjectsPage = async (url, cb, props) => {
-    var module = await import(/* webpackChunkName: "ProjectsPage" */ '@containers/ProjectsPage');
+    var module = await import(/* webpackPrefetch: true, webpackChunkName: "ProjectsPage" */ '../ProjectsPage');
     return module.default;
 };
 
 const AuthPage = async (url, cb, props) => {
-    var module = await import(/*webpackPrefetch: true, webpackChunkName: "AuthPage" */ '@containers/AuthPage');
+    var module = await import(/* webpackPrefetch: true, webpackChunkName: "AuthPage" */ '../AuthPage');
     return module.default;
 };
 
@@ -39,7 +42,7 @@ const App = ({ dark, overlay, closeAll, loggedIn, location }) => {
                 <GlobalStyle dark={dark} />
                 <Overlay onClick={closeAll} active={overlay} />
                 
-                <Fragment>
+                <Wrapper>
                     <Header hidden={onAuthPage}/>
                     <Main>
                         <Switch>
@@ -53,7 +56,7 @@ const App = ({ dark, overlay, closeAll, loggedIn, location }) => {
                         </Switch>
                     </Main>
                     <Footer/>
-                </Fragment>
+                </Wrapper>
             </Fragment>
         </ThemeProvider>
     )

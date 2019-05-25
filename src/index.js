@@ -5,7 +5,7 @@ import { Route } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router'
 
 import { store, history } from '@store'
-import { App } from '@containers'
+import App from '@containers/App'
 
 //TODO: Eat some 🍕🍕
 let root;
@@ -20,7 +20,6 @@ const renderApp = () => {
 }
 
 renderApp()
-
 
 //🔥🔥 Relaod
 if (module.hot) {

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { PageSection, Container } from '@libs/style'
 
-const HeroComponent = ({ count, onClick }) => {
+const HeroComponent = props => {
     return (
         <h1>s</h1>
     )

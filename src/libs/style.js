@@ -59,6 +59,7 @@ export const Container = styled.div`
 
 export const Page = styled.div`
     margin-top: 50px;
+    width: 100%;
 `
 
 export const Title = styled.h1`
@@ -81,7 +82,7 @@ export const ResponsiveGrid = styled.div`
         border-radius: 8px;
         padding: 20px;
         height: 300px;
-        box-shadow: 0 7px 20px 1px rgba(49, 49, 80, 0.05), 0px 2px 0px 0px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     }
 
     @media (min-width: 555px) {

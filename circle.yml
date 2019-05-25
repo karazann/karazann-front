@@ -21,7 +21,7 @@ jobs:
             command: bash ./set-env.sh
         - run:
             name: Build with parcel
-            command: npm run build
+            command: npm run build:prod
         - persist_to_workspace:
             root: ~/
             paths:
@@ -40,7 +40,7 @@ jobs:
           at: ~/
       - run:
           name: Deploy to production S3 bucket
-          command: npm run deploy-prod
+          command: npm run deploy:prod
   deploy-dev:
     working_directory: ~/app
     docker:
@@ -50,7 +50,7 @@ jobs:
           at: ~/
       - run:
           name: Deploy to development S3 bucket
-          command: npm run deploy-dev
+          command: npm run deploy:dev
 workflows: 
   version: 2
   FrontEnd: 

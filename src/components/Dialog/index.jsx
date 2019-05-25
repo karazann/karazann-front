@@ -3,7 +3,8 @@ import { Motion, spring, presets } from 'react-motion'
 
 import { Wrapper, Dialog, Content, Footer, Button } from './style'
 
-const DialogComponent = ({ opened, onCancel, children }) => {
+const DialogComponent = props => {
+    const { opened, onCancel, children } = props
     return (
         <Motion style={{ opacity: spring(opened ? 1 : 0, presets.stiff), scale: spring(opened ? 1 : .6, presets.wobbly) }}>
             {

@@ -19,7 +19,7 @@ export const Avatar = styled.div`
 `
 
 export const Icon = styled.img`
-    border-radius: 7px;
+    border-radius: 4px;
     height: ${props => props.extended ? 60 : 35}px;
     width: ${props => props.extended ? 60 : 35}px;
     margin-right: 15px;
@@ -55,18 +55,18 @@ export const Details = styled.div`
 `
 
 export const Paragraph = styled.p`
-    color: ${props => props.theme.typography2};
+    color: ${props => props.theme.typography3};
     line-height: ${props => props.extended ? 25 : 35}px;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
     margin-right: 15px;
 `
 
 export const Paragraph2 = styled.p`
-    color: ${props => props.theme.secondaryTextColor};
+    color: ${props => props.theme.typography3};
     line-height: ${props => props.extended ? 20 : 35}px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     margin-right: 15px;
 `
 
@@ -76,12 +76,14 @@ export const ProfileMenu = styled.button`
     height: 35px;
     background: transparent;
     cursor: pointer;
+
+    padding: 0;
 `
 
 export const Arrow = styled.span.attrs(
     props => ({style: { transform: `rotate(${props.rotation}deg)` }})
 )`
-    color: ${props => props.theme.typography2};
+    color: ${props => props.theme.typography3};
     line-height: 38px;
     font-size: 14px;
 `
@@ -107,9 +109,9 @@ export const DropdownSection = styled.section.attrs(
     
     transform-style: preserve-3d;
     transform-origin: 50% 0;
-    border-radius: 8px;
+    border-radius: 4px;
     display: ${props => props.opacity <= 0.1 ? 'none' : 'block'};
-	background: ${props => props.theme.background};
+	background: ${props => props.theme.bg1};
 	padding: 8px;
 `
 
@@ -118,7 +120,7 @@ export const List = styled.ul`
 `
 
 export const DropdownItem = styled.button`
-    color: ${props => props.theme.typography2};
+    color: ${props => props.theme.typography3};
     border: none;
     background: transparent;
     font-size: 14px;

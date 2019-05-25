@@ -1,59 +1,68 @@
 import {
-    REGISTER_REQUEST,
-    REGISTER_SUCCESS,
-    REGISTER_FAILURE,
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
+    USER_SIGNUP_REQUEST,
+    USER_SIGNUP_SUCCESS,
+    USER_SIGNUP_FAIL,
+
+    USER_SIGNIN_REQUEST,
+    USER_SIGNIN_SUCCESS,
+    USER_SIGNIN_FAIL,
+
     USER_LOGOUT
 } from '@store/constants'
 
-import * as service from '../../api'
+import * as api from '../../api'
 
-import { push } from 'connected-react-router'
+import {
+    push
+} from 'connected-react-router'
 
-const registerRequest = () => {
-    return { type: REGISTER_REQUEST }
-}
+export const signupRequest = () => ({
+    type: USER_SIGNUP_REQUEST
+})
 
-const registerSuccess = () => {
-    return { type: REGISTER_SUCCESS }
-}
+export const signupSuccess = () => ({
+    type: USER_SIGNUP_SUCCESS
+})
 
-const registerFailure = error => {
-    return { type: REGISTER_FAILURE, payload: { error } }
-}
+export const signupFail = error => ({
+    type: USER_SIGNUP_FAIL,
+    payload: error
+})
 
-const loginRequest = () => {
-    return { type: LOGIN_REQUEST }
-}
+export const signinRequest = () => ({
+    type: USER_SIGNIN_REQUEST
+})
 
-const loginSuccess = () => {
-    return { type: LOGIN_SUCCESS }
-}
+export const signinSuccess = () => ({
+    type: USER_SIGNIN_SUCCESS
+})
 
-const loginFailure = error => {
-    return { type: LOGIN_FAILURE, payload: { error } }
-}
+export const signinFail = error => ({
+    type: USER_SIGNIN_FAIL,
+    payload: error
+})
 
 /**********  Async actions  **********/
 
 export const logout = () => {
     return async dispatch => {
-        dispatch({ type: USER_LOGOUT })
+        dispatch({
+            type: USER_LOGOUT
+        })
         dispatch(push('/'))
     }
-} 
+}
 
-export const register = (username, email, password) => {
-    return dispatch => {
-        dispatch(registerRequest())
-        service.register(username, email, password)
-            .then(token => {
-                dispatch(push('/'))
-                dispatch(registerSuccess())
-            })
-            .catch(error => dispatch(registerFailure(error)))
+export const signup = (username, email, password) => {
+    return async dispatch => {
+        dispatch(signupRequest())
+        try {
+            await api.signup(username, email, password)
+            dispatch(signupSuccess())
+            dispatch(push('/'))
+        } catch(e) {
+            dispatch(signupFail(e))
+        }
     }
 }
 
@@ -64,7 +73,7 @@ export const login = (email, password) => {
             await service.login(email, password)
             dispatch(loginSuccess())
             dispatch(push('/'))
-        } catch(error) {
+        } catch (error) {
             dispatch(loginFailure(error))
         }
     }

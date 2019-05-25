@@ -1,19 +1,23 @@
-import { authHeader } from './node_modules/@libs/header'
-const apiUrl = process.env.API_URL
+const apiUrl = process.env.API_URL ? process.env.API_URL : ''
 
-export const register = (username, email, password) => {
+export const signup = async (username, email, password) => {
     const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password })
     }
 
-    return fetch(apiUrl + '/auth/register', options)
-        .then(handleResponse)
-        .then(response => {
-            localStorage.setItem('token', response.token)
-            return response
-        })
+    try {
+        const response = await fetch(apiUrl + '/user/signup', options)
+        const body = await handleResponse(response);
+        console.log(body)
+    } catch(e) {
+        console.log(e)
+    }
+    
+    
+    //localStorage.setItem('token', body.token)
+    //return res;
 }
 
 export const login = (email, password) => {
@@ -46,14 +50,12 @@ export const loginGoogle = (accessToken) => {
         })
 }
 
-const handleResponse = (response) => {
-    return response.json().then(data => {
-        if (!response.ok) {
-            if (response.status === 401 || 400)
-                logout()
+const handleResponse = async (response) => {
 
-            return Promise.reject(data)
-        }
-        return data
-    })
+    if (!response.ok) {
+        if (response.status === 401 || 400 || 404 || 500)
+            throw { err: response.statusText, status: response.status }
+    }
+
+    return await response.json()
 }

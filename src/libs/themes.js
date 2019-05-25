@@ -30,9 +30,9 @@ export const darkTheme = {
     typography4: '#9BACBD',
 
     //bg: 
-    bg1: '#3A3C43',
+    bg3: '#3A3C43',
     bg2: '#40434A',
-    bg3: '#484b53',
+    bg1: '#484b53',
 
     //primary: 
     primary1: '#665DF0',
@@ -71,15 +71,11 @@ export const lightTheme = {
     purple:     '#8168ff',
     grey:       '#AAAAAA',
 
-    //typography:
-    /*typography1: '#30323D',
-    typography2: '#464853',
-    typography3: '#768696',
-    typography4: '#9BACBD',*/
 
-    typography1: '#30385d',
-    typography2: '#7685c0',
-    typography3: '#9ba9e2',
+    typography1: '#4f5264',
+    typography2: '#656980',
+    typography3: '#7f839a',
+    typography4: '#9b9eb0',
 
     //bg: 
     bg1: '#FFFFFF',
@@ -87,8 +83,8 @@ export const lightTheme = {
     bg3: '#DDE7EF',
 
     //primary: 
-    primary1: '#9B95F3',
-    primary2: '#665DF0',
+    primary1: '#9286F5',
+    primary2: '#A599F4',
     primary3: '#DAD8FF',
     primary4: '#F8F7FF',
 

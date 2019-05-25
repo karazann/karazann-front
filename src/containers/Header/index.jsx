@@ -1,13 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { 
-    NotificationDropdown, 
-    NotificationMenu, 
-    ProfileDropdown, 
-    ProfileDropdownItem, 
-    ProfileMenu 
-} from '@components'
+import { ProfileDropdown, ProfileDropdownItem, ProfileMenu } from '@components/Profile'
+import { NotificationDropdown, NotificationMenu } from '@components/Notification' 
 import { 
     TOGGLE_THEME, 
     OPEN_AVATAR, 
@@ -18,6 +13,8 @@ import { logout } from '@store/actions'
 
 import avatar from '@images/avatar2.jpg'
 import logo from '@images/logo.svg'
+
+import {Dropdown, DropdownItem} from '@components/Dropdown'
 
 import { Container, ListItem, HorizontalList, Brand } from '@libs/style'
 import { Header, HeaderInner, HeaderDesktop, HeaderLink } from './style'
@@ -65,9 +62,13 @@ const HeaderLogged = props => {
             <HeaderDesktop>
                 <HorizontalList>
                     <ListItem>
-                        <HeaderLink to="/creators">Creators</HeaderLink>
-                        <HeaderLink to="/projects">Projects</HeaderLink>
+                        <HeaderLink to="/tasks">Tasks</HeaderLink>
+                    </ListItem>
+                    <ListItem>
                         <HeaderLink to="/jobs">Jobs</HeaderLink>
+                    </ListItem>
+                    <ListItem>
+                        <HeaderLink to="/peoples">Peoples</HeaderLink>
                     </ListItem>
                 </HorizontalList>
             </HeaderDesktop>
@@ -75,7 +76,7 @@ const HeaderLogged = props => {
                 <HorizontalList>
                     <ListItem>
                         <NotificationMenu count={3} onClick={openNotifications} />
-                        <NotificationDropdown opened={notificationsOpened} notifications={[{}, {}, {}]} />
+                        <NotificationDropdown opened={notificationsOpened} notifications={[{}, {}, {}, {}]} />
                     </ListItem>
                     <ListItem>
                         <ProfileMenu user={{ name: 'Roland', status: 'online', avatar }} onClick={openAvatar} opened={avatarOpened} />
