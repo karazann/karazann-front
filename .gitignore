@@ -56,10 +56,13 @@ typings/
 
 # dotenv environment variables file
 .env
-.env.production
+.env.dev
+.env.prod
+.env.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
+.build_cache
 
 # next.js build output
 .next
@@ -78,7 +81,7 @@ typings/
 
 # Parcel build folders 
 /dist
-.cache
 
-#images
-src/assets/images
+#JSON server
+db.json
+routes.json

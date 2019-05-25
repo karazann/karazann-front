@@ -1,7 +1,21 @@
 {
     "presets": [
-        "env",
-        "react"
+        "@babel/react",
+        "@babel/env"
     ],
-    "plugins": ["transform-object-rest-spread"]
+    "plugins": [
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-class-properties",
+        ["@babel/plugin-transform-runtime",
+            {
+                "regenerator": true
+            }
+        ],
+        ["babel-plugin-styled-components",
+            {
+                "fileName": false
+            }
+        ]
+    ]
 }

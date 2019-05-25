@@ -1,0 +1,70 @@
+version: 2
+
+jobs:
+  build:
+      working_directory: ~/app
+      docker:
+        - image: danmaq/node-git-lfs
+      steps:
+        - checkout
+        - restore_cache:
+            name: Restore NPM package cache
+            key: dependency-cache-{{ checksum "package-lock.json" }}
+        - run:
+            name: Npm dependencies
+            command: npm install
+        - run:
+            name: Fetch Lfs files
+            command: git lfs fetch
+        - run:
+            name: Set environment vars based on branch
+            command: bash ./set-env.sh
+        - run:
+            name: Build with parcel
+            command: npm run build:prod
+        - persist_to_workspace:
+            root: ~/
+            paths:
+              - app
+        - save_cache:
+            name: Save NPM package cache
+            key: dependency-cache-{{ checksum "package-lock.json" }}
+            paths:
+              - node_modules
+  deploy-prod:
+    working_directory: ~/app
+    docker:
+      - image: danmaq/node-git-lfs
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Deploy to production S3 bucket
+          command: npm run deploy:prod
+  deploy-dev:
+    working_directory: ~/app
+    docker:
+      - image: danmaq/node-git-lfs
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Deploy to development S3 bucket
+          command: npm run deploy:dev
+workflows: 
+  version: 2
+  FrontEnd: 
+    jobs:
+      - build
+      - deploy-prod:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - deploy-dev:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master

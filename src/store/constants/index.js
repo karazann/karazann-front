@@ -1,0 +1,20 @@
+/*  User  */
+
+export const USER_SIGNUP_REQUEST = 'USER_SIGNUP_REQUEST'
+export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS'
+export const USER_SIGNUP_FAIL    = 'USER_SIGNUP_FAIL'
+
+export const USER_SIGNIN_REQUEST = 'USER_SIGNIN_REQUEST'
+export const USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCCESS'
+export const USER_SIGNIN_FAIL    = 'USER_SIGNIN_FAIL'
+
+export const USER_LOGOUT = 'USER_LOGOUT'
+
+/*  UI  */
+
+export const OPEN_NEW = 'OPEN_NEW'
+export const CLOSE_ALL = 'CLOSE_ALL'
+export const OPEN_AVATAR = 'OPEN_AVATAR'
+export const TOGGLE_THEME = 'TOGGLE_THEME'
+export const OPEN_PUSH_NAV = 'OPEN_PUSH_NAV'
+export const OPEN_NOTIFICATIONS = 'OPEN_NOTIFICATIONS'
